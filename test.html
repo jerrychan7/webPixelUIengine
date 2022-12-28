@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WPUIE test</title>
+  <script src="./src/all.js" type="module"></script>
+  <style>
+    @font-face {
+      font-family: dot_font;
+      src: url(./DinkieBitmap-9pxDemo.woff2);
+    }
+    :root {
+      /* 字体大小缩放率 我选用的字体本身是9px的 但浏览器字体的最小大小一般都大于9px 所以要>1 */
+      --fsr: 2;
+      --fs: calc(var(--fsr) * 9px);
+      --fspt: calc(var(--fsr) * 1px);
+      font-family: dot_font;
+      font-size: var(--fs);
+    }
+    pui-img, [is=pui-img-] {
+      width: max(3vw, 64px);
+      height: max(3vh, 32px);
+    }
+  </style>
+</head>
+<body>
+  <h1><a href="https://github.com/jerrychan7/webPixelUIengine">Web Pixel UI Engine (WPUIE)</a></h1>
+  <p><a href="https://3type.cn/fonts/dinkie_bitmap/">Font</a>: Dinkie Bitmap (丁卯点阵体) 9px <sub><i>Demo</i></sub></p>
+  <h2>pixelate image</h2>
+  <p>Custom Element:</p>
+  &emsp;&emsp;some text <pui-img src="./img-test.png"></pui-img> some text<br/>
+  &emsp;&emsp;object-fit: contain;: <pui-img src="./img-test.png" style="object-fit: contain;"></pui-img><br/>
+  &emsp;&emsp;object-fit: none; object-position: left bottom;:<pui-img src="./img-test.png" style="object-fit: none; object-position: left bottom;"></pui-img><br/>
+  <p>Build-in Element:</p>
+  &emsp;&emsp;some text <img is="pui-img-" src="./img-test.png"/> some text<br/>
+  &emsp;&emsp;object-fit: contain;: <img is="pui-img-" src="./img-test.png" style="object-fit: contain;"/><br/>
+  &emsp;&emsp;object-fit: none; object-position: left bottom;:<img is="pui-img-" src="./img-test.png" style="object-fit: none; object-position: left bottom;"/><br/>
+</body>
+</html>

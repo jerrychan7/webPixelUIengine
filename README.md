@@ -1,4 +1,4 @@
-# Web Pixel UI Engine
+# Web Pixel UI Engine (WPUIE)
 
 该库的目的是为了在网页中显示像素风格的UI。
 
