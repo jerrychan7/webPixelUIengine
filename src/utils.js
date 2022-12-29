@@ -1,7 +1,7 @@
 
 export const cssVar = (() => {
   const varStyle = new CSSStyleSheet();
-  document.adoptedStyleSheets = [...document.adoptedStyleSheets, varStyle];
+  document.adoptedStyleSheets.push(varStyle);
   varStyle.replaceSync(":root {}");
   let gv = varStyle.cssRules[0];
   let rulesMap = {}, gvs = new Set();
@@ -22,7 +22,7 @@ export const cssVar = (() => {
       delete rulesMap[selector];
     },
     get: selector => rulesMap[selector],
-    has: selector => !!rulesMap[selector],
+    has: selector => selector in rulesMap,
     rename(oldName, newName) {
       if (!rulesMap[oldName] || rulesMap[newName]) return false;
       rulesMap[oldName].selectorText = newName;
@@ -82,3 +82,5 @@ export const cssVar = (() => {
 })();
 
 export const sleep = (ms = 0) => new Promise(s => setTimeout(s, ms));
+
+export const obj2css = obj => Object.entries(obj).map(([k, v]) => `${k}: ${v};`).join("");

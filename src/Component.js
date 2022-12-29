@@ -26,6 +26,10 @@ class PUIComponent extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
+    this.css = new CSSStyleSheet();
+    this.shadowRoot.adoptedStyleSheets.push(this.css);
+    this.css.replaceSync(":host {}");
+    this.cssHost = this.css.cssRules[0];
     if (this.template) this.appendTemplate();
   };
   appendTemplate(template = this.template) {
