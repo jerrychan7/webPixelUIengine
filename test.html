@@ -69,5 +69,26 @@
   <div is="pui-cb-" size="2"><p>size="2"</p></div>
   <div is="pui-cb-" size="2" style="--bwidth: 6px; --bcolor: #088;"><p>size="2" style="--bwidth: 6px; --bcolor: #088;"</p></div>
 
+  <h2>Containers</h2>
+  <p>Custom Element:</p>
+  <pui-container text="Container">
+    <pui-container centered text="centered"></pui-container>
+    <pui-container size="1" text='size="1"'></pui-container>
+    <pui-container style="--bwidth: 6px; --bcolor: #088;">
+      <legend slot="legend">width and color</legend>
+      style="--bwidth: 6px; --bcolor: #088;"
+    </pui-container>
+  </pui-container>
+  <p>Build-in Element:</p>
+  <fieldset is="pui-container-">
+    <legend>Container</legend>
+    <fieldset is="pui-container-" centered text="centered"></fieldset>
+    <fieldset is="pui-container-" size="1"><legend>size="1"</legend></fieldset>
+    <fieldset is="pui-container-" style="--bwidth: 6px; --bcolor: #088;">
+      <legend>width and color</legend>
+      style="--bwidth: 6px; --bcolor: #088;"
+    </fieldset>
+  </fieldset>
+
 </body>
 </html>
