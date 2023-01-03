@@ -7,3 +7,5 @@
 于是这个库就诞生了。
 
 目前的想法是基于HTML标准的Web Component来实现整套UI显示部分。所以这个库目前来说也可以看作是一个组件库。
+
+感谢 [NES.css](https://github.com/nostalgic-css/NES.css) 和 [Pixel borders](https://github.com/NigelOToole/pixel-borders) 给予我的灵感。他们在使用 `box-shadow` 和 `svg` 方面出神入化，使我受益匪浅。

@@ -27,6 +27,12 @@
     pui-bg, [is=pui-bg-] {
       color: #fff;
     }
+    pui-cb, [is=pui-cb-] {
+      display: inline-block;
+      padding: 15px 20px;
+      margin: 1ex 1ch;
+    }
+    pui-cb > *, [is=pui-cb-] > * { margin: 0; }
   </style>
 </head>
 <body>
@@ -52,5 +58,16 @@
   <div is="pui-bg-" img="./img-test.png">content</div>
   <div is="pui-bg-" img="./img-test.png" brightness="1.3" size="auto 100%"><p>brightness="1.3" size="auto 100%"</p></div>
   <div is="pui-bg-" img="./img-test.png" size="25ch 2em" no-repeat color="#888"><p>size="25ch 2em" no-repeat color="#888"</p></div>
+
+  <h2>Colored Border</h2>
+  <p>Custom Element:</p>
+  <pui-cb><p>content</p></pui-cb>
+  <pui-cb size="2"><p>size="2"</p></pui-cb>
+  <pui-cb size="2" style="--bwidth: 6px; --bcolor: #088;"><p>size="2" style="--bwidth: 6px; --bcolor: #088;"</p></pui-cb>
+  <p>Build-in Element</p>
+  <div is="pui-cb-"><p>content</p></div>
+  <div is="pui-cb-" size="2"><p>size="2"</p></div>
+  <div is="pui-cb-" size="2" style="--bwidth: 6px; --bcolor: #088;"><p>size="2" style="--bwidth: 6px; --bcolor: #088;"</p></div>
+
 </body>
 </html>
