@@ -73,11 +73,12 @@ class PUIRadio extends PUIComponent {
       :host([triangle][after]) input[type=radio]:checked::after { ${obj2css(css.triangle)} }
       :host([triangle][after]) input[type=radio]:checked::after { transform: rotateY(180deg); right: calc(4 * var(--r)); }
     </style>
-    <label><span id="beforeText"></span><input type="radio" /><span id="textAfter"></span></label>
+    <label><span id="beforeText"></span><input type="radio" /><span id="textAfter"></span><slot></slot></label>
   `;
   get type() { return "radio"; };
   #beforeText = this.shadowRoot.getElementById("beforeText");
   #textAfter = this.shadowRoot.getElementById("textAfter");
+  #slot = this.shadowRoot.querySelector("slot");
   #isAfter = () => this.hasAttribute("after");
   #radio = this.shadowRoot.querySelector("input");
   get checked() { return this.#radio.checked; };
@@ -109,6 +110,11 @@ class PUIRadio extends PUIComponent {
       this.#textAfter.innerHTML = this.#beforeText.innerHTML = "";
       if (this.#isAfter()) this.#beforeText.innerHTML = this.getAttribute("text");
       else this.#textAfter.innerHTML = this.getAttribute("text");
+      this.#slot.remove();
+      if (this.#isAfter())
+        this.#beforeText.parentNode.insertBefore(this.#slot, this.#beforeText);
+      else 
+        this.#textAfter.parentNode.insertBefore(this.#slot, this.#textAfter.nextSibling);
     }
   };
 };

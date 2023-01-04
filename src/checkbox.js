@@ -99,11 +99,12 @@ class PUICheckbox extends PUIComponent {
       :host([animation]) input:checked:after { animation: pui-checkbox-draw .2s steps(1) reverse; }
       @keyframes pui-checkbox-draw { ${css.animation} }
     </style>
-    <label><span id="beforeText"></span><input type="checkbox" /><span id="textAfter"></span></label>
+    <label><span id="beforeText"></span><input type="checkbox" /><span id="textAfter"></span><slot></slot></label>
   `;
   get type() { return "checkbox"; };
   #beforeText = this.shadowRoot.getElementById("beforeText");
   #textAfter = this.shadowRoot.getElementById("textAfter");
+  #slot = this.shadowRoot.querySelector("slot");
   #isAfter = () => this.hasAttribute("after");
   #checkbox = this.shadowRoot.querySelector("input");
   get checked() { return this.#checkbox.checked; };
@@ -128,6 +129,11 @@ class PUICheckbox extends PUIComponent {
       this.#textAfter.innerHTML = this.#beforeText.innerHTML = "";
       if (this.#isAfter()) this.#beforeText.innerHTML = this.getAttribute("text");
       else this.#textAfter.innerHTML = this.getAttribute("text");
+      this.#slot.remove();
+      if (this.#isAfter())
+        this.#beforeText.parentNode.insertBefore(this.#slot, this.#beforeText);
+      else 
+        this.#textAfter.parentNode.insertBefore(this.#slot, this.#textAfter.nextSibling);
     }
   };
 };
