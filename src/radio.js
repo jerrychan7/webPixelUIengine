@@ -1,6 +1,6 @@
 
 import { PUIComponent } from "./Component.js";
-import { cssVar, obj2css, sleep } from "./utils.js";
+import { cssVar, obj2css } from "./utils.js";
 
 document.addEventListener("change", ({target}) => {
   if (target.type !== "radio") return;
@@ -55,7 +55,8 @@ class PUIRadio extends PUIComponent {
   static tag = "radio";
   static templateText = `
     <style>
-      :host { cursor: pointer; display: inline-block; }
+      :host { display: inline-block; }
+      label { cursor: pointer; }
       :host input[type=radio] { ${obj2css(css.host)} }
       :host input[type=radio]::after { ${obj2css(css.after)} }
       :host([after]) input[type=radio]::after { right: auto; }
@@ -128,7 +129,7 @@ class PUIRadiox extends HTMLInputElement {
       });
       cssVar.createOrModify(`${hostSelector}[after]:checked::after`, { "content": "var(--mark-after-checked, var(--mark-checked, '<'))", });
       cssVar.createOrModify(`${hostSelector}:hover::after, ${hostSelector}:focus::after`, { "animation": "pui-radio-blink .5s infinite steps(1)", });
-      cssVar.insertKeyframe("pui-radio-blink", "{ 0% { opacity: 0; } 50% { opacity: 1; } }");
+      cssVar.insertKeyframe(`${PUIRadio.componentName}-blink`, "{ 0% { opacity: 0; } 50% { opacity: 1; } }");
       cssVar.createOrModify(`${hostSelector}[triangle]:checked`, { "vertical-align": "baseline", });
       cssVar.createOrModify(`${hostSelector}[triangle]:checked::after, ${hostSelector}[triangle][after]:checked::after`, css.triangle);
       cssVar.createOrModify(`${hostSelector}[triangle][after]:checked::after`, {
