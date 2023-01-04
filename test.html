@@ -39,6 +39,17 @@
   <h1><a href="https://github.com/jerrychan7/webPixelUIengine">Web Pixel UI Engine (WPUIE)</a></h1>
   <p><a href="https://3type.cn/fonts/dinkie_bitmap/">Font</a>: Dinkie Bitmap (丁卯点阵体) 9px <sub><i>Demo</i></sub></p>
 
+  <div style="display: none;">
+    <h2></h2>
+    <p>Custom Element:</p>
+    <p>Build-in Element:</p>
+    <style></style>
+    <template id="">
+      <style></style>
+      <slot></slot>
+    </template>
+  </div>
+
   <h2>Pixelate Image</h2>
   <p>Custom Element:</p>
   &emsp;&emsp;some text <pui-img src="./img-test.png"></pui-img> some text<br/>
@@ -89,6 +100,36 @@
       style="--bwidth: 6px; --bcolor: #088;"
     </fieldset>
   </fieldset>
+
+  <h2>Radios</h2>
+  <p>Custom Element:</p>
+  Radio before label text:
+  <pui-radio name="ce" text="Yes" checked></pui-radio>
+  <pui-radio name="ce" text="No"></pui-radio>
+  <br/>
+  Radio after label text:
+  <pui-radio name="cer" after checked text="Yes"></pui-radio>
+  <pui-radio name="cer" after text="No"></pui-radio>
+  <br/>
+  Size and color (font-size: 2em; color: #00bcd4; --mark-color: #ff9800; --mark-checked-color: #9c27b0; --mark-zoom: .5; --mark: '='; --mark-checked: '->'; --mark-after-checked: '&lt;-'):
+  <div style="font-size: 2em; color: #00bcd4; --mark-color: #ff9800; --mark-checked-color: #9c27b0; --mark-zoom: .5; --mark: '='; --mark-checked: '->'; --mark-after-checked: '<-';">
+    <pui-radio name="ceb" checked text="Yes"></pui-radio>
+    <pui-radio name="ceb" text="No" after></pui-radio>
+  </div>
+  <p>Build-in Element:</p>
+  Radio before label text:
+  <label><input is="pui-radio-" name="bie" checked />Yes</label>
+  <label><input is="pui-radio-" name="bie" />No</label>
+  <br/>
+  Radio after label text:
+  <label>Yes<input is="pui-radio-" name="bier" after checked /></label>
+  <label>No<input is="pui-radio-" name="bier" after /></label>
+  <br/>
+  Size and color (font-size: 2em; color: #00bcd4; --mark-color: #ff9800; --mark-checked-color: #9c27b0; --mark-zoom: .5; --mark: '='; --mark-checked: '->'; --mark-after-checked: '&lt;-'):
+  <div style="font-size: 2em; color: #00bcd4; --mark-color: #ff9800; --mark-checked-color: #9c27b0; --mark-zoom: .5; --mark: '='; --mark-checked: '->'; --mark-after-checked: '<-';">
+    <label><input is="pui-radio-" name="bieb" checked />Yes</label>
+    <label>No<input is="pui-radio-" name="bieb" after /></label>
+  </div>
 
 </body>
 </html>

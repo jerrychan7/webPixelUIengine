@@ -4,3 +4,4 @@ export * from "./img.js";
 export * from "./bg.js";
 export * from "./colorBorder.js";
 export * from "./container.js";
+export * from "./radio.js";

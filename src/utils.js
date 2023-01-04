@@ -6,6 +6,9 @@ export const cssVar = (() => {
   let gv = varStyle.cssRules[0];
   let rulesMap = {}, gvs = new Set();
   return {
+    insertKeyframe(selector, text) {
+      varStyle.insertRule(`@keyframes ${selector} ${text}`);
+    },
     createOrModify(selector, rules = {}) {
       if (rulesMap[selector])
         Object.entries(rules).forEach(([k, v]) => rulesMap[selector].style.setProperty(k, v));
