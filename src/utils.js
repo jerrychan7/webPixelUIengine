@@ -7,15 +7,16 @@ export const cssVar = (() => {
   let rulesMap = {}, gvs = new Set();
   return {
     insertKeyframe(selector, text) {
-      varStyle.insertRule(`@keyframes ${selector} ${text}`);
+      varStyle.insertRule(`@keyframes ${selector} ${text}`, 0);
     },
     createOrModify(selector, rules = {}) {
       if (rulesMap[selector])
         Object.entries(rules).forEach(([k, v]) => rulesMap[selector].style.setProperty(k, v));
       else
-        rulesMap[selector] = varStyle.cssRules[
-          varStyle.insertRule(`${selector} { ${Object.entries(rules).map(([k, v]) => `${k}: ${v};`).join(" ")} }`, 0)
-        ];
+        rulesMap[selector] = varStyle.cssRules[varStyle.insertRule(
+          `${selector} { ${Object.entries(rules).map(([k, v]) => `${k}: ${v};`).join(" ")} }`,
+          varStyle.cssRules.length
+        )];
     },
     del(selector) {
       if (!rulesMap[selector]) return;

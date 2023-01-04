@@ -19,6 +19,7 @@ const css = {
     "cursor": "pointer",
     "outline": "0",
     "vertical-align": "bottom",
+    "height": "1em",
   },
   after: {
     "color": "var(--mark-color, inherit)",
@@ -30,6 +31,23 @@ const css = {
     "right": "0",
     "position": "absolute",
     "transform": "translateY(calc(100% * (var(--r) - 1) / (2 * var(--r))))",
+  },
+  triangle: {
+    "content": "''",
+    "--r": "calc(1px * var(--mark-triangle-zoom, var(--mark-zoom, 2)))",
+    "width": "var(--r)",
+    "height": "var(--r)",
+    "bottom": "calc(7 * var(--r))",
+    "right": "calc(6 * var(--r))",
+    "box-shadow": `
+      var(--r) var(--r), calc(2 * var(--r)) var(--r),
+      var(--r) calc(2 * var(--r)), calc(2 * var(--r)) calc(2 * var(--r)), calc(3 * var(--r)) calc(2 * var(--r)), calc(4 * var(--r)) calc(2 * var(--r)),
+      var(--r) calc(3 * var(--r)), calc(2 * var(--r)) calc(3 * var(--r)), calc(3 * var(--r)) calc(3 * var(--r)), calc(4 * var(--r)) calc(3 * var(--r)), calc(5 * var(--r)) calc(3 * var(--r)),
+      var(--r) calc(4 * var(--r)), calc(2 * var(--r)) calc(4 * var(--r)), calc(3 * var(--r)) calc(4 * var(--r)), calc(4 * var(--r)) calc(4 * var(--r)), calc(5 * var(--r)) calc(4 * var(--r)), calc(6 * var(--r)) calc(4 * var(--r)),
+      var(--r) calc(5 * var(--r)), calc(2 * var(--r)) calc(5 * var(--r)), calc(3 * var(--r)) calc(5 * var(--r)), calc(4 * var(--r)) calc(5 * var(--r)), calc(5 * var(--r)) calc(5 * var(--r)),
+      var(--r) calc(6 * var(--r)), calc(2 * var(--r)) calc(6 * var(--r)), calc(3 * var(--r)) calc(6 * var(--r)), calc(4 * var(--r)) calc(6 * var(--r)),
+      var(--r) calc(7 * var(--r)), calc(2 * var(--r)) calc(7 * var(--r))`,
+    "transform": "none",
   },
 };
 
@@ -49,6 +67,10 @@ class PUIRadio extends PUIComponent {
       :host input[type=radio]:hover::after,
       :host input[type=radio]:focus::after { animation: pui-radio-blink .5s infinite steps(1); }
       @keyframes pui-radio-blink { 0% { opacity: 0; } 50% { opacity: 1; } }
+      :host([triangle]) input[type=radio]:checked { vertical-align: baseline; }
+      :host([triangle]) input[type=radio]:checked::after,
+      :host([triangle][after]) input[type=radio]:checked::after { ${obj2css(css.triangle)} }
+      :host([triangle][after]) input[type=radio]:checked::after { transform: rotateY(180deg); right: calc(4 * var(--r)); }
     </style>
     <label><span id="beforeText"></span><input type="radio" /><span id="textAfter"></span></label>
   `;
@@ -107,6 +129,19 @@ class PUIRadiox extends HTMLInputElement {
       cssVar.createOrModify(`${hostSelector}[after]:checked::after`, { "content": "var(--mark-after-checked, var(--mark-checked, '<'))", });
       cssVar.createOrModify(`${hostSelector}:hover::after, ${hostSelector}:focus::after`, { "animation": "pui-radio-blink .5s infinite steps(1)", });
       cssVar.insertKeyframe("pui-radio-blink", "{ 0% { opacity: 0; } 50% { opacity: 1; } }");
+      cssVar.createOrModify(`${hostSelector}[triangle]:checked`, { "vertical-align": "baseline", });
+      cssVar.createOrModify(`${hostSelector}[triangle]:checked::after, ${hostSelector}[triangle][after]:checked::after`, css.triangle);
+      cssVar.createOrModify(`${hostSelector}[triangle][after]:checked::after`, {
+        "transform": "rotateY(180deg)",
+        "right": "calc(4 * var(--r))",
+      });
+      cssVar.createOrModify(`${hostSelector}[triangle]::before`, { 
+        "content": "''",
+        "width": "100%",
+        "height": "100%",
+        "position": "absolute",
+        "visibility": "visible",
+      });
     }
   };
 };
