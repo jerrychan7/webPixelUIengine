@@ -17,6 +17,7 @@
       --fspt: calc(var(--fsr) * 1px);
       font-family: dot_font_code, dot_font;
       font-size: var(--fs);
+      background-color: pink;
     }
     i, em { font-family: dot_font_italic; }
     pui-img, [is=pui-img-] {
@@ -49,6 +50,258 @@
       <slot></slot>
     </template>
   </div>
+
+  <h2>Button</h2>
+  <p>Custom Element:</p>
+  <p>Build-in Element:</p>
+  <a is="pui-btn-a" href="#">link</a><br/>
+  <button is="pui-btn-b" class="nes-btn is-primary">button</button><br/>
+  <input is="pui-btn-i" type="button" value="input" /><br/>
+  <input is="pui-btn-f" type="file" />
+  <label is="pui-btn-l">
+    <span>Select your file</span>
+    <input type="file">
+  </label><br/>
+  <a is="pui-btn-a" href="#" size="1">link</a><br/>
+  <button is="pui-btn-b" class="nes-btn is-primary" size="1">button</button><br/>
+  <input is="pui-btn-i" type="button" value="input" size="1" /><br/>
+  <input is="pui-btn-f" type="file" size="1" />
+  <label is="pui-btn-l" size="1">
+    <span>Select your file</span>
+    <input type="file" />
+  </label><br/>
+  <a is="pui-btn-a" href="#" size="2">link</a><br/>
+  <button is="pui-btn-b" class="nes-btn is-primary" size="2">button</button><br/>
+  <input is="pui-btn-i" type="button" value="input" size="2" /><br/>
+  <input is="pui-btn-f" type="file" size="2" />
+  <label is="pui-btn-l" size="2">
+    <span>Select your file</span>
+    <input type="file" />
+  </label><br/>
+  <style>
+    input[is^=pui-btn-][type=file],
+    input[is^=pui-btn-][type=file]::file-selector-button {
+      font: inherit; color: inherit;
+    }
+    [is^=pui-btn-],
+    input[is^=pui-btn-][size="1"][type=file]::file-selector-button {
+      /* --inset-width-tl: 6px;
+      --inset-width-br: -2px;
+      --inset-width-tl-gt-0: 1;
+      --inset-width-br-gt-0: 0; */
+      /* --inset-width-tl: -2px;
+      --inset-width-br: -6px;
+      --inset-width-tl-gt-0: 0;
+      --inset-width-br-gt-0: 0;
+      --inset-color-tl: #ccc; */
+      font: inherit; color: inherit;
+      text-decoration: none;
+      padding: 1ex 1ch;
+
+      --bc: var(--bcolor, #000);
+      --bgc: var(--bg-color, #fff);
+
+      --default-br-color: #adafbc;
+      --default-tl-color: var(--bgc);
+      --icbr: var(--inset-color-br, var(--inset-color, var(--default-br-color)));
+      --ictl: var(--inset-color-tl, var(--inset-color, var(--default-tl-color)));
+
+      background-color: var(--bgc);
+      background-clip: padding-box;
+
+      --bw: var(--bwidth, 4px); --bw2: calc(2 * var(--bw));
+      --nbw: calc(-1 * var(--bw)); --nbw2: calc(-2 * var(--bw));
+
+      border: var(--bw) solid var(--bc);
+
+      --iwbr: var(--inset-width-br, var(--inset-width, var(--bw)));
+      --iwtl: var(--inset-width-tl, var(--inset-width, var(--bw)));
+
+      --isbr: inset calc(-1 * var(--iwbr)) calc(-1 * var(--iwbr)) var(--icbr);
+      --istl: inset var(--iwtl) var(--iwtl) var(--ictl);
+      --ishadow: var(--isbr), var(--istl);
+
+      box-shadow: var(--ishadow);
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+    }
+    [is^=pui-btn-]:hover,
+    input[is^=pui-btn-][size="1"][type=file]::file-selector-button:hover {
+      --bgc: var(--bg-color, #e7e7e7);
+      --iwbr: calc(1.5 * var(--inset-width-br, var(--inset-width, var(--bw))));
+      --iwtl: calc(1.5 * var(--inset-width-tl, var(--inset-width, var(--bw))));
+    }
+    [is^=pui-btn-]:active,
+    input[is^=pui-btn-][size="1"][type=file]::file-selector-button:active {
+      --iwbr: calc(1.5 * var(--inset-width-br, var(--inset-width, 0px)));
+      --iwtl: calc(1.5 * var(--inset-width-tl, var(--inset-width, var(--bw))));
+      --default-br-color: var(--bgc);
+      --default-tl-color: #adafbc;
+    }
+    input[is^=pui-btn-][size="1"][type=file] {
+      padding: 0; border: 0; box-shadow: none; background: transparent;
+    }
+    input[is^=pui-btn-][size="1"][type=file]::file-selector-button {
+      width: calc(100% - 2 * var(--bw));
+    }
+    [is^=pui-btn-][size]:not([size="0"]) { border-color: transparent; }
+    input[is^=pui-btn-][size="1"][type=button],
+    input[is^=pui-btn-][size="1"][type=submit],
+    input[is^=pui-btn-][size="1"][type=reset],
+    input[is^=pui-btn-][size="1"][type=file]::file-selector-button {
+      border: 0;
+      box-shadow: var(--ishadow), var(--bw) 0 var(--bc), 0 var(--bw) var(--bc), var(--nbw) 0 var(--bc), 0 var(--nbw) var(--bc);
+      margin: var(--bw);
+    }
+    [is^=pui-btn-][size="1"]:not([type=file]):after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      box-shadow: var(--bw) 0 var(--bc), 0 var(--bw) var(--bc), var(--nbw) 0 var(--bc), 0 var(--nbw) var(--bc);
+    }
+    [is^=pui-btn-][size="2"] {
+      border: 0;
+      margin: var(--bw2);
+      box-shadow: var(--ishadow),
+        0 var(--nbw2) 0 var(--nbw) var(--bc),
+        0 var(--bw2) 0 var(--nbw) var(--bc),
+        var(--bw2) 0 0 var(--nbw) var(--bc),
+        var(--nbw2) 0 0 var(--nbw) var(--bc);
+    }
+    [is^=pui-btn-][size="2"]::before,
+    [is^=pui-btn-][size="2"]::after {
+      content: "";
+      position: absolute;
+      top: var(--bw);
+      width: var(--bw);
+      height: calc(100% - var(--bw2));
+      box-shadow: 0 var(--bw) var(--bc), 0 var(--nbw) var(--bc);
+    }
+    [is^=pui-btn-][size="2"]::before { right: 0; }
+    [is^=pui-btn-][size="2"]::after { left: 0; }
+    input[is^=pui-btn-][size="2"][type=button],
+    input[is^=pui-btn-][size="2"][type=submit],
+    input[is^=pui-btn-][size="2"][type=reset] {
+      border: 0;
+      padding: calc(1ex - var(--bw)) calc(1ch - var(--bw));
+      margin-left: calc(3 * var(--bw));
+
+      --inset-w-tl: max(0px, var(--iwtl) - var(--bw));
+      --inset-w-br: max(0px, var(--iwbr) - var(--bw));
+      --niwbr2: calc(var(--inset-w-br) / -2);
+
+      --istl: inset var(--inset-w-tl) var(--inset-w-tl) var(--ictl);
+      --isbr: inset calc(-1 * var(--inset-w-br)) calc(-1 * var(--inset-w-br)) var(--icbr);
+
+      --high-order-color-bg: 0 var(--nbw) var(--icbr), var(--nbw) 0 var(--icbr);
+
+      --pit: var(--niwbr2) calc(var(--nbw) + var(--niwbr2)) 0 var(--niwbr2) var(--ictl);
+      --pil: calc(var(--nbw) + var(--niwbr2)) var(--niwbr2) 0 var(--niwbr2) var(--ictl);
+      --pir: 0 var(--bw) var(--icbr);
+      --pib: var(--bw) 0 var(--icbr);
+      --pseudo-inset: var(--pit), var(--pir), var(--pib), var(--pil);
+
+      --cover-w-tl: clamp(0px, calc(var(--bw) - var(--iwtl)), var(--bw));
+      --cover-w-br: clamp(0px, calc(var(--bw) - var(--iwbr)), var(--bw));
+      --pict: calc(-1 * var(--cover-w-tl) + var(--niwbr2)) var(--niwbr2) 0 var(--niwbr2) var(--bgc);
+      --picl: var(--niwbr2) calc(-1 * var(--cover-w-tl) + var(--niwbr2)) 0 var(--niwbr2) var(--bgc);
+      --picr: var(--cover-w-br) 0 var(--bgc);
+      --picb: 0 var(--cover-w-br) var(--bgc);
+      --p-inset-cover: var(--pict), var(--picr), var(--picb), var(--picl);
+
+      /* 根据inset的宽度的正负选择不同表现形式 */
+      /* --is-iwtl-gt-0: clamp(0, var(--inset-width-tl-gt-0, 1) * 999999, 1);
+      --is-iwbr-gt-0: clamp(0, var(--inset-width-br-gt-0, 1) * 999999, 1);
+      --is-iwtl-le-0: calc(1 - var(--is-iwtl-gt-0));
+      --is-iwbr-le-0: calc(1 - var(--is-iwbr-gt-0));
+      --is-iwtl-gt0-and-iwbr-gt0: clamp(0, var(--is-iwtl-gt-0) + var(--is-iwbr-gt-0) - 1, 1);
+      --is-iwtl-gt0-and-iwbr-le0: clamp(0, var(--is-iwtl-gt-0) + var(--is-iwbr-le-0) - 1, 1);
+      --is-iwtl-le0-and-iwbr-gt0: clamp(0, var(--is-iwtl-le-0) + var(--is-iwbr-gt-0) - 1, 1);
+      --is-iwtl-le0-and-iwbr-le0: clamp(0, var(--is-iwtl-le-0) + var(--is-iwbr-le-0) - 1, 1);
+      --frame: max(
+        var(--is-iwtl-gt0-and-iwbr-gt0),
+        var(--is-iwtl-gt0-and-iwbr-le0) * 2,
+        var(--is-iwtl-le0-and-iwbr-gt0) * 3,
+        var(--is-iwtl-le0-and-iwbr-le0) * 4
+      );
+      --delay: calc(-1s * (var(--frame) - 1) / 4);
+      animation: pui-btn-size2-switch 1s var(--delay) paused; */
+
+      --pseudo-border:
+          0 var(--nbw2) var(--bc), var(--nbw2) 0 var(--bc), var(--bw2) 0 var(--bc), 0 var(--bw2) var(--bc),
+          0 0 0 var(--bw) var(--bc);
+
+      box-shadow:
+        var(--ishadow),
+        var(--p-inset-cover),
+        var(--pseudo-inset),
+        var(--high-order-color-bg),
+        var(--pseudo-border);
+    }
+    @keyframes pui-btn-size2-switch {
+      /* width for top left inset > 0 && br > 0 */
+      0% {
+        --inset-w-tl: max(0px, var(--iwtl) - var(--bw));
+        --inset-w-br: max(0px, var(--iwbr) - var(--bw));
+        --niwbr2: calc(var(--inset-w-br) / -2);
+
+        --istl: inset var(--inset-w-tl) var(--inset-w-tl) var(--ictl);
+        --isbr: inset calc(-1 * var(--inset-w-br)) calc(-1 * var(--inset-w-br)) var(--icbr);
+
+        --high-order-color-bg: 0 var(--nbw) var(--icbr), var(--nbw) 0 var(--icbr);
+
+        --pit: var(--niwbr2) calc(var(--nbw) + var(--niwbr2)) 0 var(--niwbr2) var(--ictl);
+        --pil: calc(var(--nbw) + var(--niwbr2)) var(--niwbr2) 0 var(--niwbr2) var(--ictl);
+        --pir: 0 var(--bw) var(--icbr);
+        --pib: var(--bw) 0 var(--icbr);
+        --pseudo-inset: var(--pit), var(--pir), var(--pib), var(--pil);
+
+        --cover-w-tl: clamp(0px, calc(var(--bw) - var(--iwtl)), var(--bw));
+        --cover-w-br: clamp(0px, calc(var(--bw) - var(--iwbr)), var(--bw));
+        --pict: calc(-1 * var(--cover-w-tl) + var(--niwbr2)) var(--niwbr2) 0 var(--niwbr2) var(--bgc);
+        --picl: var(--niwbr2) calc(-1 * var(--cover-w-tl) + var(--niwbr2)) 0 var(--niwbr2) var(--bgc);
+        --picr: var(--cover-w-br) 0 var(--bgc);
+        --picb: 0 var(--cover-w-br) var(--bgc);
+        --p-inset-cover: var(--pict), var(--picr), var(--picb), var(--picl);
+      }
+      /* width for top left inset > 0 && br <= 0 */
+      25% {}
+      /* width for top left inset <= 0 && br > 0 */
+      50% {}
+      /* width for top left inset <= 0 && br <= 0 */
+      100% {
+        --inset-w-tl: max(0px, calc(var(--iwbr) - var(--bw)));
+        --inset-w-br: max(0px, calc(var(--iwtl) - var(--bw)));
+        --niwtl: calc(-1 * var(--inset-w-br));
+        --iwtl2: calc(var(--inset-w-tl) / 2);
+        --niwtl2: calc(var(--inset-w-tl) / -2);
+
+        --istl: inset var(--inset-w-tl) var(--inset-w-tl) var(--icbr);
+        --isbr: inset var(--niwtl) var(--niwtl) var(--ictl);
+
+        --high-order-color-bg: 0 var(--nbw) var(--ictl), var(--nbw) 0 var(--ictl);
+
+        --pit: 0 var(--nbw) var(--icbr);
+        --pil: var(--nbw) 0 var(--icbr);
+        --pir: calc(var(--bw) + var(--iwtl2)) var(--iwtl2) 0 var(--niwtl2) var(--ictl);
+        --pib: var(--iwtl2) calc(var(--bw) + var(--iwtl2)) 0 var(--niwtl2) var(--ictl);
+        --pseudo-inset: var(--pit), var(--pir), var(--pib), var(--pil);
+
+        --cover-w-tl: clamp(0px, calc(var(--bw) - var(--iwtl)), var(--bw));
+        --cover-w-br: clamp(0px, calc(var(--bw) - var(--iwbr)), var(--bw));
+        --pict: 0 calc(-1 * var(--cover-w-tl)) var(--bgc);
+        --picl: calc(-1 * var(--cover-w-tl)) 0 var(--bgc);
+        --picr: calc(var(--cover-w-br) + var(--iwtl2)) var(--iwtl2) 0 var(--niwtl2) var(--bgc);
+        --picb: var(--iwtl2) calc(var(--cover-w-br) + var(--iwtl2)) 0 var(--niwtl2) var(--bgc);
+        --p-inset-cover: var(--pict), var(--picr), var(--picb), var(--picl);
+      }
+    }
+  </style>
+  <template id="">
+    <style></style>
+    <slot></slot>
+  </template>
 
   <h2>Pixelate Image</h2>
   <p>Custom Element:</p>
