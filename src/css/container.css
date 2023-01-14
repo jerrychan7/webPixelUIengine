@@ -1,0 +1,26 @@
+
+.pui-container, fieldset.pui {
+  --bw: var(--bwidth, 4px);
+  --bc: var(--bcolor, #000);
+  border: var(--bw) solid var(--bc);
+  padding: 1ex 2ch;
+  &.primary { --bcolor: var(--pui-primary); }
+  &.success { --bcolor: var(--pui-success); }
+  &.warning { --bcolor: var(--pui-warning); }
+  &.error { --bcolor: var(--pui-error); }
+  &.disabled { --bcolor: var(--pui-disabled); }
+
+  & > legend {
+    padding: 0 1ch;
+    margin-left: -1ch;
+  }
+  &[centered] > legend { text-align: center; }
+  &[size=1] {
+    border-left: none;
+    border-right: none;
+    box-shadow:
+      calc(-2 * var(--bw)) 0 0 calc(-1 * var(--bw)) var(--bc),
+      calc(2 * var(--bw)) 0 0 calc(-1 * var(--bw)) var(--bc);
+    margin-inline: calc(var(--bw) + 2px);
+  }
+}

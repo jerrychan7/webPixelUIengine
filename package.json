@@ -1,0 +1,30 @@
+{
+  "name": "webpixeluiengine",
+  "version": "1.0.0",
+  "description": "该库的目的是为了在网页中显示像素风格的UI。",
+  "main": "index.js",
+  "scripts": {
+    "build": "postcss src/css/index.css -o release/all.css",
+    "watch": "postcss src/css/index.css -o release/all.css -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jerrychan7/webPixelUIengine.git"
+  },
+  "author": "qinshou2017",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jerrychan7/webPixelUIengine/issues"
+  },
+  "homepage": "https://github.com/jerrychan7/webPixelUIengine#readme",
+  "devDependencies": {
+    "cssnano": "^5.1.14",
+    "postcss-cli": "^10.1.0",
+    "postcss-import": "^15.1.0",
+    "postcss-nested-props": "^2.0.0",
+    "postcss-nesting": "^10.2.0",
+    "postcss-position-alt": "^0.7.0",
+    "postcss-short": "^5.0.0"
+  }
+}

@@ -1,0 +1,8 @@
+
+:root {
+  --pui-primary: var(--primary, #209cee);
+  --pui-success: var(--success, #92cc41);
+  --pui-warning: var(--warning, #f7d51d);
+  --pui-error: var(--error, #e76e55);
+  --pui-disabled: var(--disabled, #d3d3d3);
+}

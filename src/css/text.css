@@ -1,0 +1,8 @@
+
+.pui-text, span.pui {
+  &.primary { color: var(--pui-primary); }
+  &.success { color: var(--pui-success); }
+  &.warning { color: var(--pui-warning); }
+  &.error { color: var(--pui-error); }
+  &.disabled { color: var(--pui-disabled); }
+}

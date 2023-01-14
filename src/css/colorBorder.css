@@ -1,0 +1,33 @@
+
+.pui-cb {
+  --bw: var(--bwidth, 4px);
+  --bc: var(--bcolor, #000);
+  box-shadow:
+    calc(-1 * var(--bw)) 0 var(--bc),
+    var(--bw) 0 var(--bc),
+    0 calc(-1 * var(--bw)) var(--bc),
+    0 var(--bw) var(--bc);
+  &.primary { --bcolor: var(--pui-primary); }
+  &.success { --bcolor: var(--pui-success); }
+  &.warning { --bcolor: var(--pui-warning); }
+  &.error { --bcolor: var(--pui-error); }
+  &.disabled { --bcolor: var(--pui-disabled); }
+  &[size=2] {
+    position: relative;
+    box-shadow:
+      calc(-2 * var(--bw)) 0 0 calc(-1 * var(--bw)) var(--bc),
+      calc(2 * var(--bw)) 0 0 calc(-1 * var(--bw)) var(--bc),
+      0 calc(-2 * var(--bw)) 0 calc(-1 * var(--bw)) var(--bc),
+      0 calc(2 * var(--bw)) 0 calc(-1 * var(--bw)) var(--bc);
+    &::before, &::after {
+      content: '';
+      absolute: t var(--bw);
+      size: var(--bw) calc(100% - 2 * var(--bw));
+      box-shadow:
+        0 calc(-1 * var(--bw)) var(--bc),
+        0 calc(1 * var(--bw)) var(--bc);
+    }
+    &::before { left: 0; }
+    &::after { right: 0; }
+  }
+}

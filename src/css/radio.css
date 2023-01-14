@@ -1,0 +1,68 @@
+
+.pui-radio, input[type=radio].pui {
+  appearance: none;
+  position: relative;
+  font: { size: inherit; family: inherit; }
+  color: inherit;
+  margin: 0 .5ch;
+  size: 2ch 1em;
+  cursor: pointer;
+  outline: 0;
+  vertical-align: bottom;
+  &.primary { --mark-color: var(--pui-primary); }
+  &.success { --mark-color: var(--pui-success); }
+  &.warning { --mark-color: var(--pui-warning); }
+  &.error { --mark-color: var(--pui-error); }
+  &.disabled { --mark-color: var(--pui-disabled); }
+  &::after {
+    color: var(--mark-color, inherit);
+    content: var(--mark, '_');
+    --r: var(--mark-zoom, 1.2);
+    font-size: calc(1em * var(--r));
+    absolute: l 0 b 0;
+    transform: translateY(calc(100% * (var(--r) - 1) / (2 * var(--r))));
+  }
+  &[after] {
+    &::after { right: auto; }
+    &:checked::after {
+      content: var(--mark-after-checked, var(--mark-checked, '<'));
+    }
+  }
+  &:checked::after {
+    content: var(--mark-checked, '>');
+    color: var(--mark-checked-color, var(--mark-color, inherit));
+  }
+  &:hover::after, &:focus::after {
+    animation: pui-radio-blink .5s infinite steps(1);
+  }
+  &[triangle] {
+    &:checked { vertical-align: baseline; }
+    &:checked::after, &[after]:checked::after {
+      content: '';
+      --r: calc(1px * var(--mark-triangle-zoom, var(--mark-zoom, 2)));
+      size: var(--r);
+      bottom: calc(7 * var(--r));
+      right: calc(6 * var(--r));
+      box-shadow:
+        var(--r) var(--r), calc(2 * var(--r)) var(--r),
+        var(--r) calc(2 * var(--r)), calc(2 * var(--r)) calc(2 * var(--r)), calc(3 * var(--r)) calc(2 * var(--r)), calc(4 * var(--r)) calc(2 * var(--r)),
+        var(--r) calc(3 * var(--r)), calc(2 * var(--r)) calc(3 * var(--r)), calc(3 * var(--r)) calc(3 * var(--r)), calc(4 * var(--r)) calc(3 * var(--r)), calc(5 * var(--r)) calc(3 * var(--r)),
+        var(--r) calc(4 * var(--r)), calc(2 * var(--r)) calc(4 * var(--r)), calc(3 * var(--r)) calc(4 * var(--r)), calc(4 * var(--r)) calc(4 * var(--r)), calc(5 * var(--r)) calc(4 * var(--r)), calc(6 * var(--r)) calc(4 * var(--r)),
+        var(--r) calc(5 * var(--r)), calc(2 * var(--r)) calc(5 * var(--r)), calc(3 * var(--r)) calc(5 * var(--r)), calc(4 * var(--r)) calc(5 * var(--r)), calc(5 * var(--r)) calc(5 * var(--r)),
+        var(--r) calc(6 * var(--r)), calc(2 * var(--r)) calc(6 * var(--r)), calc(3 * var(--r)) calc(6 * var(--r)), calc(4 * var(--r)) calc(6 * var(--r)),
+        var(--r) calc(7 * var(--r)), calc(2 * var(--r)) calc(7 * var(--r));
+      transform: none;
+    }
+    &[after]:checked::after {
+      transform: rotateY(180deg);
+      right: calc(4 * var(--r));
+    }
+  }
+  &::before {
+    content: '';
+    size: 100%;
+    position: absolute;
+  }
+  & > span { cursor: pointer; }
+}
+@keyframes pui-radio-blink { 0% { opacity: 0; } 50% { opacity: 1; } }
