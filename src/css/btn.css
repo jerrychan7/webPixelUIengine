@@ -1,0 +1,87 @@
+
+a.pui-btn, button.pui {
+  utils-inherit-font-and-color: x;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  padding: 1ex 1ch;
+
+  --bc: var(--bcolor, #000);
+  --bgc: var(--bg-color, var(--pui-normal));
+
+  --default-br-color: var(--pui-normal-shadow);
+  --default-tl-color: var(--bgc);
+  --icbr: var(--inset-color-br, var(--inset-color, var(--default-br-color)));
+  --ictl: var(--inset-color-tl, var(--inset-color, var(--default-tl-color)));
+
+  background: { color: var(--bgc); clip: padding-box; }
+
+  --bw: var(--bwidth, 4px); --bw2: calc(2 * var(--bw));
+  --nbw: calc(-1 * var(--bw)); --nbw2: calc(-2 * var(--bw));
+
+  border: var(--bw) solid var(--bc);
+
+  --iwbr: var(--inset-width-br, var(--inset-width, var(--bw)));
+  --iwtl: var(--inset-width-tl, var(--inset-width, var(--bw)));
+
+  --isbr: inset calc(-1 * var(--iwbr)) calc(-1 * var(--iwbr)) var(--icbr);
+  --istl: inset var(--iwtl) var(--iwtl) var(--ictl);
+  --ishadow: var(--isbr), var(--istl);
+
+  box-shadow: var(--ishadow);
+
+  &:hover {
+    --bgc: var(--bg-color, var(--pui-normal-hover));
+    --iwbr: calc(1.5 * var(--inset-width-br, var(--inset-width, var(--bw))));
+    --iwtl: calc(1.5 * var(--inset-width-tl, var(--inset-width, var(--bw))));
+  }
+  &:active:not(.disabled, [disabled]) {
+    --iwbr: calc(1.5 * var(--inset-width-br, var(--inset-width, 0px)));
+    --iwtl: calc(1.5 * var(--inset-width-tl, var(--inset-width, var(--bw))));
+    --default-br-color: var(--bgc);
+    --default-tl-color: var(--pui-normal-shadow);
+  }
+  &.primary, &.success, &.error { color: #fff; }
+  @each $color in primary, success, warning, error {
+    &.$(color) {
+      --bg-color: var(--pui-$(color));
+      --default-br-color: var(--pui-$(color)-shadow);
+      &:hover { --bg-color: var(--pui-$(color)-hover); }
+      &:active { --default-tl-color: var(--pui-$(color)-shadow); }
+    }
+  }
+  &.disabled, &[disabled] {
+    --bg-color: var(--pui-disabled);
+    --default-br-color: var(--pui-disabled-shadow);
+    cursor: not-allowed;
+    opacity: .6;
+    &:hover { opacity: unset; }
+  }
+
+  &[size='1'] {
+    border-color: transparent;
+    &::after {
+      content: '';
+      position: absolute 0;
+      box-shadow: var(--bw) 0 var(--bc), 0 var(--bw) var(--bc), var(--nbw) 0 var(--bc), 0 var(--nbw) var(--bc);
+    }
+  }
+  &[size='2'] {
+    border: 0;
+    margin: var(--bw);
+    box-shadow: var(--ishadow),
+      0 var(--nbw2) 0 var(--nbw) var(--bc),
+      0 var(--bw2) 0 var(--nbw) var(--bc),
+      var(--bw2) 0 0 var(--nbw) var(--bc),
+      var(--nbw2) 0 0 var(--nbw) var(--bc);
+    &::before, &::after {
+      content: '';
+      absolute: t var(--bw);
+      size: var(--bw) calc(100% - var(--bw2));
+      box-shadow: 0 var(--bw) var(--bc), 0 var(--nbw) var(--bc);
+    }
+    &::before { right: 0; }
+    &::after { left: 0; }
+  }
+}

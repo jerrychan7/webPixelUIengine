@@ -1,10 +1,22 @@
 
 :root {
   --pui-primary: var(--primary, #209cee);
+  --pui-primary-hover: var(--primary-hover, #108de0);
+  --pui-primary-shadow: var(--primary-shadow, #006bb3);
   --pui-success: var(--success, #92cc41);
+  --pui-success-hover: var(--success-hover, #76c442);
+  --pui-success-shadow: var(--success-shadow, #4aa52e);
   --pui-warning: var(--warning, #f7d51d);
+  --pui-warning-hover: var(--warning-hover, #f2c409);
+  --pui-warning-shadow: var(--warning-shadow, #e59400);
   --pui-error: var(--error, #e76e55);
+  --pui-error-hover: var(--error-hover, #ce372b);
+  --pui-error-shadow: var(--error-shadow, #8c2022);
   --pui-disabled: var(--disabled, #d3d3d3);
+  --pui-disabled-shadow: var(--disabled-shadow, #adafbc);
+  --pui-normal: var(--normal, #fff);
+  --pui-normal-hover: var(--normal-hover, #e7e7e7);
+  --pui-normal-shadow: var(--normal-shadow, #adafbc);
 }
 
 @def-utils inherit-font-and-color skip {
