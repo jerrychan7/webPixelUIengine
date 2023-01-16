@@ -20,6 +20,7 @@
 }
 
 @def-utils inherit-font-and-color skip {
-  font: { size: inherit; family: inherit; }
+  font-size: inherit;
+  font-family: inherit;
   color: inherit;
 }

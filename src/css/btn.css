@@ -15,7 +15,8 @@ a.pui-btn, button.pui {
   --icbr: var(--inset-color-br, var(--inset-color, var(--default-br-color)));
   --ictl: var(--inset-color-tl, var(--inset-color, var(--default-tl-color)));
 
-  background: { color: var(--bgc); clip: padding-box; }
+  background-color: var(--bgc); 
+  background-clip: padding-box;
 
   --bw: var(--bwidth, 4px); --bw2: calc(2 * var(--bw));
   --nbw: calc(-1 * var(--bw)); --nbw2: calc(-2 * var(--bw));

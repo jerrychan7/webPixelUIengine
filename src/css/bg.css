@@ -10,16 +10,14 @@
     image-rendering: pixelated;
     user-select: none;
     filter: brightness(var(--brightness));
-    background: {
-      attachment: var(--attach);
-      blend-mode: var(--blend-mode);
-      clip: var(--clip);
-      color: var(--color);
-      image: var(--img);
-      origin: var(--origin);
-      position: var(--pos);
-      size: var(--size);
-      repeat: var(--repeat);
-    };
+    background-attachment: var(--attach);
+    background-blend-mode: var(--blend-mode);
+    background-clip: var(--clip);
+    background-color: var(--color);
+    background-image: var(--img);
+    background-origin: var(--origin);
+    background-position: var(--pos);
+    background-size: var(--size);
+    background-repeat: var(--repeat);
   }
 }
