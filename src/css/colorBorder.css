@@ -7,11 +7,9 @@
     var(--bw) 0 var(--bc),
     0 calc(-1 * var(--bw)) var(--bc),
     0 var(--bw) var(--bc);
-  &.primary { --bcolor: var(--pui-primary); }
-  &.success { --bcolor: var(--pui-success); }
-  &.warning { --bcolor: var(--pui-warning); }
-  &.error { --bcolor: var(--pui-error); }
-  &.disabled { --bcolor: var(--pui-disabled); }
+  @each $color in primary, success, warning, error, disabled {
+    &.$(color) { --bcolor: var(--pui-$(color)); }
+  }
   &[size=2] {
     position: relative;
     box-shadow:

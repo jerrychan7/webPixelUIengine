@@ -21,6 +21,8 @@
   "devDependencies": {
     "cssnano": "^5.1.14",
     "postcss-cli": "^10.1.0",
+    "postcss-define-property": "^0.5.0",
+    "postcss-each": "^1.1.0",
     "postcss-import": "^15.1.0",
     "postcss-nested-props": "^2.0.0",
     "postcss-nesting": "^10.2.0",

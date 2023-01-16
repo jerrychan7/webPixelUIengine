@@ -4,11 +4,9 @@
   --bc: var(--bcolor, #000);
   border: var(--bw) solid var(--bc);
   padding: 1ex 2ch;
-  &.primary { --bcolor: var(--pui-primary); }
-  &.success { --bcolor: var(--pui-success); }
-  &.warning { --bcolor: var(--pui-warning); }
-  &.error { --bcolor: var(--pui-error); }
-  &.disabled { --bcolor: var(--pui-disabled); }
+  @each $color in primary, success, warning, error, disabled {
+    &.$(color) { --bcolor: var(--pui-$(color)); }
+  }
 
   & > legend {
     padding: 0 1ch;

@@ -1,16 +1,13 @@
 
 .pui-checkbox, input[type=checkbox] {
+  utils-inherit-font-and-color: x;
   appearance: none;
-  font: { size: inherit; family: inherit; }
-  color: inherit;
   position: relative;
   margin: 0 .5ch;
   size: 2ch 1em;
-  &.primary { --mark-color: var(--pui-primary); }
-  &.success { --mark-color: var(--pui-success); }
-  &.warning { --mark-color: var(--pui-warning); }
-  &.error { --mark-color: var(--pui-error); }
-  &.disabled { --mark-color: var(--pui-disabled); }
+  @each $color in primary, success, warning, error, disabled {
+    &.$(color) { --mark-color: var(--pui-$(color)); }
+  }
   &::before {
     content: '';
     position: absolute;

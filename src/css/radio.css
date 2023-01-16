@@ -2,18 +2,15 @@
 .pui-radio, input[type=radio].pui {
   appearance: none;
   position: relative;
-  font: { size: inherit; family: inherit; }
-  color: inherit;
+  utils-inherit-font-and-color: x;
   margin: 0 .5ch;
   size: 2ch 1em;
   cursor: pointer;
   outline: 0;
   vertical-align: bottom;
-  &.primary { --mark-color: var(--pui-primary); }
-  &.success { --mark-color: var(--pui-success); }
-  &.warning { --mark-color: var(--pui-warning); }
-  &.error { --mark-color: var(--pui-error); }
-  &.disabled { --mark-color: var(--pui-disabled); }
+  @each $color in primary, success, warning, error, disabled {
+    &.$(color) { --mark-color: var(--pui-$(color)); }
+  }
   &::after {
     color: var(--mark-color, inherit);
     content: var(--mark, '_');

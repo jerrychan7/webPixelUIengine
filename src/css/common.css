@@ -6,3 +6,8 @@
   --pui-error: var(--error, #e76e55);
   --pui-disabled: var(--disabled, #d3d3d3);
 }
+
+@def-utils inherit-font-and-color skip {
+  font: { size: inherit; family: inherit; }
+  color: inherit;
+}
