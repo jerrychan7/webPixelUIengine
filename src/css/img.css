@@ -1,2 +1,2 @@
 
-.pui-img, img.pui { image-rendering: pixelated; }
+.pui-img, img.pui, input[type=image].pui { image-rendering: pixelated; }

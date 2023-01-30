@@ -1,0 +1,39 @@
+
+input[type=email],
+input[type=number],
+input[type=password],
+input[type=search],
+input[type=tel],
+input[type=text],
+input[type=url],
+textarea {
+  &.pui {
+    utils-inherit-font-and-color: x;
+    --bw: var(--bwidth, 4px);
+    --bc: var(--bcolor, #000);
+    --nbw: calc(-1 * var(--bw));
+    border: 0;
+    padding: 1ex 1ch;
+    margin: var(--bw);
+    box-shadow: 0 var(--nbw) var(--bc), var(--bw) 0 var(--bc), 0 var(--bw) var(--bc), var(--nbw) 0 var(--bc);
+    &.inline {
+      width: calc(100% - var(--bw) * 2);
+      display: block;
+      box-sizing: border-box;
+    }
+    @each $color in primary, success, warning, error {
+      &.$(color) {
+        --bcolor: var(--pui-$(color));
+        outline-color: var(--pui-$(color)-hover);
+      }
+    }
+    &.disabled, &[disabled], &:disabled {
+      background-color: #fff;
+      opacity: .6;
+      cursor: not-allowed;
+      &:hover { opacity: .75; }
+    }
+    &.disabled { pointer-events: none; }
+    &:read-only, &[readonly] { cursor: not-allowed; }
+  }
+}
