@@ -10,11 +10,21 @@
     @font-face { font-family: dot_font; src: url(./fonts/DinkieBitmap-9pxDemo.woff2); }
     @font-face { font-family: dot_font_code; src: url(./fonts/DinkieBitmap-9pxCodeDemo.woff2); }
     @font-face { font-family: dot_font_italic; src: url(./fonts/DinkieBitmap-9pxItalicDemo.woff2); }
+    /*
+      「丁卯点阵体」是一套像素风格的 OpenType 字体，分为 7px 和 9px 两个尺寸，7px 设定汉字字身 8px 字面 7px，9px 同理。
+      若在 Adobe Photoshop 中以小字号使用，请确保「消除锯齿」设置为「无」，且字号设置为字身框像素数的整数倍，以获得清晰准确的显示。
+      对于 7px 字体，当分辨率设置为 72ppi 时，字号设置为 8pt、16pt、24pt（8pt的整数倍）时，像素可以清晰显示。
+      对于 9px 字体，当分辨率设置为 72ppi 时，字号设置为 10pt、20pt、30pt（10pt的整数倍）时，像素可以清晰显示。
+      若以大字号使用，建议将「消除锯齿」设置为「锐利」。
+    */
     :root {
       /* 字体大小缩放率 我选用的字体本身是9px的 但浏览器字体的最小大小一般都大于9px 所以要>1 */
-      --fsr: 2;
-      --fs: calc(var(--fsr) * 9px);
-      --fspt: calc(var(--fsr) * 1px);
+      /* --fsr: 1;
+      --fs: calc(var(--fsr) * 10pt);
+      --fspt: calc(var(--fsr) * 1pt); */
+      /* 我屏幕96ppi 将72ppi的10pt转换过来就是16px */
+      --fs: 1pc;
+      --fspt: calc(1pc / 10);
       font-family: dot_font_code, dot_font;
       font-size: var(--fs);
       background-color: pink;

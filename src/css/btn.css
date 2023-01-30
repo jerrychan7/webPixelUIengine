@@ -1,11 +1,10 @@
 
-a.pui-btn, button.pui {
+a.pui-btn { text-decoration: none; }
+a.pui-btn, button.pui,
+input[type=file].pui,
+input[type=button].pui, input[type=submit].pui, input[type=reset].pui {
   utils-inherit-font-and-color: x;
-  text-decoration: none;
-  display: inline-block;
-  position: relative;
   cursor: pointer;
-  padding: 1ex 1ch;
 
   --bc: var(--bcolor, #000);
   --bgc: var(--bg-color, var(--pui-normal));
@@ -15,35 +14,49 @@ a.pui-btn, button.pui {
   --icbr: var(--inset-color-br, var(--inset-color, var(--default-br-color)));
   --ictl: var(--inset-color-tl, var(--inset-color, var(--default-tl-color)));
 
-  background-color: var(--bgc); 
-  background-clip: padding-box;
-
   --bw: var(--bwidth, 4px); --bw2: calc(2 * var(--bw));
   --nbw: calc(-1 * var(--bw)); --nbw2: calc(-2 * var(--bw));
 
-  border: var(--bw) solid var(--bc);
-
   --iwbr: var(--inset-width-br, var(--inset-width, var(--bw)));
-  --iwtl: var(--inset-width-tl, var(--inset-width, var(--bw)));
+  --iwtl: var(--inset-width-tl, var(--inset-width, 0px));
 
-  --isbr: inset calc(-1 * var(--iwbr)) calc(-1 * var(--iwbr)) var(--icbr);
-  --istl: inset var(--iwtl) var(--iwtl) var(--ictl);
-  --ishadow: var(--isbr), var(--istl);
+  --ist: inset 0 var(--iwtl) var(--ictl);
+  --isr: inset calc(-1 * var(--iwbr)) 0 var(--icbr);
+  --isb: inset 0 calc(-1 * var(--iwbr)) var(--icbr);
+  --isl: inset var(--iwtl) 0 var(--ictl);
+  --ishadow: var(--isb), var(--isl), var(--ist), var(--isr);
+}
+input[type=file].pui::file-selector-button {
+  utils-inherit-font-and-color: x;
+  cursor: pointer;
+}
 
+a.pui-btn, button.pui,
+input[type=file].pui::file-selector-button,
+input[type=button].pui, input[type=submit].pui, input[type=reset].pui {
+  display: inline-block;
+  position: relative;
+  padding: 1ex 1ch;
+  background-color: var(--bgc);
+  background-clip: padding-box;
+  border: var(--bw) solid var(--bc);
   box-shadow: var(--ishadow);
+}
 
+a.pui-btn, button.pui,
+input[type=file].pui,
+input[type=button].pui, input[type=submit].pui, input[type=reset].pui {
   &:hover {
     --bgc: var(--bg-color, var(--pui-normal-hover));
     --iwbr: calc(1.5 * var(--inset-width-br, var(--inset-width, var(--bw))));
-    --iwtl: calc(1.5 * var(--inset-width-tl, var(--inset-width, var(--bw))));
+    --iwtl: calc(1.5 * var(--inset-width-tl, var(--inset-width, 0px)));
   }
-  &:active:not(.disabled, [disabled]) {
+  &:active:not(.disabled, [disabled], :disabled) {
     --iwbr: calc(1.5 * var(--inset-width-br, var(--inset-width, 0px)));
     --iwtl: calc(1.5 * var(--inset-width-tl, var(--inset-width, var(--bw))));
     --default-br-color: var(--bgc);
     --default-tl-color: var(--pui-normal-shadow);
   }
-  &.primary, &.success, &.error { color: #fff; }
   @each $color in primary, success, warning, error {
     &.$(color) {
       --bg-color: var(--pui-$(color));
@@ -52,14 +65,20 @@ a.pui-btn, button.pui {
       &:active { --default-tl-color: var(--pui-$(color)-shadow); }
     }
   }
-  &.disabled, &[disabled] {
+  &.disabled, &[disabled], &:disabled {
     --bg-color: var(--pui-disabled);
     --default-br-color: var(--pui-disabled-shadow);
     cursor: not-allowed;
     opacity: .6;
-    &:hover { opacity: unset; }
+    &:hover { opacity: .75; }
   }
+}
+a.pui-btn, button.pui,
+input[type=button].pui, input[type=submit].pui, input[type=reset].pui {
+  &.primary, &.success, &.error { color: #fff; }
+}
 
+a.pui-btn, button.pui {
   &[size='1'] {
     border-color: transparent;
     &::after {
@@ -82,7 +101,441 @@ a.pui-btn, button.pui {
       size: var(--bw) calc(100% - var(--bw2));
       box-shadow: 0 var(--bw) var(--bc), 0 var(--nbw) var(--bc);
     }
-    &::before { right: 0; }
-    &::after { left: 0; }
+    &::before { left: 0; }
+    &::after { right: 0; }
+  }
+}
+
+input[type=button].pui, input[type=submit].pui, input[type=reset].pui {
+  &[size='1'] {
+    border: 0;
+    box-shadow: var(--ishadow), var(--bw) 0 var(--bc), 0 var(--bw) var(--bc), var(--nbw) 0 var(--bc), 0 var(--nbw) var(--bc);
+    margin: var(--bw);
+  }
+  &[size='2'] {
+    border: 0;
+    padding: calc(1ex - var(--bw)) calc(1ch - var(--bw));
+    margin: var(--bw2);
+
+    /*
+    这里很乱
+    本质上是用box-shadow模拟边框和一部分inset。inset的模拟是用和背景色相同的色块进行覆盖。
+    上下的inset宽度 和 上下的绘制顺序 会影响inset的表现
+    所以一共有两个影响因素
+    表现形式为左下和右上两个角落的覆盖情况不同
+    单单从覆盖情况考虑，一共就盖住和被盖住两种，所以从覆盖情况出发进行情况枚举
+    右上角：
+      上覆盖右：
+        右的宽度>边框宽度  上的背景有一部分会被右盖住
+        右的宽度<边框宽度  无效果
+        上的宽度>边框宽度  右的背景和inset都有一部分被盖住
+        上的宽度<边框宽度  无效果
+      右覆盖上：
+        右的宽度>边框宽度  上的背景和inset都有部分被盖住
+        右的宽度<边框宽度  无效果
+        上的宽度>边框宽度  右的背景有一部分被上盖住
+        上的宽度<边框宽度  无效果
+    左下角：
+      左覆盖下：
+        下的宽度>边框宽度  左的背景有一部分被左盖住
+        下的宽度<边框宽度  无效果
+        左的宽度>边框宽度  下的背景和inset都有一部分被盖住
+        左的宽度<边框宽度  无效果
+      下覆盖左：
+        下的宽度>边框宽度  左的背景和inset都有一部分被盖住
+        下的宽度<边框宽度  无效果
+        左的宽度>边框宽度  下的背景有一部分被下盖住
+        左的宽度<边框宽度  无效果
+    对于右上/左下角来说，就8种情况
+    下和左的宽度和边框宽度的关系可以通过不同的绘制顺序来模拟 所以用
+    --tr-is-tl-cover-br 和 --bl-is-tl-cover-br
+    这两个flag来控制即可
+    */
+    --tr-is-tl-cover-br: 1;
+    --bl-is-tl-cover-br: 0;
+
+    --inset-w-tl: max(0px, var(--iwtl) - var(--bw));
+    --inset-w-br: max(0px, var(--iwbr) - var(--bw));
+    --ist: inset 0 var(--inset-w-tl) var(--ictl);
+    --isl: inset var(--inset-w-tl) 0 var(--ictl);
+    --isb: inset 0 calc(-1 * var(--inset-w-br)) var(--icbr);
+    --isr: inset calc(-1 * var(--inset-w-br)) 0 var(--icbr);
+
+    --iwtl2: calc(var(--inset-w-tl) / 2);
+    --niwtl2: calc(var(--inset-w-tl) / -2);
+    --niwbr2: calc(var(--inset-w-br) / -2);
+    --cover-w-tl: clamp(0px, calc(var(--bw) - var(--iwtl)), var(--bw));
+    --cover-w-br: clamp(0px, calc(var(--bw) - var(--iwbr)), var(--bw));
+
+    --pseudo-inset:
+      /* top 右盖上 && 右宽>边宽? inset有一部分被盖住: 无效果 */
+      calc((1 - var(--tr-is-tl-cover-br)) * var(--niwbr2))
+      calc(var(--nbw) + (1 - var(--tr-is-tl-cover-br)) * var(--niwbr2))
+      0 calc((1 - var(--tr-is-tl-cover-br)) * var(--niwbr2))
+      var(--ictl),
+      /* right 上盖右 && 上宽>边宽? inset有一部分被盖住: 无效果 */
+      calc(var(--bw) + var(--tr-is-tl-cover-br) * var(--iwtl2))
+      calc(var(--tr-is-tl-cover-br) * var(--iwtl2))
+      0 calc(var(--tr-is-tl-cover-br) * var(--niwtl2))
+      var(--icbr),
+      /* bottom 左盖下 && 左宽>边宽? inset有一部分被盖住: 无效果 */
+      calc(var(--bl-is-tl-cover-br) * var(--iwtl2))
+      calc(var(--bw) + var(--bl-is-tl-cover-br) * var(--iwtl2))
+      0 calc(var(--bl-is-tl-cover-br) * var(--niwtl2))
+      var(--icbr),
+      /* left 下盖左 && 下宽>边宽? inset有一部分被盖住: 无效果 */
+      calc(var(--nbw) + (1 - var(--bl-is-tl-cover-br)) * var(--niwbr2))
+      calc((1 - var(--bl-is-tl-cover-br)) * var(--niwbr2))
+      0 calc((1 - var(--bl-is-tl-cover-br)) * var(--niwbr2))
+      var(--ictl);
+    /* 用和背景色相同的颜色盖住来模拟背景 */
+    --p-inset-cover:
+      /* top 右宽>边宽? 上的背景有一部分会被右盖住: 无效果 */
+      var(--niwbr2)
+      calc(var(--niwbr2) - var(--cover-w-tl))
+      0 var(--niwbr2)
+      var(--bgc),
+      0 calc(-1 * var(--cover-w-tl)) var(--icbr),
+      /* right 上宽>边宽? 右的背景有一部分被上盖住: 无效果 */
+      calc(var(--cover-w-br) + var(--iwtl2))
+      var(--iwtl2)
+      0 var(--niwtl2)
+      var(--bgc),
+      var(--cover-w-br) 0 var(--ictl),
+      /* bottom 左宽>边宽? 下的背景有一部分被下盖住: 无效果 */
+      var(--iwtl2)
+      calc(var(--cover-w-br) + var(--iwtl2))
+      0 var(--niwtl2)
+      var(--bgc),
+      0 var(--cover-w-br) var(--ictl),
+      /* left 下宽>边宽? 左的背景有一部分被左盖住: 无效果 */
+      calc(var(--niwbr2) - var(--cover-w-tl))
+      var(--niwbr2)
+      0 var(--niwbr2)
+      var(--bgc),
+      calc(-1 * var(--cover-w-tl)) 0 var(--icbr);
+
+    --cover-color-bg:
+      0 var(--nbw) var(--icbr), var(--nbw) 0 var(--icbr),
+      0 var(--bw) var(--ictl), var(--bw) 0 var(--ictl);
+    --pseudo-border:
+      0 var(--nbw2) var(--bc), var(--nbw2) 0 var(--bc), var(--bw2) 0 var(--bc), 0 var(--bw2) var(--bc),
+      0 0 0 var(--bw) var(--bc);
+
+    box-shadow:
+      var(--ishadow),
+      var(--p-inset-cover),
+      var(--pseudo-inset),
+      var(--cover-color-bg),
+      var(--pseudo-border);
+  }
+}
+
+input[type=file].pui {
+  position: relative;
+  &.primary, &.success, &.error {
+    &::file-selector-button { color: #fff; }
+    &[fill], &.fill { &::before { color: #fff; } }
+  }
+  &.disabled, &[disabled], &:disabled { &::file-selector-button {
+    cursor: not-allowed;
+  } }
+  &::after {
+    content: ' ';
+    display: inline-block;
+    width: 0;
+  }
+  &.center-ellipsis::after { width: .1px; }
+  &[size='1'] {
+    &::file-selector-button {
+      border: 0;
+      box-shadow: var(--ishadow), var(--bw) 0 var(--bc), 0 var(--bw) var(--bc), var(--nbw) 0 var(--bc), 0 var(--nbw) var(--bc);
+      margin: var(--bw);
+      margin-right: calc(var(--bw) + 4px);
+    }
+  }
+  &[size='2']:not([fill], .fill) {
+    &::file-selector-button {
+      border: 0;
+      padding: calc(1ex - var(--bw)) calc(1ch - var(--bw));
+      margin: var(--bw2);
+      margin-right: calc(var(--bw2) + 4px);
+
+      --tr-is-tl-cover-br: 1;
+      --bl-is-tl-cover-br: 0;
+
+      --inset-w-tl: max(0px, var(--iwtl) - var(--bw));
+      --inset-w-br: max(0px, var(--iwbr) - var(--bw));
+      --ist: inset 0 var(--inset-w-tl) var(--ictl);
+      --isl: inset var(--inset-w-tl) 0 var(--ictl);
+      --isb: inset 0 calc(-1 * var(--inset-w-br)) var(--icbr);
+      --isr: inset calc(-1 * var(--inset-w-br)) 0 var(--icbr);
+      --ishadow: var(--isb), var(--isl), var(--ist), var(--isr);
+
+      --iwtl2: calc(var(--inset-w-tl) / 2);
+      --niwtl2: calc(var(--inset-w-tl) / -2);
+      --niwbr2: calc(var(--inset-w-br) / -2);
+      --cover-w-tl: clamp(0px, calc(var(--bw) - var(--iwtl)), var(--bw));
+      --cover-w-br: clamp(0px, calc(var(--bw) - var(--iwbr)), var(--bw));
+
+      --pit: /* 右盖上 && 右宽>边宽? inset有一部分被盖住: 无效果 */
+        calc((1 - var(--tr-is-tl-cover-br)) * var(--niwbr2))
+        calc(var(--nbw) + (1 - var(--tr-is-tl-cover-br)) * var(--niwbr2))
+        0 calc((1 - var(--tr-is-tl-cover-br)) * var(--niwbr2))
+        var(--ictl);
+      --pir: /* 上盖右 && 上宽>边宽? inset有一部分被盖住: 无效果 */
+        calc(var(--bw) + var(--tr-is-tl-cover-br) * var(--iwtl2))
+        calc(var(--tr-is-tl-cover-br) * var(--iwtl2))
+        0 calc(var(--tr-is-tl-cover-br) * var(--niwtl2))
+        var(--icbr);
+      --pib: /* 左盖下 && 左宽>边宽? inset有一部分被盖住: 无效果 */
+        calc(var(--bl-is-tl-cover-br) * var(--iwtl2))
+        calc(var(--bw) + var(--bl-is-tl-cover-br) * var(--iwtl2))
+        0 calc(var(--bl-is-tl-cover-br) * var(--niwtl2))
+        var(--icbr);
+      --pil: /* 下盖左 && 下宽>边宽? inset有一部分被盖住: 无效果 */
+        calc(var(--nbw) + (1 - var(--bl-is-tl-cover-br)) * var(--niwbr2))
+        calc((1 - var(--bl-is-tl-cover-br)) * var(--niwbr2))
+        0 calc((1 - var(--bl-is-tl-cover-br)) * var(--niwbr2))
+        var(--ictl);
+      --pseudo-inset: var(--pit), var(--pir), var(--pib), var(--pil);
+      /* 用和背景色相同的颜色盖住来模拟背景 */
+      --pict: /* 右宽>边宽? 上的背景有一部分会被右盖住: 无效果 */
+        var(--niwbr2)
+        calc(var(--niwbr2) - var(--cover-w-tl))
+        0 var(--niwbr2)
+        var(--bgc),
+        0 calc(-1 * var(--cover-w-tl)) var(--icbr);
+      --picr: /* 上宽>边宽? 右的背景有一部分被上盖住: 无效果 */
+        calc(var(--cover-w-br) + var(--iwtl2))
+        var(--iwtl2)
+        0 var(--niwtl2)
+        var(--bgc),
+        var(--cover-w-br) 0 var(--ictl);
+      --picb: /* 左宽>边宽? 下的背景有一部分被下盖住: 无效果 */
+        var(--iwtl2)
+        calc(var(--cover-w-br) + var(--iwtl2))
+        0 var(--niwtl2)
+        var(--bgc),
+        0 var(--cover-w-br) var(--ictl);
+      --picl: /* 下宽>边宽? 左的背景有一部分被左盖住: 无效果 */
+        calc(var(--niwbr2) - var(--cover-w-tl))
+        var(--niwbr2)
+        0 var(--niwbr2)
+        var(--bgc),
+        calc(-1 * var(--cover-w-tl)) 0 var(--icbr);
+      --p-inset-cover: var(--pict), var(--picr), var(--picb), var(--picl);
+
+      --ccbgr: var(--bw) 0 var(--ictl);
+      --cover-color-bg:
+        0 var(--nbw) var(--icbr), var(--nbw) 0 var(--icbr),
+        0 var(--bw) var(--ictl), var(--ccbgr);
+      --pbr: var(--bw2) 0 var(--bc);
+      --pseudo-border:
+        0 var(--nbw2) var(--bc), var(--nbw2) 0 var(--bc), var(--pbr), 0 var(--bw2) var(--bc),
+        0 0 0 var(--bw) var(--bc);
+
+      box-shadow:
+        var(--ishadow),
+        var(--p-inset-cover),
+        var(--pseudo-inset),
+        var(--cover-color-bg),
+        var(--pseudo-border);
+    }
+  }
+  &.border {
+    --fbc: var(--filename-bcolor, var(--bc));
+    @each $color in primary, success, warning, error {
+      &.$(color) {
+        --fbc: var(--filename-bcolor, var(--pui-$(color)));
+        &:hover {
+          --fbc: var(--filename-bcolor, var(--pui-$(color)-hover));
+        }
+      }
+    }
+    &:not([size]), &[size='0'] {
+      &::before {
+        content: '';
+        position: absolute 0;
+        size: 100%;
+        box-sizing: border-box;
+        border: var(--bw) solid var(--fbc);
+      }
+    }
+    &[size='1'] {
+      &::first-letter { padding-left: 4px; }
+      &::file-selector-button { float: left; margin: var(--bw); }
+      &::before {
+        content: '';
+        position: absolute;
+        size: -moz-available;
+        size: -webkit-fill-available;
+        size: stretch;
+        margin: var(--bw);
+        margin-left: 0;
+        box-shadow: 0 calc(-1 * var(--bw)) var(--fbc), 0 var(--bw) var(--fbc), var(--bw) 0 var(--fbc);
+      }
+      &::after { margin: calc(1ex + var(--bw)) 0; }
+    }
+    &[size='2'] {
+      padding-top: calc(1ex + var(--bw));
+      margin-bottom: -1ex;
+      &::file-selector-button {
+        float: left;
+        transform: translateY(calc(-1ex - var(--bw)));
+        margin-right: var(--bw);
+        --isr: inset calc(-1 * var(--iwbr)) 0 var(--icbr);
+        --pir: 0 0; --picr: 0 0; --ccbgr: 0 0; --pbr: 0 0;
+        --pit: /* 右盖上 && 右宽>边宽? inset有一部分被盖住: 无效果 */
+          calc((1 - var(--tr-is-tl-cover-br)) * (var(--iwbr) / -2))
+          calc(var(--nbw) + (1 - var(--tr-is-tl-cover-br)) * (var(--iwbr) / -2))
+          0 calc((1 - var(--tr-is-tl-cover-br)) * (var(--iwbr) / -2))
+          var(--ictl);
+        --pict: /* 右宽>边宽? 上的背景有一部分会被右盖住: 无效果 */
+          calc(var(--iwbr) / -2)
+          calc(var(--iwbr) / -2 - var(--cover-w-tl))
+          0 calc(var(--iwbr) / -2)
+          var(--bgc),
+          0 calc(-1 * var(--cover-w-tl)) var(--icbr);
+        --ibw: (var(--bw) - var(--cover-w-br));
+        --picb: /* 左宽>边宽? 下的背景有一部分被下盖住: 无效果 */
+          calc((var(--ibw) - var(--inset-w-tl)) / -2)
+          calc(var(--cover-w-br) + (var(--inset-w-tl) + var(--ibw)) / 2)
+          0 calc((var(--inset-w-tl) + var(--ibw)) / -2)
+          var(--bgc),
+          calc(var(--ibw) / -2)
+          calc(var(--cover-w-br) - var(--ibw) / -2)
+          0 calc(var(--ibw) / -2)
+          var(--ictl);
+      }
+      &::before {
+        content: '';
+        absolute: t 0;
+        width: -moz-available;
+        width: -webkit-fill-available;
+        width: stretch;
+        height: calc(100% - 1ex - 3 * var(--bw));
+        box-shadow:
+          calc(var(--nbw) / 2) calc(1.5 * var(--bw)) 0 calc(var(--nbw) / 2) var(--fbc),
+          calc(var(--nbw) / 2) var(--nbw2) 0 calc(var(--nbw) / 2) var(--fbc),
+          var(--bw2) 0 0 var(--nbw) var(--fbc);
+        margin: var(--bw);
+        margin-left: 0;
+      }
+      &::after {
+        content: '';
+        absolute: t var(--bw2) r var(--bw);
+        size: var(--bw) calc(100% - 1ex - 5 * var(--bw));
+        box-shadow: 0 var(--bw) var(--fbc), 0 var(--nbw) var(--fbc);
+      }
+      &::first-letter {
+        padding-left: 4px;
+      }
+    }
+  }
+  &[fill], &.fill {
+    position: relative;
+    &[size='0'], &:not([size]) { &::file-selector-button {
+      width: 100%;
+    } }
+    &[size='1']::file-selector-button {
+      width: calc(100% - 2 * var(--bw));
+    }
+    &[size='2']:not([aria-label]) {
+      &::file-selector-button {
+        width: calc(100% - 2 * var(--bw));
+        border: 0;
+        margin: var(--bw);
+        box-shadow: var(--ishadow),
+          0 var(--nbw2) 0 var(--nbw) var(--bc),
+          0 var(--bw2) 0 var(--nbw) var(--bc),
+          var(--bw2) 0 0 var(--nbw) var(--bc),
+          var(--nbw2) 0 0 var(--nbw) var(--bc);
+      }
+      &::before, &::after {
+        content: '';
+        absolute: t var(--bw2);
+        size: var(--bw) calc(100% - 2 * var(--bw2));
+        box-shadow: 0 var(--bw) var(--bc), 0 var(--nbw) var(--bc);
+      }
+      &::before { left: var(--bw); z-index: 1; }
+      &::after { right: var(--bw); }
+    }
+    &[aria-label] {
+      &[size='0'], &:not([size]) {
+        &::file-selector-button { visibility: hidden; }
+        &::before {
+          content: attr(aria-label);
+          display: inline-block;
+          width: 100%;
+          text-align: center;
+          position: relative;
+          z-index: 1;
+        }
+        &::after {
+          content: '';
+          absolute: t 0 l 0;
+          size: 100%;
+          background-color: var(--bgc);
+          border: var(--bw) solid var(--bc);
+          box-shadow: var(--ishadow);
+          box-sizing: border-box;
+        }
+      }
+      &[size='1'] {
+        &::file-selector-button { visibility: hidden; }
+        &::before {
+          content: attr(aria-label);
+          display: inline-block;
+          width: 100%;
+          text-align: center;
+          position: relative;
+          z-index: 1;
+        }
+        &::after {
+          content: '';
+          absolute: t 0 l 0;
+          size: calc(100% - var(--bw2));
+          background-color: var(--bgc);
+          box-sizing: border-box;
+          box-shadow: var(--ishadow), var(--bw) 0 var(--bc), 0 var(--bw) var(--bc), var(--nbw) 0 var(--bc), 0 var(--nbw) var(--bc);
+          margin: var(--bw);
+        }
+      }
+      &[size='2'] {
+        &::file-selector-button {
+          color: transparent;
+          background-color: transparent;
+          border: 0;
+          box-shadow: 0 var(--bw) var(--bc), 0 var(--nbw) var(--bc);
+          padding: 0;
+          margin: 0;
+          size: var(--bw) calc(100% - 2 * var(--bw2));
+          absolute: t var(--bw2) l var(--bw);
+        }
+        &::before {
+          content: attr(aria-label);
+          display: inline-block;
+          width: calc(100% - var(--bw2));
+          padding: 1ex 1ch;
+          box-sizing: border-box;
+          margin: var(--bw);
+          text-align: center;
+          background-color: var(--bgc);
+          background-clip: padding-box;
+          box-shadow: var(--ishadow),
+            0 var(--nbw2) 0 var(--nbw) var(--bc),
+            0 var(--bw2) 0 var(--nbw) var(--bc),
+            var(--bw2) 0 0 var(--nbw) var(--bc),
+            var(--nbw2) 0 0 var(--nbw) var(--bc);
+        }
+        &::after {
+          content: '';
+          absolute: t var(--bw2) r var(--bw);
+          size: var(--bw) calc(100% - 2 * var(--bw2));
+          box-shadow: 0 var(--bw) var(--bc), 0 var(--nbw) var(--bc);
+        }
+      }
+    }
   }
 }
