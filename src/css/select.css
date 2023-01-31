@@ -1,0 +1,47 @@
+
+select.pui {
+  utils-inherit-font-and-color: x;
+  color: var(--pui-normal-shadow);
+  --bw: var(--bwidth, 4px);
+  --bc: var(--bcolor, #000);
+  --bgc: var(--bg-color, #fff);
+  --nbw: calc(-1 * var(--bw));
+  --mw: var(--mark-width, 3px);
+  --mw7: calc(7 * var(--mw));
+  --mc: var(--mark-color, var(--bc));
+  border: 0;
+  padding: 1ex 1ch;
+  padding-right: calc(1ch + var(--mw7) + var(--bw));
+  margin: var(--bw);
+  box-shadow: 0 var(--nbw) var(--bc), var(--bw) 0 var(--bc), 0 var(--bw) var(--bc), var(--nbw) 0 var(--bc);
+  cursor: pointer;
+  appearance: none;
+  box-sizing: border-box;
+  background-color: var(--bgc);
+  background-image:
+    linear-gradient(var(--mc), var(--mc)),
+    url("data:image/svg+xml,%3Csvg width='7' height='6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon fill='%23000' points='0 0,0 2,1 2,1 4,2 4,2 5,3 5,3 6,4 6,4 5,5 5,5 4,6 4,6 2,7 2,7 0' /%3E%3C/svg%3E"),
+    linear-gradient(var(--bgc), var(--bgc));
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-size: var(--mw7), var(--mw7), var(--mw7);
+  background-position: calc(100% - var(--bw)), calc(100% - var(--bw)), calc(100% - var(--bw));
+  background-blend-mode: lighten, darken;
+  &.inline {
+    width: calc(100% - var(--bw) * 2);
+    display: block;
+  }
+  @each $color in primary, success, warning, error {
+    &.$(color) {
+      --bcolor: var(--pui-$(color));
+      outline-color: var(--pui-$(color)-hover);
+    }
+  }
+  &.disabled, &[disabled], &:disabled {
+    background-color: #fff;
+    opacity: .6;
+    cursor: not-allowed;
+    &:hover { opacity: .75; }
+  }
+  &.disabled { pointer-events: none; }
+  /*&:read-only, &[readonly] { cursor: not-allowed; }*/
+}
