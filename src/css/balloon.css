@@ -1,0 +1,137 @@
+
+/* TODO: 带透明度的背景色 通过mask-border也许可以办到 */
+.pui-balloon {
+  --bw: var(--bwidth, 4px);
+  --bc: var(--bcolor, #000);
+  --sa: clamp(var(--bw), var(--start-at, calc(2ch - var(--bw))), calc(100% - 7 * var(--bw)));
+  --bw2: calc(2 * var(--bw));
+  --bw5: calc(5 * var(--bw));
+  --bw8: calc(8 * var(--bw));
+  --bw10: calc(10 * var(--bw));
+  --nbw: calc(-1 * var(--bw));
+  --bgc: var(--bg-color, #fff);
+  position: relative;
+  padding: 1ex 1ch;
+  border: var(--bw) solid transparent;
+  border-bottom-width: var(--bw5);
+  background-color: var(--bgc);
+  background-clip: padding-box;
+  min-width: var(--bw10);
+  box-sizing: border-box;
+  &::before {
+    content: '';
+    absolute: t var(--nbw) l var(--nbw);
+    background-color: var(--bc);
+    size: calc(100% + var(--bw2));
+    --1bw: calc(100% - var(--bw));
+    --1bw2: calc(100% - var(--bw2));
+    --bwsa: calc(var(--bw2) + var(--sa));
+    clip-path: polygon(
+      var(--bwsa) 100%,
+      var(--bw2) 100%,
+      var(--bw2) var(--1bw),
+      var(--bw) var(--1bw),
+      var(--bw) var(--1bw2),
+      0 var(--1bw2),
+      0 var(--bw2),
+      var(--bw) var(--bw2),
+      var(--bw) var(--bw),
+      var(--bw2) var(--bw),
+      var(--bw2) 0,
+      var(--1bw2) 0,
+      var(--1bw2) var(--bw),
+      var(--1bw) var(--bw),
+      var(--1bw) var(--bw2),
+      100% var(--bw2),
+      100% var(--1bw2),
+      var(--1bw) var(--1bw2),
+      var(--1bw) var(--1bw),
+      var(--1bw2) var(--1bw),
+      var(--1bw2) 100%,
+      /* calc(var(--bwsa) + 4 * var(--bw)) 100%,
+      calc(var(--bwsa) + 4 * var(--bw)) var(--1bw), */
+      var(--bwsa) 100%,
+      var(--bwsa) var(--1bw),
+      var(--1bw2) var(--1bw),
+      var(--1bw2) var(--1bw2),
+      var(--1bw) var(--1bw2),
+      var(--1bw) var(--bw2),
+      var(--1bw2) var(--bw2),
+      var(--1bw2) var(--bw),
+      var(--bw2) var(--bw),
+      var(--bw2) var(--bw2),
+      var(--bw) var(--bw2),
+      var(--bw) var(--1bw2),
+      var(--bw2) var(--1bw2),
+      var(--bw2) var(--1bw),
+      var(--bwsa) var(--1bw)
+    );
+  }
+  &::after {
+    content: '';
+    absolute: b calc(-1 * var(--bw)) l calc(var(--sa) + var(--bw));
+    size: calc(4 * var(--bw)) var(--bw);
+    background-color: var(--bgc);
+    box-shadow:
+      0 var(--bw) var(--bgc), var(--nbw) var(--bw2) var(--bgc), calc(-2 * var(--bw)) calc(3 * var(--bw)) var(--bgc),
+      var(--nbw) 0 var(--bc), var(--bw) 0 var(--bc),
+      var(--nbw) var(--bw) var(--bc), var(--bw) var(--bw) var(--bc),
+      calc(-2 * var(--bw)) var(--bw2) var(--bc), 0 var(--bw2) var(--bc),
+      calc(-3 * var(--bw)) calc(3 * var(--bw)) var(--bc), calc(-1 * var(--bw)) calc(3 * var(--bw)) var(--bc),
+      calc(-3 * var(--bw)) calc(4 * var(--bw)) var(--bc), calc(-2 * var(--bw)) calc(4 * var(--bw)) var(--bc);
+  }
+  &.from-right::after {
+    transform: rotateY(180deg);
+    left: auto;
+    right: calc(var(--sa) + var(--bw));
+  }
+  &.on-top {
+    border-width: var(--bw);
+    border-top-width: var(--bw5);
+    &::after {
+      transform: rotateX(180deg);
+      bottom: auto;
+      top: calc(-1 * var(--bw));
+    }
+    &.from-right::after {
+      transform: rotateX(180deg) rotateY(180deg);
+    }
+  }
+  &.on-left {
+    --sa: clamp(var(--bw2), var(--start-at, 2ex), calc(100% - 6 * var(--bw)));
+    border-width: var(--bw);
+    border-left-width: var(--bw5);
+    min-width: auto;
+    min-height: var(--bw10);
+    &::after {
+      transform: rotateZ(90deg) rotateY(180deg);
+      transform-origin: bottom;
+      left: calc(-3 * var(--bw));
+      top: calc(var(--sa) + var(--bw));
+    }
+    &.from-top::after {
+      transform: rotateZ(90deg);
+      top: auto;
+      bottom: calc(var(--sa) + var(--bw));
+    }
+  }
+  &.on-right {
+    --sa: clamp(var(--bw2), var(--start-at, 2ex), calc(100% - 6 * var(--bw)));
+    border-width: var(--bw);
+    border-right-width: var(--bw5);
+    min-width: auto;
+    min-height: var(--bw10);
+    &::after {
+      transform: rotateZ(270deg);
+      transform-origin: bottom;
+      left: auto; bottom: auto;
+      right: calc(-3 * var(--bw));
+      top: calc(var(--sa) + var(--bw));
+    }
+    &.from-top::after {
+      transform: rotateZ(270deg) rotateY(180deg);
+      top: auto;
+      bottom: calc(var(--sa) + var(--bw));
+    }
+  }
+}
