@@ -1,0 +1,19 @@
+
+ul.pui, .pui-list {
+  --ms: var(--mark-size, 4px);
+  --nms: calc(-1 * var(--ms));
+  --mc: var(--mark-color, #000);
+  list-style-type: none;
+  & > *::before, &.disc > *::before {
+    content: '';
+    display: inline-block;
+    size: var(--ms);
+    vertical-align: middle;
+    relative: l -1pc t calc(var(--ms) / -2);
+    margin-right: var(--nms);
+    color: var(--mc);
+    background-color: var(--mc);
+    box-shadow: var(--nms) 0, var(--ms) 0, 0 var(--nms), 0 var(--ms), 0 0 0 calc(var(--ms) / 2);
+  }
+  &.circle > *::before { background-color: transparent; }
+}
