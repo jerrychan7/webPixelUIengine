@@ -1,0 +1,97 @@
+
+table.pui, .pui-table {
+  --bw: max(0px, var(--bwidth, 4px));
+  --nbw: calc(-1 * var(--bw));
+  --bc: var(--bcolor, #000);
+  border: var(--bw) transparent solid;
+  border-spacing: 0;
+  border-collapse: separate;
+  background-clip: padding-box;
+  position: relative;
+  & th, & td {
+    border: var(--bc) solid;
+    border-width: 0 var(--bw) var(--bw) 0;
+    padding: 1ex 1ch;
+    background-clip: padding-box;
+    &:last-child { border-right-width: 0; }
+  }
+  & :not(thead:not(:last-child)) tr:last-child { & th, & td {
+    border-bottom-width: 0;
+  } }
+  &.unbordered { border: 0; }
+  &:not(.unbordered, [size='0'])::before {
+    content: '';
+    absolute: t 0 l 0;
+    size: 100%;
+    pointer-events: none;
+    color: var(--bc);
+    box-shadow: var(--bw) 0, 0 var(--bw), var(--nbw) 0, 0 var(--nbw);
+  }
+  &[size='0'] { border-color: var(--bc); }
+  &[size='2']::before {
+    background-color: var(--bc);
+    top: var(--nbw);
+    left: var(--nbw);
+    --bw2: calc(2 * var(--bw));
+    size: calc(100% + var(--bw2));
+    box-shadow: none;
+    --1bw: calc(100% - var(--bw));
+    --1bw2: calc(100% - var(--bw2));
+    clip-path: polygon(
+      var(--bw2) 100%,
+      var(--bw2) var(--1bw),
+      var(--bw) var(--1bw),
+      var(--bw) var(--1bw2),
+      0 var(--1bw2),
+      0 var(--bw2),
+      var(--bw) var(--bw2),
+      var(--bw) var(--bw),
+      var(--bw2) var(--bw),
+      var(--bw2) 0,
+      var(--1bw2) 0,
+      var(--1bw2) var(--bw),
+      var(--1bw) var(--bw),
+      var(--1bw) var(--bw2),
+      100% var(--bw2),
+      100% var(--1bw2),
+      var(--1bw) var(--1bw2),
+      var(--1bw) var(--1bw),
+      var(--1bw2) var(--1bw),
+      var(--1bw2) 100%,
+      var(--bw2) 100%,
+      var(--bw2) var(--1bw),
+      var(--1bw2) var(--1bw),
+      var(--1bw2) var(--1bw2),
+      var(--1bw) var(--1bw2),
+      var(--1bw) var(--bw2),
+      var(--1bw2) var(--bw2),
+      var(--1bw2) var(--bw),
+      var(--bw2) var(--bw),
+      var(--bw2) var(--bw2),
+      var(--bw) var(--bw2),
+      var(--bw) var(--1bw2),
+      var(--bw2) var(--1bw2),
+      var(--bw2) var(--1bw)
+    );
+  }
+  &.hollow {
+    & th, & td {
+      border-color: transparent;
+      position: relative;
+      &::before {
+        content: '';
+        absolute: t 0 l 0;
+        size: 100%;
+        pointer-events: none;
+        color: var(--bc);
+        --bb: 0 var(--bw);
+        --br: var(--bw) 0;
+        box-shadow: var(--bb), var(--br);
+      }
+      &:last-child::before { --br: 0 0; }
+    }
+    & :not(thead:not(:last-child)) tr:last-child { & th, & td {
+      &::before { --bb: 0 0; }
+    } }
+  }
+}
