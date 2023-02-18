@@ -1,0 +1,60 @@
+
+.pui-octocat {
+  display: inline-block;
+  --pw: var(--pixel-width, 4px);
+  size: calc(14 * var(--pw)) calc(15 * var(--pw));
+  position: relative;
+  --fc: #ffdec4;
+  --ec: #cb7066;
+  --oc: #333;
+  --pw02: calc(2 * var(--pw));
+  --pw03: calc(3 * var(--pw));
+  --pw04: calc(4 * var(--pw));
+  --pw05: calc(5 * var(--pw));
+  --pw06: calc(6 * var(--pw));
+  --pw07: calc(7 * var(--pw));
+  --pw08: calc(8 * var(--pw));
+  --pw09: calc(9 * var(--pw));
+  --pw10: calc(10 * var(--pw));
+  --pw11: calc(11 * var(--pw));
+  --pw12: calc(12 * var(--pw));
+  --pw13: calc(13 * var(--pw));
+  --pw14: calc(14 * var(--pw));
+  --base: var(--pw03) 0, var(--pw12) 0,
+    var(--pw03) var(--pw), var(--pw04) var(--pw), var(--pw11) var(--pw), var(--pw12) var(--pw),
+    var(--pw03) var(--pw02), var(--pw04) var(--pw02), var(--pw05) var(--pw02), var(--pw06) var(--pw02), var(--pw07) var(--pw02), var(--pw08) var(--pw02), var(--pw09) var(--pw02), var(--pw10) var(--pw02), var(--pw11) var(--pw02), var(--pw12) var(--pw02),
+    var(--pw02) var(--pw03), var(--pw03) var(--pw03), var(--pw04) var(--pw03), var(--pw05) var(--pw03), var(--pw06) var(--pw03), var(--pw07) var(--pw03), var(--pw08) var(--pw03), var(--pw09) var(--pw03), var(--pw10) var(--pw03), var(--pw11) var(--pw03), var(--pw12) var(--pw03), var(--pw13) var(--pw03),
+    var(--pw02) var(--pw04), var(--pw03) var(--pw04), var(--pw04) var(--pw04), var(--pw05) var(--pw04), var(--pw06) var(--pw04), var(--pw07) var(--pw04), var(--pw08) var(--pw04), var(--pw09) var(--pw04), var(--pw10) var(--pw04), var(--pw11) var(--pw04), var(--pw12) var(--pw04), var(--pw13) var(--pw04),
+    var(--pw02) var(--pw05), var(--pw03) var(--pw05), var(--pw04) var(--pw05), var(--pw11) var(--pw05), var(--pw12) var(--pw05), var(--pw13) var(--pw05),
+    var(--pw02) var(--pw06), var(--pw03) var(--pw06), var(--pw12) var(--pw06), var(--pw13) var(--pw06),
+    var(--pw02) var(--pw07), var(--pw03) var(--pw07), var(--pw12) var(--pw07), var(--pw13) var(--pw07),
+    var(--pw03) var(--pw08), var(--pw04) var(--pw08), var(--pw11) var(--pw08), var(--pw12) var(--pw08),
+    var(--pw06) var(--pw09), var(--pw07) var(--pw09), var(--pw08) var(--pw09), var(--pw09) var(--pw09),
+    var(--pw03) var(--pw10), var(--pw05) var(--pw10), var(--pw06) var(--pw10), var(--pw07) var(--pw10), var(--pw08) var(--pw10), var(--pw09) var(--pw10), var(--pw10) var(--pw10),
+    var(--pw03) var(--pw11), var(--pw04) var(--pw11), var(--pw05) var(--pw11), var(--pw06) var(--pw11), var(--pw07) var(--pw11), var(--pw08) var(--pw11), var(--pw09) var(--pw11), var(--pw10) var(--pw11),
+    var(--pw05) var(--pw12), var(--pw07) var(--pw12), var(--pw08) var(--pw12), var(--pw10) var(--pw12),
+    var(--pw05) var(--pw13), var(--pw07) var(--pw13), var(--pw08) var(--pw13), var(--pw10) var(--pw13),
+    var(--pw04) var(--pw14), var(--pw06) var(--pw14), var(--pw09) var(--pw14), var(--pw11) var(--pw14),
+    var(--pw05) var(--pw05) var(--fc), var(--pw06) var(--pw05) var(--fc), var(--pw07) var(--pw05) var(--fc), var(--pw08) var(--pw05) var(--fc), var(--pw09) var(--pw05) var(--fc), var(--pw10) var(--pw05) var(--fc),
+    var(--pw04) var(--pw06) var(--fc), var(--pw06) var(--pw06) var(--fc), var(--pw07) var(--pw06) var(--fc), var(--pw08) var(--pw06) var(--fc), var(--pw09) var(--pw06) var(--fc), var(--pw11) var(--pw06) var(--fc),
+    var(--pw04) var(--pw07) var(--fc), var(--pw06) var(--pw07) var(--fc), var(--pw07) var(--pw07) var(--fc), var(--pw08) var(--pw07) var(--fc), var(--pw09) var(--pw07) var(--fc), var(--pw11) var(--pw07) var(--fc),
+    var(--pw05) var(--pw08) var(--fc), var(--pw06) var(--pw08) var(--fc), var(--pw09) var(--pw08) var(--fc), var(--pw10) var(--pw08) var(--fc),
+    var(--pw05) var(--pw07) var(--ec), var(--pw10) var(--pw07) var(--ec),
+    var(--pw07) var(--pw08) var(--ec), var(--pw08) var(--pw08) var(--ec);
+  --frame1: 0 var(--pw09), var(--pw) var(--pw09), var(--pw02) var(--pw10), var(--pw05) var(--pw06) var(--ec), var(--pw10) var(--pw06) var(--ec);
+  &::after {
+    content: '';
+    absolute: t 0 l 0;
+    size: var(--pw);
+    color: var(--oc);
+    box-shadow: var(--base), var(--frame1);
+    animation: pui-octocat-wave .5s infinite steps(1);
+  }
+}
+
+@keyframes pui-octocat-wave {
+  50% {
+    --frame1: var(--pw) var(--pw07), var(--pw) var(--pw08), var(--pw02) var(--pw09), var(--pw05) var(--pw06) var(--fc), var(--pw10) var(--pw06) var(--fc);
+    box-shadow: var(--base), var(--frame1);
+  }
+}
