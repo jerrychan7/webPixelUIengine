@@ -1,0 +1,110 @@
+
+progress.pui, .pui-progress {
+  --bgc: var(--bg-color, transparent);
+  --bgc: #fff;
+  --vc: var(--value-color, #000);
+  --bc: var(--bcolor, #000);
+  --bw: var(--bwidth, 4px);
+  appearance: none;
+  border: 4px var(--bc) solid;
+  background-color: var(--bgc);
+  height: calc(1em + 4 * var(--bw));
+  box-sizing: border-box;
+  --cp: polygon(
+    var(--bw) 0, var(--bw) var(--bw), 0 var(--bw), 0 calc(100% - var(--bw)), var(--bw) calc(100% - var(--bw)), var(--bw) 100%,
+    calc(100% - var(--bw)) 100%, calc(100% - var(--bw)) calc(100% - var(--bw)), 100% calc(100% - var(--bw)),
+    100% var(--bw), calc(100% - var(--bw)) var(--bw), calc(100% - var(--bw)) 0
+  );
+  clip-path: var(--cp);
+  width: 160px;
+  box-sizing: border-box;
+  &.baseline {
+    vertical-align: baseline;
+    position: relative;
+    top: var(--bw);
+    &.hollow { top: calc(2 * var(--bw)); }
+  }
+  &.hollow { padding: var(--bw); }
+  &::-webkit-progress-bar { background-color: transparent; }
+  &::-webkit-progress-value { background-color: var(--vc); }
+  &::-moz-progress-bar { background-color: var(--vc); }
+  @each $color in primary, success, warning, error, disabled {
+    &.$(color) { --value-color: var(--pui-$(color)); }
+  }
+  &.pattern {
+    --pc: var(--pattern-color, transparent);
+    --bgi:
+      linear-gradient(45deg, var(--vc) 25%, transparent 25%, transparent 75%, var(--vc) 0),
+      linear-gradient(45deg, var(--vc) 25%, transparent 25%, transparent 75%, var(--vc) 0);
+    &::-webkit-progress-value {
+      background-color: var(--pc);
+      background-image: var(--bgi);
+      background-position: 0 0, var(--bw) var(--bw);
+      background-size: calc(var(--bw) * 2) calc(var(--bw) * 2);
+    }
+    &::-moz-progress-bar {
+      background-color: var(--pc);
+      background-image: var(--bgi);
+      background-position: 0 0, var(--bw) var(--bw);
+      background-size: calc(var(--bw) * 2) calc(var(--bw) * 2);
+    }
+  }
+  &[size='0'] { clip-path: none; }
+  &[size='2'] {
+    --bw2: calc(2 * var(--bw));
+    --1bw: calc(100% - var(--bw));
+    --1bw2: calc(100% - var(--bw2));
+    clip-path: polygon( var(--bw2) 100%, var(--bw2) var(--1bw), var(--bw) var(--1bw), var(--bw) var(--1bw2), 0 var(--1bw2), 0 var(--bw2), var(--bw) var(--bw2), var(--bw) var(--bw), var(--bw2) var(--bw), var(--bw2) 0, var(--1bw2) 0, var(--1bw2) var(--bw), var(--1bw) var(--bw), var(--1bw) var(--bw2), 100% var(--bw2), 100% var(--1bw2), var(--1bw) var(--1bw2), var(--1bw) var(--1bw), var(--1bw2) var(--1bw), var(--1bw2) 100%);
+    background-image: linear-gradient(var(--bc), var(--bc)), linear-gradient(var(--bc), var(--bc)), linear-gradient(var(--bc), var(--bc)), linear-gradient(var(--bc), var(--bc));
+    background-repeat: no-repeat;
+    background-size: 4px 4px;
+    background-position: 0 0, 0 100%, 100% 0, 100% 100%;
+    &:not(.hollow) {
+      &::-webkit-progress-value { clip-path: var(--cp); }
+      &::-moz-progress-bar { clip-path: var(--cp); }
+      &::after { clip-path: var(--cp); }
+    }
+  }
+  &:indeterminate {
+    position: relative;
+    /* -webkit-progress-value 不支持动画 */
+    &::after {
+      content: '';
+      display: block;
+      size: 25% 100%;
+      absolute: t 0 l 0;
+      background-color: var(--vc);
+      animation: pui-progress-idtm-pos 2s linear alternate infinite;
+    }
+    &.pattern::after {
+      size: 100%;
+      background-color: var(--pc);
+      background-image: var(--bgi);
+      background-position: 0 0, var(--bw) var(--bw);
+      background-size: calc(var(--bw) * 2) calc(var(--bw) * 2);
+      animation: pui-progress-idtm-bg .2s linear infinite;
+    }
+    &.hollow::after {
+      size: calc(100% - 2 * var(--bw));
+      top: var(--bw);
+      left: var(--bw);
+    }
+    &.hollow:not(.pattern)::after {
+      size: calc(25% - 2 * var(--bw)) calc(100% - 2 * var(--bw));
+    }
+    &::-moz-progress-bar {
+      width: 25%;
+      position: relative;
+      animation: pui-progress-idtm-pos 2s linear alternate infinite;
+    }
+    &.pattern::-moz-progress-bar {
+      width: 100%;
+      animation: pui-progress-idtm-bg .2s linear infinite;
+    }
+  }
+}
+
+@keyframes pui-progress-idtm-bg {
+  to { background-position: calc(var(--bw) * 2) 0, calc(var(--bw) * 3) var(--bw); }
+}
+@keyframes pui-progress-idtm-pos { to { margin-left: 75%; } }
