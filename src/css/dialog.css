@@ -1,0 +1,28 @@
+
+dialog.pui, .pui-dialog {
+  --bw: var(--bwidth, 4px);
+  --nbw: calc(-1 * var(--bw));
+  --bc: var(--bcolor, #000);
+  border: 0;
+  padding: 2ex 2ch;
+  background-clip: padding-box;
+  box-shadow: var(--bw) 0 var(--bc), 0 var(--bw) var(--bc), var(--nbw) 0 var(--bc), 0 var(--nbw) var(--bc);
+  &::backdrop { background-color: #0005; }
+  &[size='0'] { border: var(--bw) var(--bc) solid; box-shadow: none; }
+  &[size='2'] {
+    box-shadow:
+      calc(-2 * var(--bw)) 0 0 var(--nbw) var(--bc),
+      calc(2 * var(--bw)) 0 0 var(--nbw) var(--bc),
+      0 calc(-2 * var(--bw)) 0 var(--nbw) var(--bc),
+      0 calc(2 * var(--bw)) 0 var(--nbw) var(--bc);
+    &::before, &::after {
+      content: '';
+      absolute: t var(--bw) l 0;
+      size: var(--bw) calc(100% - 2 * var(--bw));
+      pointer-events: none;
+      color: var(--bc);
+      box-shadow: 0 var(--nbw), 0 var(--bw);
+    }
+    &::after { left: auto; right: 0; }
+  }
+}
