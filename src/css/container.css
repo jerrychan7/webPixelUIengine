@@ -1,24 +1,46 @@
 
 .pui-container, fieldset.pui {
   --bw: var(--bwidth, 4px);
+  --nbw: calc(-1 * var(--bw));
   --bc: var(--bcolor, #000);
-  border: var(--bw) solid var(--bc);
+  --bgc: var(--bg-color, transparent);
+  border: var(--bw) var(--bc) solid;
   padding: 1ex 2ch;
-  @each $color in primary, success, warning, error, disabled {
-    &.$(color) { --bcolor: var(--pui-$(color)); }
-  }
-
+  word-break: break-word;
+  background-color: var(--bgc);
+  background-clip: padding-box;
   & > legend {
     padding: 0 1ch;
+    /* 抵消padding带来的偏移，使得legend第一个字符对齐内容的第一个字符。 */
     margin-left: -1ch;
   }
-  &[centered] > legend { text-align: center; }
-  &[size=1] {
-    border-left: none;
-    border-right: none;
+  &[centered], &.centered { & > legend { text-align: center; margin: auto; } }
+  &[size='1'] {
+    border-width: var(--bw) 0;
     box-shadow:
-      calc(-2 * var(--bw)) 0 0 calc(-1 * var(--bw)) var(--bc),
-      calc(2 * var(--bw)) 0 0 calc(-1 * var(--bw)) var(--bc);
+      calc(-2 * var(--bw)) 0 0 var(--nbw) var(--bc),
+      calc(2 * var(--bw)) 0 0 var(--nbw) var(--bc);
     margin-inline: calc(var(--bw) + 2px);
+  }
+  &[size='2'] {
+    box-shadow:
+      calc(-3 * var(--bw)) 0 0 calc(-2 * var(--bw)) var(--bc),
+      calc(3 * var(--bw)) 0 0 calc(-2 * var(--bw)) var(--bc);
+    margin-inline: calc(var(--bw) + 2px);
+    border-image: linear-gradient(90deg, transparent 33.333%, var(--bc) 33.333%, var(--bc) 66.666%, transparent 0) 34%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-clip: border-box;
+    --bgi: linear-gradient(var(--bc), var(--bc));
+    background-image:
+      var(--bgi), var(--bgi), var(--bgi), var(--bgi),
+      linear-gradient(var(--bgc), var(--bgc));
+    background-position:
+      var(--nbw) 0, var(--nbw) 100%, calc(100% + var(--bw)) 0, calc(100% + var(--bw)) 100%,
+      var(--nbw) 0;
+    background-size:
+      var(--bw) var(--bw), var(--bw) var(--bw), var(--bw) var(--bw), var(--bw) var(--bw),
+      calc(100% + 2 * var(--bw)) 100%;
+    padding: 1ex calc(2ch - var(--bw));
   }
 }
