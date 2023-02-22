@@ -1,7 +1,6 @@
 
 progress.pui, .pui-progress {
   --bgc: var(--bg-color, transparent);
-  --bgc: #fff;
   --vc: var(--value-color, #000);
   --bc: var(--bcolor, #000);
   --bw: var(--bwidth, 4px);
@@ -57,7 +56,7 @@ progress.pui, .pui-progress {
     clip-path: polygon( var(--bw2) 100%, var(--bw2) var(--1bw), var(--bw) var(--1bw), var(--bw) var(--1bw2), 0 var(--1bw2), 0 var(--bw2), var(--bw) var(--bw2), var(--bw) var(--bw), var(--bw2) var(--bw), var(--bw2) 0, var(--1bw2) 0, var(--1bw2) var(--bw), var(--1bw) var(--bw), var(--1bw) var(--bw2), 100% var(--bw2), 100% var(--1bw2), var(--1bw) var(--1bw2), var(--1bw) var(--1bw), var(--1bw2) var(--1bw), var(--1bw2) 100%);
     background-image: linear-gradient(var(--bc), var(--bc)), linear-gradient(var(--bc), var(--bc)), linear-gradient(var(--bc), var(--bc)), linear-gradient(var(--bc), var(--bc));
     background-repeat: no-repeat;
-    background-size: 4px 4px;
+    background-size: var(--bw) var(--bw);
     background-position: 0 0, 0 100%, 100% 0, 100% 100%;
     &:not(.hollow) {
       &::-webkit-progress-value { clip-path: var(--cp); }
