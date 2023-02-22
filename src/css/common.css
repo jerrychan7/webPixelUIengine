@@ -1,5 +1,6 @@
 
 :root {
+  --pui-repo: 'https://github.com/jerrychan7/webPixelUIengine';
   --pui-primary: var(--primary, #209cee);
   --pui-primary-hover: var(--primary-hover, #108de0);
   --pui-primary-shadow: var(--primary-shadow, #006bb3);
