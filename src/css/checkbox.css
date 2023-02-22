@@ -1,10 +1,20 @@
 
 .pui-checkbox, input[type=checkbox] {
+  --r: calc(1px * var(--mark-zoom, 2));
+  --r1: calc(2 * var(--r));
+  --r2: calc(3 * var(--r));
+  --r3: calc(4 * var(--r));
+  --r4: calc(5 * var(--r));
+  --r5: calc(6 * var(--r));
+  --r6: calc(7 * var(--r));
+  --r7: calc(8 * var(--r));
+  --r8: calc(9 * var(--r));
+  --r9: calc(10 * var(--r));
   utils-inherit-font-and-color: x;
   appearance: none;
   position: relative;
   margin: 0 .5ch;
-  size: 2ch 1em;
+  size: var(--r9) var(--r7);
   @each $color in primary, success, warning, error, disabled {
     &.$(color) { --mark-color: var(--pui-$(color)); }
   }
@@ -15,57 +25,60 @@
     cursor: pointer;
   }
   &::after {
-    --r: calc(1px * var(--mark-zoom, 2));
-    --r0: var(--r);
-    --r1: calc(2 * var(--r));
-    --r2: calc(3 * var(--r));
-    --r3: calc(4 * var(--r));
-    --r4: calc(5 * var(--r));
-    --r5: calc(6 * var(--r));
-    --r6: calc(7 * var(--r));
-    --r7: calc(8 * var(--r));
-    --r8: calc(9 * var(--r));
-    --r9: calc(10 * var(--r));
-    --box-incomplete: var(--r0)var(--r0),var(--r1)var(--r0),var(--r2)var(--r0),var(--r3)var(--r0),var(--r4)var(--r0),var(--r5)var(--r0),var(--r6)var(--r0),var(--r0)var(--r1),var(--r0)var(--r2),var(--r7)var(--r4),var(--r0)var(--r5),var(--r7)var(--r5),var(--r0)var(--r6),var(--r7)var(--r6),var(--r0)var(--r7),var(--r1)var(--r7),var(--r2)var(--r7),var(--r3)var(--r7),var(--r4)var(--r7),var(--r5)var(--r7),var(--r6)var(--r7),var(--r7)var(--r7);
-    --box-right-corner: var(--r7)var(--r0),var(--r7)var(--r1),var(--r7)var(--r2),var(--r7)var(--r3);
-    --box-left-puzzle: var(--r0)var(--r3),var(--r0)var(--r4);
+    --box-incomplete: var(--r)var(--r),var(--r1)var(--r),var(--r2)var(--r),var(--r3)var(--r),var(--r4)var(--r),var(--r5)var(--r),var(--r6)var(--r),var(--r)var(--r1),var(--r)var(--r2),var(--r7)var(--r4),var(--r)var(--r5),var(--r7)var(--r5),var(--r)var(--r6),var(--r7)var(--r6),var(--r)var(--r7),var(--r1)var(--r7),var(--r2)var(--r7),var(--r3)var(--r7),var(--r4)var(--r7),var(--r5)var(--r7),var(--r6)var(--r7),var(--r7)var(--r7);
+    --box-right-corner: var(--r7)var(--r),var(--r7)var(--r1),var(--r7)var(--r2),var(--r7)var(--r3);
+    --box-left-puzzle: var(--r)var(--r3),var(--r)var(--r4);
     content: '';
-    absolute: l var(--r7) b var(--r9);
+    absolute: b var(--r7) l 0;
     color: var(--mark-color, inherit);
     size: var(--r);
-    box-shadow: var(--box-incomplete),var(--box-right-corner),var(--box-left-puzzle);
+    --bi: var(--box-incomplete);
+    --bibrc: var(--bi),var(--box-right-corner);
+    --box: var(--bibrc),var(--box-left-puzzle);
+    --bs: var(--box);
+    box-shadow: var(--bs);
   }
-  &[after]::after, &.after::after {
-    right: auto;
-    left: calc(-1 * var(--r));
-  }
+  &[at-after], &.at-after { &::after { left: calc(-1 * var(--r)); } }
   &:checked::after {
-    --c: var(--mark-check-color,var(--mark-color,));
-    --col0: var(--r0)var(--r3)var(--c),var(--r0)var(--r4)var(--c);
-    --col1: var(--r1)var(--r3)var(--c),var(--r1)var(--r4)var(--c);
-    --col2: var(--r2)var(--r4)var(--c),var(--r2)var(--r5)var(--c);
-    --col3: var(--r3)var(--r5)var(--c),var(--r3)var(--r6)var(--c);
-    --col4: var(--r4)var(--r4)var(--c),var(--r4)var(--r5)var(--c);
-    --col5: var(--r5)var(--r3)var(--c),var(--r5)var(--r4)var(--c);
-    --col6: var(--r6)var(--r2)var(--c),var(--r6)var(--r3)var(--c);
-    --col7: var(--r7)var(--r1)var(--c),var(--r7)var(--r2)var(--c);
-    --col8: var(--r8)var(--r0)var(--c),var(--r8)var(--r1)var(--c);
-    --col9: var(--r9)var(--r0)var(--c),var(--r9)var(--r1)var(--c);
-    box-shadow: var(--col0),var(--col1),var(--col2),var(--col3),var(--col4),var(--col5),var(--col6),var(--col7),var(--col8),var(--col9),var(--box-incomplete);
+    --c: var(--mark-check-color,);
+    --f0: var(--r)var(--r3)var(--c),var(--r)var(--r4)var(--c);
+    --f1: var(--f0),var(--r1)var(--r3)var(--c),var(--r1)var(--r4)var(--c);
+    --f2: var(--f1),var(--r2)var(--r4)var(--c),var(--r2)var(--r5)var(--c);
+    --f3: var(--f2),var(--r3)var(--r5)var(--c),var(--r3)var(--r6)var(--c);
+    --f4: var(--f3),var(--r4)var(--r4)var(--c),var(--r4)var(--r5)var(--c);
+    --f5: var(--f4),var(--r5)var(--r3)var(--c),var(--r5)var(--r4)var(--c);
+    --f6: var(--f5),var(--r6)var(--r2)var(--c),var(--r6)var(--r3)var(--c);
+    --f7: var(--f6),var(--r7)var(--r1)var(--c),var(--r7)var(--r2)var(--c);
+    --f8: var(--f7),var(--r8)var(--r)var(--c),var(--r8)var(--r1)var(--c);
+    --f9: var(--f8),var(--r9)var(--r)var(--c),var(--r9)var(--r1)var(--c);
+    --bs: var(--f9),var(--bi);
+    pointer-events: none;
   }
-  &[animation]:checked::after, &.animation:checked::after {
-    animation: pui-checkbox-draw .2s steps(1) reverse;
+  &[animation], &.animation { &:checked::after {
+    animation: pui-checkbox-draw .2s steps(1);
+  } }
+  &:indeterminate::after {
+    --c: var(--mark-indeterminate-color,var(--mark-check-color,));
+    --mark: var(--r2)var(--r3)var(--c),var(--r3)var(--r4)var(--c),var(--r4)var(--r3)var(--c),var(--r5)var(--r4)var(--c);
+    --bs: var(--box),var(--mark);
   }
+  &:indeterminate.anti::after { --mark: var(--r2)var(--r4)var(--c),var(--r3)var(--r3)var(--c),var(--r4)var(--r4)var(--c),var(--r5)var(--r3)var(--c); }
+  &:indeterminate.disc::after { --d: calc(var(--r) / 2); --d2: calc(var(--r2) + var(--d)); --d3: calc(var(--r3) + var(--d)); --d4: calc(var(--r4) + var(--d)); --mark: var(--d2)var(--d3)0 var(--d)var(--c),var(--d3)var(--d2)0 var(--d)var(--c),var(--d4)var(--d3)0 var(--d)var(--c),var(--d3)var(--d4)0 var(--d)var(--c);}
+  &.circle, &.rect { &:indeterminate::after { --circle: var(--r2)var(--r3)var(--c),var(--r2)var(--r4)var(--c),var(--r3)var(--r2)var(--c),var(--r4)var(--r2)var(--c),var(--r5)var(--r3)var(--c),var(--r5)var(--r4)var(--c),var(--r3)var(--r5)var(--c),var(--r4)var(--r5)var(--c); } }
+  &:indeterminate.circle::after { --mark: var(--circle); }
+  &:indeterminate.rect::after { --mark: var(--circle),var(--r2)var(--r2)var(--c),var(--r5)var(--r5)var(--c),var(--r2)var(--r5)var(--c),var(--r5)var(--r2)var(--c); }
+  &:indeterminate.square::after { --d: calc(1.5 * var(--r)); --d2: calc(var(--r2) + var(--d)); --mark: var(--d2)var(--d2)0 var(--d)var(--c); }
+  & > label { cursor: pointer; }
 }
 @keyframes pui-checkbox-draw {
-  0% { --col9: 0 0; }
-  11.111% { --col8: 0 0; }
-  22.222% { --col7: var(--box-right-corner); }
-  33.333% { --col6: 0 0; }
-  44.444% { --col5: 0 0; }
-  55.555% { --col4: 0 0; }
-  66.666% { --col3: 0 0; }
-  77.777% { --col2: 0 0; }
-  88.888% { --col1: 0 0; }
-  100% { --col0: var(--box-left-puzzle); opacity: 0; }
+  0% { box-shadow: var(--box); }
+  10% { box-shadow: var(--f0),var(--bibrc); }
+  20% { box-shadow: var(--f1),var(--bibrc); }
+  30% { box-shadow: var(--f2),var(--bibrc); }
+  40% { box-shadow: var(--f3),var(--bibrc); }
+  50% { box-shadow: var(--f4),var(--bibrc); }
+  60% { box-shadow: var(--f5),var(--bibrc); }
+  70% { box-shadow: var(--f6),var(--bibrc); }
+  80% { box-shadow: var(--f7),var(--bi); }
+  90% { box-shadow: var(--f8),var(--bi); }
 }
