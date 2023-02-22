@@ -1,14 +1,14 @@
 
 .pui-bg {
   position: relative;
-  &[no-repeat]::after { background-repeat: no-repeat; }
-  &::after {
+  &[no-repeat], &.no-repeat { &::before { background-repeat: no-repeat; } }
+  &::before {
     content: '';
     display: block;
     absolute: t 0 l 0 z -999999999999999;
     size: 100%;
     image-rendering: pixelated;
-    user-select: none;
+    pointer-events: none;
     filter: brightness(var(--brightness));
     background-attachment: var(--attach);
     background-blend-mode: var(--blend-mode);
