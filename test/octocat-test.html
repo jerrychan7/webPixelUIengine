@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="../release/all.css" rel="stylesheet">
+  <style>
+    @font-face { font-family: dot_font; src: url(../fonts/DinkieBitmap-9pxDemo.woff2); }
+    @font-face { font-family: dot_font_code; src: url(../fonts/DinkieBitmap-9pxCodeDemo.woff2); }
+    @font-face { font-family: dot_font_italic; src: url(../fonts/DinkieBitmap-9pxItalicDemo.woff2); }
+    body {
+      font-family: dot_font_code, dot_font;
+      font-size: 1pc;
+      text-rendering: geometricPrecision;
+      background-color: pink;
+      -webkit-font-smoothing: none;
+    }
+    i, em { font-family: dot_font_italic; }
+  </style>
+  <style></style>
+</head>
+<body>
+  <i class="pui-octocat"></i>
+  <script>
+    let a = [
+      [0,0,0,1,0,0,0,0,0,0,0,0,1,0],
+      [0,0,0,1,1,0,0,0,0,0,0,1,1,0],
+      [0,0,0,1,1,1,1,1,1,1,1,1,1,0],
+      [0,0,1,1,1,1,1,1,1,1,1,1,1,1],
+      [0,0,1,1,1,1,1,1,1,1,1,1,1,1],
+      [0,0,1,1,1,2,2,2,2,2,2,1,1,1],
+      [0,0,1,1,2,3,2,2,2,2,3,2,1,1],
+      [0,0,1,1,2,3,2,2,2,2,3,2,1,1],
+      [0,0,0,1,1,2,2,3,3,2,2,1,1,0],
+      [1,1,0,0,0,0,1,1,1,1,0,0,0,0],
+      [0,0,1,1,0,1,1,1,1,1,1,0,0,0],
+      [0,0,0,1,1,1,1,1,1,1,1,0,0,0],
+      [0,0,0,0,0,1,0,1,1,0,1,0,0,0],
+      [0,0,0,0,0,1,0,1,1,0,1,0,0,0],
+      [0,0,0,0,1,0,1,0,0,1,0,1,0,0],
+    ];
+    const coor = i => ["0", "var(--pw)"][i] || `var(--pw${("000" + i).slice(-2)})`;
+    let ans = [];
+    for (let i = 0; i < a.length; ++i) {
+      let t = [];
+      for (let j = 0; j < a[0].length; ++j) {
+        if (!a[i][j]) continue;
+        t.push(`${coor(j)} ${coor(i)}` + (a[i][j] == 1? "": ` var(--${"0ofe"[a[i][j]]}c)`));
+      }
+      ans.push(t.join(", "));
+    }
+    console.log(ans.join(",\n"));
+  </script>
+</body>
+</html>

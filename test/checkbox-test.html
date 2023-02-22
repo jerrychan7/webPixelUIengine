@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="../release/all.css" rel="stylesheet">
+  <style>
+    @font-face { font-family: dot_font; src: url(../fonts/DinkieBitmap-9pxDemo.woff2); }
+    @font-face { font-family: dot_font_code; src: url(../fonts/DinkieBitmap-9pxCodeDemo.woff2); }
+    /* @font-face { font-family: dot_font_code; src: url(DinkieBitmap-7pxDemo.woff2); } */
+    @font-face { font-family: dot_font_italic; src: url(../fonts/DinkieBitmap-9pxItalicDemo.woff2); }
+    body {
+      font-family: dot_font_code, dot_font;
+      font-size: 1pc;
+      text-rendering: geometricPrecision;
+      background-color: pink;
+      -webkit-font-smoothing: none;
+    }
+    i, em { font-family: dot_font_italic; }
+  </style>
+  <style></style>
+</head>
+<body>
+  <label><input class="pui" type="checkbox" checked />Normal</label>
+  <label style="color: #2196f3;"><input class="pui" type="checkbox" checked />Colored</label>
+  <label style="--mark-color: #ff9800;"><input class="pui error" type="checkbox" checked />Colored2</label>
+  <label style="color: #2196f3; --mark-color: #ff9800; --mark-check-color: #4caf50;"><input class="pui" type="checkbox" checked />Colored3</label>
+  <label style="color: #9c27b0; --mark-check-color: #4caf50;"><input class="pui" type="checkbox" animation />!CLICK ME! Animation!</label>
+  <label style="font-size: 2em; --mark-zoom: 3;"><input class="pui" type="checkbox" checked />Big</label>
+  <br/>
+  <label>Normal<input class="pui" type="checkbox" at-after checked /></label>
+  <label style="color: #2196f3;">Colored<input class="pui" type="checkbox" at-after checked /></label>
+  <label style="--mark-color: #ff9800;">Colored2<input class="pui error" type="checkbox" at-after checked /></label>
+  <label style="color: #2196f3; --mark-color: #ff9800; --mark-check-color: #4caf50;">Colored3<input class="pui" type="checkbox" at-after checked /></label>
+  <label style="color: #9c27b0; --mark-check-color: #4caf50;">!CLICK ME! Animation!<input class="pui" type="checkbox" animation at-after /></label>
+  <label style="font-size: 2em; --mark-zoom: 3;">Big<input class="pui" type="checkbox" at-after checked /></label>
+  <br/>
+  <label><input class="pui" type="checkbox" ind />Indeterminate</label>
+  <label>Indeterminate<input class="pui" type="checkbox" at-after ind /></label>
+  <label><input class="pui disc primary" type="checkbox" ind />Indeterminate</label>
+  <label><input class="pui circle" style="--mark-check-color: #9c27b0;" type="checkbox" ind />Indeterminate</label>
+  <label><input class="pui square" style="--mark-color: #ff9800; --mark-check-color: #9c27b0; --mark-indeterminate-color: #4caf50;" type="checkbox" ind />Indeterminate</label>
+  <label><input class="pui rect" type="checkbox" ind />Indeterminate</label>
+  <label><input class="pui anti" type="checkbox" ind />Indeterminate</label>
+  <script>
+    document.querySelectorAll("[ind]").forEach(i => i.indeterminate = true);
+  </script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="../release/all.css" rel="stylesheet">
+  <style>
+    @font-face { font-family: dot_font; src: url(../fonts/DinkieBitmap-9pxDemo.woff2); }
+    @font-face { font-family: dot_font_code; src: url(../fonts/DinkieBitmap-9pxCodeDemo.woff2); }
+    @font-face { font-family: dot_font_italic; src: url(../fonts/DinkieBitmap-9pxItalicDemo.woff2); }
+    body {
+      font-family: dot_font_code, dot_font;
+      font-size: 1pc;
+      text-rendering: geometricPrecision;
+      background-color: pink;
+      -webkit-font-smoothing: none;
+    }
+    i, em { font-family: dot_font_italic; }
+  </style>
+  <style>
+    section {
+      margin-top: 30vh;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Dialog -->
+  <section>
+    <button class="pui primary" onclick="document.getElementById('dialog-default').showModal();">
+      Open dialog
+    </button>
+    <dialog class="pui" size="0" id="dialog-default">
+      <form method="dialog">
+        <p class="title">Dialog</p>
+        <p>Alert: this is a dialog.</p>
+        <menu class="dialog-menu">
+          <button class="pui" size=1>Cancel</button>
+          <button class="pui primary" size=1>Confirm</button>
+        </menu>
+      </form>
+    </dialog>
+  </section>
+
+  <!-- Dark dialog -->
+  <section>
+    <button class="pui primary" onclick="document.getElementById('dialog-dark').showModal();">
+      Open dark dialog
+    </button>
+    <dialog class="pui" style="background-color: black; color: #fff; --bc: #fff;" id="dialog-dark">
+      <form method="dialog">
+        <p class="title">Dark dialog</p>
+        <p>Alert: this is a dialog.</p>
+        <menu class="dialog-menu">
+          <button class="pui" size=1 style="color: #000; --bcolor: #fff;">Cancel</button>
+          <button class="pui primary" size=1 style="--bcolor: #fff;">Confirm</button>
+        </menu>
+      </form>
+    </dialog>
+  </section>
+
+  <!-- Rounded dialog -->
+  <section>
+    <button class="pui primary" onclick="document.getElementById('dialog-rounded').showModal();">
+      Open rounded dialog
+    </button>
+    <dialog class="pui" size="2" id="dialog-rounded">
+      <form method="dialog">
+        <p class="title">Rounded dialog</p>
+        <p>Alert: this is a dialog.</p>
+        <menu class="dialog-menu">
+          <button class="pui" size=1>Cancel</button>
+          <button class="pui primary" size=1>Confirm</button>
+        </menu>
+      </form>
+    </dialog>
+  </section>
+
+  <!-- Dark and Rounded dialog -->
+  <section>
+    <button class="pui primary" onclick="document.getElementById('dialog-dark-rounded').showModal();">
+      Open dark and rounded dialog
+    </button>
+    <dialog class="pui" size="2" style="background-color: black; color: #fff; --bcolor: #fff;" id="dialog-dark-rounded">
+      <form method="dialog">
+        <p class="title">Dark and Rounded dialog</p>
+        <p>Alert: this is a dialog.</p>
+        <menu class="dialog-menu">
+          <button class="pui" size=1 style="color: #000; --bcolor: #fff;">Cancel</button>
+          <button class="pui primary" size=1 style="--bcolor: #fff;">Confirm</button>
+        </menu>
+      </form>
+    </dialog>
+  </section>
+
+  <!-- Dark and Rounded dialog -->
+  <section>
+    <button class="pui primary" onclick="document.getElementById('dialog-dark-rounded-long').showModal();">
+      Open dark and rounded dialog
+    </button>
+    <dialog class="pui" size="2" style="background-color: black; color: #fff; --bcolor: #fff;" id="dialog-dark-rounded-long">
+      <form method="dialog">
+        <p class="title">Dark and Rounded dialog</p>
+        <p>Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog.</p>
+        <p>Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog.</p>
+        <p>Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog.</p>
+        <p>Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog.</p>
+        <p>Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog.</p>
+        <p>Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog.</p>
+        <p>Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog.</p>
+        <p>Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog.</p>
+        <p>Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog.</p>
+        <menu class="dialog-menu">
+          <button class="pui" size=1 style="color: #000; --bcolor: #fff;">Cancel</button>
+          <button class="pui primary" size=1 style="--bcolor: #fff;">Confirm</button>
+        </menu>
+      </form>
+    </dialog>
+  </section>
+  <script></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="../release/all.css" rel="stylesheet">
+  <style>
+    @font-face { font-family: dot_font; src: url(../fonts/DinkieBitmap-9pxDemo.woff2); }
+    @font-face { font-family: dot_font_code; src: url(../fonts/DinkieBitmap-9pxCodeDemo.woff2); }
+    @font-face { font-family: dot_font_italic; src: url(../fonts/DinkieBitmap-9pxItalicDemo.woff2); }
+    body {
+      font-family: dot_font_code, dot_font;
+      font-size: 1pc;
+      text-rendering: geometricPrecision;
+      background-color: pink;
+      -webkit-font-smoothing: none;
+    }
+    i, em { font-family: dot_font_italic; }
+  </style>
+  <style>
+    fieldset > fieldset > fieldset {
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <fieldset class="pui">
+    <legend>Container</legend>
+    <fieldset class="pui">
+      <legend>size="0"</legend>
+      <fieldset class="pui"></fieldset>
+      <fieldset class="pui" size="0"></fieldset>
+      <fieldset class="pui">no-legend</fieldset>
+      <fieldset class="pui"><legend>size="0"</legend></fieldset>
+      <fieldset class="pui"><legend>legend</legend>text</fieldset>
+      <fieldset class="pui" centered><legend>centered</legend>centered centered centered</fieldset>
+      <fieldset class="pui" style="overflow: auto; height: 100px; width: 150px;">
+        <legend>scroll</legend>
+        <p>long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long</p>
+        <p>longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong</p>
+      </fieldset>
+      <fieldset class="pui">
+        <legend>long</legend>
+        <p>long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long</p>
+        <p>longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong</p>
+      </fieldset>
+    </fieldset>
+    <fieldset class="pui">
+      <legend>size="1"</legend>
+      <fieldset class="pui" size="1"></fieldset>
+      <fieldset class="pui" size="1">no-legend</fieldset>
+      <fieldset class="pui" size="1"><legend>size="1"</legend></fieldset>
+      <fieldset class="pui" size="1"><legend>legend</legend>text</fieldset>
+      <fieldset class="pui" size="1" centered><legend>centered</legend>centered centered centered</fieldset>
+      <fieldset class="pui" size="1" style="overflow: auto; height: 100px; width: 150px;">
+        <legend>scroll</legend>
+        <p>long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long</p>
+        <p>longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong</p>
+      </fieldset>
+      <fieldset class="pui" size="1">
+        <legend>long</legend>
+        <p>long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long</p>
+        <p>longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong</p>
+      </fieldset>
+    </fieldset>
+    <fieldset class="pui">
+      <legend>size="2"</legend>
+      <fieldset class="pui" size="2"></fieldset>
+      <fieldset class="pui" size="2">no-legend</fieldset>
+      <fieldset class="pui" size="2"><legend>size="2"</legend></fieldset>
+      <fieldset class="pui" size="2"><legend>legend</legend>text</fieldset>
+      <fieldset class="pui" size="2" centered><legend>centered</legend>centered centered centered</fieldset>
+      <fieldset class="pui" size="2" style="overflow: auto; height: 100px; width: 150px;">
+        <legend>scroll</legend>
+        <p>long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long</p>
+        <p>longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong</p>
+      </fieldset>
+      <fieldset class="pui" size="2">
+        <legend>long</legend>
+        <p>long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long</p>
+        <p>longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong</p>
+      </fieldset>
+    </fieldset>
+    <fieldset class="pui centered" size="2" style="--bwidth: 6px; --bcolor: #088; --bg-color: #0084;">
+      <legend>centered</legend>
+      class="pui centered" size="2" style="--bwidth: 6px; --bcolor: #088; --bg-color: #0084;"
+    </fieldset>
+  </fieldset>
+  <script></script>
+</body>
+</html>

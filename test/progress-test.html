@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="../release/all.css" rel="stylesheet">
+  <style>
+    @font-face { font-family: dot_font; src: url(../fonts/DinkieBitmap-9pxDemo.woff2); }
+    @font-face { font-family: dot_font_code; src: url(../fonts/DinkieBitmap-9pxCodeDemo.woff2); }
+    @font-face { font-family: dot_font_italic; src: url(../fonts/DinkieBitmap-9pxItalicDemo.woff2); }
+    body {
+      font-family: dot_font_code, dot_font;
+      font-size: 1pc;
+      text-rendering: geometricPrecision;
+      background-color: pink;
+      -webkit-font-smoothing: none;
+    }
+    i, em { font-family: dot_font_italic; }
+  </style>
+  <style>
+    progress:not([value]) { margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+  <progress class="pui"></progress>
+  <progress class="pui baseline primary"></progress>
+  <progress class="pui baseline pattern primary"></progress>
+  <progress size="2" class="pui baseline pattern primary"></progress>
+  <progress size="2" class="pui pattern primary hollow"></progress>
+  <progress size="2" class="pui baseline primary"></progress>
+  <progress size="2" class="pui baseline primary hollow"></progress>
+  <br/>
+  asdf <progress class="pui" value="90" max="100"></progress> asdf
+  asdf <progress class="pui primary" value="80" max="100"></progress> asdf
+  asdf <progress class="pui success" value="50" max="100"></progress> asdf
+  asdf <progress class="pui warning" value="30" max="100"></progress> asdf
+  asdf <progress class="pui error" value="10" max="100"></progress> asdf
+  asdf <progress class="pui pattern" value="50" max="100"></progress> asdf<br/>
+  asdf <progress class="pui hollow primary" value="80" max="100"></progress> asdf
+  asdf <progress class="pui hollow pattern primary" value="50" max="100"></progress> asdf<br/>
+
+  asdf <progress class="pui baseline primary" value="80" max="100"></progress> asdf
+  asdf <progress class="pui baseline pattern primary" value="50" max="100"></progress> asdf<br/>
+  asdf <progress class="pui baseline hollow primary" value="80" max="100"></progress> asdf
+  asdf <progress class="pui baseline hollow pattern primary" value="50" max="100"></progress> asdf<br/>
+
+  asdf <progress size="0" class="pui baseline primary" value="80" max="100"></progress> asdf
+  asdf <progress size="0" class="pui baseline pattern primary" value="50" max="100"></progress> asdf<br/>
+  asdf <progress size="0" class="pui baseline hollow primary" value="80" max="100"></progress> asdf
+  asdf <progress size="0" class="pui baseline hollow pattern primary" value="50" max="100"></progress> asdf<br/>
+
+  asdf <progress size="2" class="pui baseline primary" value="80" max="100"></progress> asdf
+  asdf <progress size="2" class="pui baseline pattern primary" value="50" max="100"></progress> asdf<br/>
+  asdf <progress size="2" class="pui baseline hollow primary" value="80" max="100"></progress> asdf
+  asdf <progress size="2" class="pui baseline hollow pattern primary" value="50" max="100"></progress> asdf<br/>
+  <script></script>
+</body>
+</html>

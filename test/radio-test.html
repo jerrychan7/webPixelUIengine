@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="../release/all.css" rel="stylesheet">
+  <style>
+    @font-face { font-family: dot_font; src: url(../fonts/DinkieBitmap-9pxDemo.woff2); }
+    @font-face { font-family: dot_font_code; src: url(../fonts/DinkieBitmap-9pxCodeDemo.woff2); }
+    @font-face { font-family: dot_font_italic; src: url(../fonts/DinkieBitmap-9pxItalicDemo.woff2); }
+    body {
+      font-family: dot_font_code, dot_font;
+      font-size: 1pc;
+      text-rendering: geometricPrecision;
+      background-color: pink;
+      -webkit-font-smoothing: none;
+    }
+    i, em { font-family: dot_font_italic; }
+  </style>
+  <style></style>
+</head>
+<body>
+  Radio before label text:<br>
+  <label><input class="pui" type="radio" name="bie" checked />Yes</label>
+  <label><input class="pui" type="radio" name="bie" />No</label>
+  <br/>
+  Radio after label text:<br>
+  <label>Yes<input class="pui" type="radio" name="bier" at-after checked /></label>
+  <label>No<input class="pui" type="radio" name="bier" at-after /></label>
+  <br/>
+  Size and color (font-size: 2em; color: #00bcd4; --mark-color: #ff9800; --mark-checked-color: #9c27b0; --mark-zoom: .5; --mark: '='; --mark-checked: '->'; --mark-after-checked: '&lt;-'):<br>
+  <div style="font-size: 2em; color: #00bcd4; --mark-color: #ff9800; --mark-checked-color: #9c27b0; --mark-zoom: .5; --mark: '='; --mark-checked: '->'; --mark-after-checked: '<-';">
+    <label><input class="pui" type="radio" name="bieb" checked />Yes</label>
+    <label>No<input class="pui" type="radio" name="bieb" at-after /></label>
+  </div>
+  With pixel triangle (font-size: 2em; color: #00bcd4; --mark-color: #ff9800; --mark-checked-color: #9c27b0; --mark-triangle-zoom: 4; --mark: '=';):<br>
+  <div style="font-size: 2em; color: #00bcd4; --mark-color: #ff9800; --mark-checked-color: #9c27b0; --mark-triangle-zoom: 4; --mark: '=';">
+    <label><input class="pui triangle" type="radio" name="biet" checked />Yes</label>
+    <label>No<input class="pui triangle" type="radio" name="biet" at-after /></label>
+  </div>
+  Primary:
+  <label><input class="pui primary" type="radio" name="biep" checked />Yes</label>
+  <label><input class="pui primary" type="radio" name="biep" />No</label>
+  <br/>
+  Indeterminate:
+  <label><input class="pui triangle" type="radio" name="biei" />Yes</label>
+  <label><input class="pui triangle" type="radio" name="biei" />No</label>
+  <br/>
+  <script></script>
+</body>
+</html>

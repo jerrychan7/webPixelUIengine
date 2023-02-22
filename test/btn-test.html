@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="../release/all.css" rel="stylesheet">
+  <style>
+    @font-face { font-family: dot_font; src: url(../fonts/DinkieBitmap-9pxDemo.woff2); }
+    @font-face { font-family: dot_font_code; src: url(../fonts/DinkieBitmap-9pxCodeDemo.woff2); }
+    @font-face { font-family: dot_font_italic; src: url(../fonts/DinkieBitmap-9pxItalicDemo.woff2); }
+    body {
+      font-family: dot_font_code, dot_font;
+      /* font-family: dot_font; */
+      font-size: 1pc;
+      text-rendering: geometricPrecision;
+      background-color: pink;
+      -webkit-font-smoothing: none;
+      /* filter: url(#crispify); */
+    }
+    .offscreen {
+      position: absolute;
+      left: -100000px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    i,
+    em {
+      font-family: dot_font_italic;
+    }
+
+    a,
+    button,
+    input {
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <svg class="offscreen" width="0" height="0" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <filter id="crispify">
+        <feComponentTransfer>
+          <feFuncA type="discrete" tableValues="0 1" />
+        </feComponentTransfer>
+      </filter>
+    </defs>
+  </svg>
+  <a class="pui-btn" href="#">link</a>
+  <a class="pui-btn primary" href="#">link</a>
+  <a class="pui-btn success" href="#">link</a>
+  <a class="pui-btn warning" href="#">link</a>
+  <a class="pui-btn error" href="#">link</a>
+  <a class="pui-btn disabled" href="#">link</a>
+  <br/>
+  <a class="pui-btn" href="#" size=1>link</a>
+  <a class="pui-btn primary" href="#" size=1>link</a>
+  <a class="pui-btn success" href="#" size=1>link</a>
+  <a class="pui-btn warning" href="#" size=1>link</a>
+  <a class="pui-btn error" href="#" size=1>link</a>
+  <a class="pui-btn disabled" href="#" size=1>link</a>
+  <br/>
+  <a class="pui-btn" href="#" size=2>link</a>
+  <a class="pui-btn primary" href="#" size=2>link</a>
+  <a class="pui-btn success" href="#" size=2>link</a>
+  <a class="pui-btn warning" href="#" size=2>link</a>
+  <a class="pui-btn error" href="#" size=2>link</a>
+  <a class="pui-btn disabled" href="#" size=2>link</a>
+  <br/>
+  <br/>
+  <button class="pui">button</button>
+  <button class="pui primary">button</button>
+  <button class="pui success">button</button>
+  <button class="pui warning">button</button>
+  <button class="pui error">button</button>
+  <button class="pui" disabled>button</button>
+  <br/>
+  <button class="pui" size=1>button</button>
+  <button class="pui primary" size=1>button</button>
+  <button class="pui success" size=1>button</button>
+  <button class="pui warning" size=1>button</button>
+  <button class="pui error" size=1>button</button>
+  <button class="pui" disabled size=1>button</button>
+  <br/>
+  <button class="pui" size=2>button</button>
+  <button class="pui primary" size=2>button</button>
+  <button class="pui success" size=2>button</button>
+  <button class="pui warning" size=2>button</button>
+  <button class="pui error" size=2>button</button>
+  <button class="pui" disabled size=2>button</button>
+  <br/>
+  <br/>
+  <input type="button" value="input" class="pui" />
+  <input type="button" value="input" class="pui primary" />
+  <input type="button" value="input" class="pui success" />
+  <input type="button" value="input" class="pui warning" />
+  <input type="button" value="input" class="pui error" />
+  <input type="button" value="input" class="pui" disabled />
+  <br/>
+  <input type="button" value="input" size=1 class="pui" />
+  <input type="button" value="input" size=1 class="pui primary" />
+  <input type="button" value="input" size=1 class="pui success" />
+  <input type="button" value="input" size=1 class="pui warning" />
+  <input type="button" value="input" size=1 class="pui error" />
+  <input type="button" value="input" size=1 class="pui" disabled />
+  <br/>
+  <input type="button" value="input" size=2 class="pui" />
+  <input type="button" value="input" size=2 class="pui primary" />
+  <input type="button" value="input" size=2 class="pui success" />
+  <input type="button" value="input" size=2 class="pui warning" />
+  <input type="button" value="input" size=2 class="pui error" />
+  <input type="button" value="input" size=2 class="pui" disabled />
+  <br/>
+  <br/>
+  <input type="file" class="pui" />
+  <input type="file" class="pui primary" />
+  <input type="file" class="pui success" />
+  <input type="file" class="pui warning" />
+  <input type="file" class="pui error" />
+  <input type="file" class="pui" disabled />
+  <br/>
+  border
+  <input type="file" class="pui border" />
+  <input type="file" class="pui warning border" />
+  <input type="file" class="pui error border" />
+  <input type="file" class="pui border" disabled />
+  <br/>
+  center-ellipsis
+  <input type="file" class="pui primary border center-ellipsis" />
+  <br/>
+  <input type="file" size=1 class="pui" />
+  <input type="file" size=1 class="pui primary" />
+  <input type="file" size=1 class="pui success" />
+  <input type="file" size=1 class="pui warning" />
+  <input type="file" size=1 class="pui error" />
+  <input type="file" size=1 class="pui" disabled />
+  <br/>
+  border
+  <input type="file" size=1 class="pui border" />
+  <input type="file" size=1 class="pui warning border" />
+  <input type="file" size=1 class="pui error border" />
+  <input type="file" size=1 class="pui border" disabled />
+  <br/>
+  center-ellipsis
+  <input type="file" size=1 class="pui primary border center-ellipsis" />
+  <br/>
+  <input type="file" size=2 class="pui" />
+  <input type="file" size=2 class="pui primary" />
+  <input type="file" size=2 class="pui warning" />
+  <input type="file" size=2 class="pui error" />
+  <input type="file" size=2 class="pui" disabled />
+  <br/>
+  border
+  <input type="file" size=2 class="pui border" />
+  <input type="file" size=2 class="pui warning border" />
+  <input type="file" size=2 class="pui error border" />
+  <input type="file" size=2 class="pui border" disabled />
+  <br/>
+  center-ellipsis
+  <input type="file" size=2 class="pui primary border center-ellipsis" />
+  <input type="file" size=2 class="pui primary center-ellipsis" />
+  <br/>
+  <input type="file" class="pui fill" />
+  <input type="file" class="pui primary fill" />
+  <input type="file" class="pui success fill" />
+  <input type="file" class="pui warning fill" />
+  <input type="file" class="pui error fill" />
+  <input type="file" class="pui fill" disabled />
+  <br/>
+  <input type="file" size=1 class="pui fill" />
+  <input type="file" size=1 class="pui primary fill" />
+  <input type="file" size=1 class="pui success fill" />
+  <input type="file" size=1 class="pui warning fill" />
+  <input type="file" size=1 class="pui error fill" />
+  <input type="file" size=1 class="pui fill" disabled />
+  <br/>
+  <input type="file" size=2 class="pui fill" />
+  <input type="file" size=2 class="pui primary fill" />
+  <input type="file" size=2 class="pui success fill" />
+  <input type="file" size=2 class="pui warning fill" />
+  <input type="file" size=2 class="pui error fill" />
+  <input type="file" size=2 class="pui fill" disabled />
+  <br/>
+  label
+  <input type="file" class="pui primary fill" aria-label="label text" />
+  <input type="file" size=1 class="pui primary fill" aria-label="label text" />
+  <input type="file" size=2 class="pui primary fill" aria-label="label text" />
+</body>
+</html>

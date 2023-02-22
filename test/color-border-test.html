@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="../release/all.css" rel="stylesheet">
+  <style>
+    @font-face { font-family: dot_font; src: url(../fonts/DinkieBitmap-9pxDemo.woff2); }
+    @font-face { font-family: dot_font_code; src: url(../fonts/DinkieBitmap-9pxCodeDemo.woff2); }
+    @font-face { font-family: dot_font_italic; src: url(../fonts/DinkieBitmap-9pxItalicDemo.woff2); }
+    body {
+      font-family: dot_font_code, dot_font;
+      font-size: 1pc;
+      text-rendering: geometricPrecision;
+      background-color: pink;
+      -webkit-font-smoothing: none;
+    }
+    i, em { font-family: dot_font_italic; }
+  </style>
+  <style>
+    body { margin: 0; padding: 0; }
+    .pui-cb {
+      margin: 15px;
+      padding: 1ex 1ch;
+    }
+  </style>
+</head>
+<body>
+  <div class="pui-cb">content</div>
+  <div class="pui-cb" size="1">size="1"</div>
+  <div class="pui-cb" size="1" style="background-color: #0f08;">size="1" style="background-color: #0f08;"</div>
+  <div class="pui-cb" size="2">size="2"</div>
+  <div class="pui-cb" size="2" style="background-color: #0f08;">size="2" style="background-color: #0f08;"</div>
+  <div class="pui-cb" size="2" style="--bwidth: 6px; --bcolor: #088;">
+    size="2" style="--bwidth: 6px; --bcolor: #088;"
+  </div>
+  <div class="pui-cb error" size="2" style="--bwidth: 6px; --bcolor: #088;">
+    class="error" size="2" style="--bwidth: 6px; --bcolor: #088;"
+  </div>
+  <div class="pui-cb error" size="2" style="--bwidth: 6px;">
+    class="error" size="2" style="--bwidth: 6px;"
+  </div>
+  <script></script>
+</body>
+</html>

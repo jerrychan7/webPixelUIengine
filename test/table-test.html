@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="../release/all.css" rel="stylesheet">
+  <style>
+    @font-face { font-family: dot_font; src: url(../fonts/DinkieBitmap-9pxDemo.woff2); }
+    @font-face { font-family: dot_font_code; src: url(../fonts/DinkieBitmap-9pxCodeDemo.woff2); }
+    @font-face { font-family: dot_font_italic; src: url(../fonts/DinkieBitmap-9pxItalicDemo.woff2); }
+    body {
+      font-family: dot_font_code, dot_font;
+      font-size: 1pc;
+      text-rendering: geometricPrecision;
+      background-color: pink;
+      -webkit-font-smoothing: none;
+    }
+    i, em { font-family: dot_font_italic; }
+  </style>
+  <style>
+    table {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <table size="2" class="pui">
+    <thead>
+      <tr>
+        <th>Table.is-bordered</th>
+        <th>Table.is-centered</th>
+        <th>Table.is-centered</th>
+        <th>Table.is-centered</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Thou hast had a good morning</td>
+        <td>Thou hast had a good afternoon</td>
+        <td>Thou hast had a good evening</td>
+        <td>Thou hast had a good night</td>
+      </tr>
+      <tr>
+        <td>Thou hast had a good morning</td>
+        <td>Thou hast had a good afternoon</td>
+        <td>Thou hast had a good evening</td>
+        <td>Thou hast had a good night</td>
+      </tr>
+    </tbody>
+  </table>
+  <table size="2" class="pui hollow">
+    <tr>
+      <th>Table.is-bordered</th>
+      <th>Table.is-centered</th>
+      <th>Table.is-centered</th>
+      <th>Table.is-centered</th>
+    </tr>
+    <tr>
+      <td>Thou hast had a good morning</td>
+      <td>Thou hast had a good afternoon</td>
+      <td>Thou hast had a good evening</td>
+      <td>Thou hast had a good night</td>
+    </tr>
+    <tr>
+      <td>Thou hast had a good morning</td>
+      <td>Thou hast had a good afternoon</td>
+      <td>Thou hast had a good evening</td>
+      <td>Thou hast had a good night</td>
+    </tr>
+  </table>
+  <table size="2" class="pui hollow unbordered">
+    <tr>
+      <th>Table.is-bordered</th>
+      <th>Table.is-centered</th>
+      <th>Table.is-centered</th>
+      <th>Table.is-centered</th>
+    </tr>
+    <tr>
+      <td>Thou hast had a good morning</td>
+      <td>Thou hast had a good afternoon</td>
+      <td>Thou hast had a good evening</td>
+      <td>Thou hast had a good night</td>
+    </tr>
+    <tr>
+      <td>Thou hast had a good morning</td>
+      <td>Thou hast had a good afternoon</td>
+      <td>Thou hast had a good evening</td>
+      <td>Thou hast had a good night</td>
+    </tr>
+  </table>
+  <table size="2" class="pui unbordered">
+    <thead>
+      <tr>
+        <th>Table.is-bordered</th>
+        <th>Table.is-centered</th>
+        <th>Table.is-centered</th>
+        <th>Table.is-centered</th>
+      </tr>
+    </thead>
+  </table>
+  <table size="2" class="pui hollow unbordered">
+    <thead>
+      <tr>
+        <th>Table.is-bordered</th>
+        <th>Table.is-centered</th>
+        <th>Table.is-centered</th>
+        <th>Table.is-centered</th>
+      </tr>
+    </thead>
+  </table>
+  <table size="2" class="pui hollow unbordered-inside">
+    <thead>
+      <tr>
+        <th>Table.is-bordered</th>
+        <th>Table.is-centered</th>
+        <th>Table.is-centered</th>
+        <th>Table.is-centered</th>
+      </tr>
+    </thead>
+  </table>
+  <table size="2" class="pui">
+    <tr>
+      <th>Table.is-bordered</th>
+      <th>Table.is-centered</th>
+      <th>Table.is-centered</th>
+      <th>Table.is-centered</th>
+    </tr>
+  </table>
+  <table class="pui">
+    <thead>
+      <tr>
+        <th>Table.is-bordered</th>
+        <th>Table.is-centered</th>
+        <th>Table.is-centered</th>
+        <th>Table.is-centered</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Thou hast had a good morning</td>
+        <td>Thou hast had a good afternoon</td>
+        <td>Thou hast had a good evening</td>
+        <td>Thou hast had a good night</td>
+      </tr>
+      <tr>
+        <td>Thou hast had a good morning</td>
+        <td>Thou hast had a good afternoon</td>
+        <td>Thou hast had a good evening</td>
+        <td>Thou hast had a good night</td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="pui hollow">
+    <tr>
+      <th>Table.is-bordered</th>
+      <th>Table.is-centered</th>
+      <th>Table.is-centered</th>
+      <th>Table.is-centered</th>
+    </tr>
+    <tr>
+      <td>Thou hast had a good morning</td>
+      <td>Thou hast had a good afternoon</td>
+      <td>Thou hast had a good evening</td>
+      <td>Thou hast had a good night</td>
+    </tr>
+    <tr>
+      <td>Thou hast had a good morning</td>
+      <td>Thou hast had a good afternoon</td>
+      <td>Thou hast had a good evening</td>
+      <td>Thou hast had a good night</td>
+    </tr>
+  </table>
+  <table class="pui hollow unbordered">
+    <tr>
+      <th>Table.is-bordered</th>
+      <th>Table.is-centered</th>
+      <th>Table.is-centered</th>
+      <th>Table.is-centered</th>
+    </tr>
+    <tr>
+      <td>Thou hast had a good morning</td>
+      <td>Thou hast had a good afternoon</td>
+      <td>Thou hast had a good evening</td>
+      <td>Thou hast had a good night</td>
+    </tr>
+    <tr>
+      <td>Thou hast had a good morning</td>
+      <td>Thou hast had a good afternoon</td>
+      <td>Thou hast had a good evening</td>
+      <td>Thou hast had a good night</td>
+    </tr>
+  </table>
+  <table class="pui unbordered">
+    <thead>
+      <tr>
+        <th>Table.is-bordered</th>
+        <th>Table.is-centered</th>
+        <th>Table.is-centered</th>
+        <th>Table.is-centered</th>
+      </tr>
+    </thead>
+  </table>
+  <table class="pui hollow unbordered">
+    <thead>
+      <tr>
+        <th>Table.is-bordered</th>
+        <th>Table.is-centered</th>
+        <th>Table.is-centered</th>
+        <th>Table.is-centered</th>
+      </tr>
+    </thead>
+  </table>
+  <table class="pui">
+    <tr>
+      <th>Table.is-bordered</th>
+      <th>Table.is-centered</th>
+      <th>Table.is-centered</th>
+      <th>Table.is-centered</th>
+    </tr>
+  </table>
+  <table size="0" class="pui">
+    <thead>
+      <tr>
+        <th>Table.is-bordered</th>
+        <th>Table.is-centered</th>
+        <th>Table.is-centered</th>
+        <th>Table.is-centered</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Thou hast had a good morning</td>
+        <td>Thou hast had a good afternoon</td>
+        <td>Thou hast had a good evening</td>
+        <td>Thou hast had a good night</td>
+      </tr>
+      <tr>
+        <td>Thou hast had a good morning</td>
+        <td>Thou hast had a good afternoon</td>
+        <td>Thou hast had a good evening</td>
+        <td>Thou hast had a good night</td>
+      </tr>
+    </tbody>
+  </table>
+  <table size="0" class="pui hollow">
+    <tr>
+      <th>Table.is-bordered</th>
+      <th>Table.is-centered</th>
+      <th>Table.is-centered</th>
+      <th>Table.is-centered</th>
+    </tr>
+    <tr>
+      <td>Thou hast had a good morning</td>
+      <td>Thou hast had a good afternoon</td>
+      <td>Thou hast had a good evening</td>
+      <td>Thou hast had a good night</td>
+    </tr>
+    <tr>
+      <td>Thou hast had a good morning</td>
+      <td>Thou hast had a good afternoon</td>
+      <td>Thou hast had a good evening</td>
+      <td>Thou hast had a good night</td>
+    </tr>
+  </table>
+  <table size="0" class="pui hollow unbordered">
+    <tr>
+      <th>Table.is-bordered</th>
+      <th>Table.is-centered</th>
+      <th>Table.is-centered</th>
+      <th>Table.is-centered</th>
+    </tr>
+    <tr>
+      <td>Thou hast had a good morning</td>
+      <td>Thou hast had a good afternoon</td>
+      <td>Thou hast had a good evening</td>
+      <td>Thou hast had a good night</td>
+    </tr>
+    <tr>
+      <td>Thou hast had a good morning</td>
+      <td>Thou hast had a good afternoon</td>
+      <td>Thou hast had a good evening</td>
+      <td>Thou hast had a good night</td>
+    </tr>
+  </table>
+  <table size="0" class="pui unbordered">
+    <thead>
+      <tr>
+        <th>Table.is-bordered</th>
+        <th>Table.is-centered</th>
+        <th>Table.is-centered</th>
+        <th>Table.is-centered</th>
+      </tr>
+    </thead>
+  </table>
+  <table size="0" class="pui hollow unbordered">
+    <thead>
+      <tr>
+        <th>Table.is-bordered</th>
+        <th>Table.is-centered</th>
+        <th>Table.is-centered</th>
+        <th>Table.is-centered</th>
+      </tr>
+    </thead>
+  </table>
+  <table size="0" class="pui">
+    <tr>
+      <th>Table.is-bordered</th>
+      <th>Table.is-centered</th>
+      <th>Table.is-centered</th>
+      <th>Table.is-centered</th>
+    </tr>
+  </table>
+  <table size="2" class="pui">
+    <thead>
+      <tr>
+        <th>Table.is-bordered</th>
+        <th>Table.is-centered</th>
+        <th>Table.is-centered</th>
+        <th>Table.is-centered</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="max-height: 50px;">
+        <td>Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. </td>
+        <td>Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. </td>
+        <td>Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. </td>
+        <td>Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. Thou hast had a good morning. </td>
+      </tr>
+      <tr>
+        <td>Thou hast had a good morning</td>
+        <td>Thou hast had a good afternoon</td>
+        <td>Thou hast had a good evening</td>
+        <td>Thou hast had a good night</td>
+      </tr>
+    </tbody>
+  </table>
+  <script></script>
+</body>
+</html>

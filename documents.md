@@ -166,7 +166,7 @@ TODO: `aria-label`目前仅在chrome中有效果，兼容Firefox
 |`at-after`|单选按钮位于文本之后|
 |`triangle`|设置标志为三角形|
 
-## Checkboxs
+## Checkboxes
 
 触发方式：`.pui-checkbox, input[type=checkbox]`。
 

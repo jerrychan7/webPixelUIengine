@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="../release/all.css" rel="stylesheet">
+  <style>
+    @font-face { font-family: dot_font; src: url(../fonts/DinkieBitmap-9pxDemo.woff2); }
+    @font-face { font-family: dot_font_code; src: url(../fonts/DinkieBitmap-9pxCodeDemo.woff2); }
+    @font-face { font-family: dot_font_italic; src: url(../fonts/DinkieBitmap-9pxItalicDemo.woff2); }
+    body {
+      font-family: dot_font_code, dot_font;
+      /* font-family: dot_font; */
+      font-size: 1pc;
+      text-rendering: geometricPrecision;
+      background-color: pink;
+      -webkit-font-smoothing: none;
+      /* filter: url(#crispify); */
+    }
+    .offscreen {
+      position: absolute;
+      left: -100000px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    i, em { font-family: dot_font_italic; }
+  </style>
+  <style>
+    textarea { display: inline-block; }
+  </style>
+</head>
+<body>
+  <textarea name="" id="" cols="30" rows="10" class="pui" placeholder="asdf"></textarea>
+  <textarea name="" id="" cols="30" rows="2" class="pui primary resizer" bsize="1" placeholder="asdf"></textarea>
+  <textarea name="" id="" cols="30" rows="2" class="pui primary resizer" bsize="2" placeholder="asdf"></textarea>
+  <textarea name="" id="" cols="30" rows="10" class="pui inline" placeholder="asdf"></textarea>
+  email: <input type="email" placeholder="asdf" class="pui"><br>
+  number: <input type="number" placeholder="asdf" class="pui"><br>
+  password: <input type="password" placeholder="asdf" class="pui"><br>
+  search: <input type="search" placeholder="asdf" class="pui"><br>
+  tel: <input type="tel" placeholder="asdf" class="pui"><br>
+  text: <input type="text" placeholder="asdf" class="pui"><br>
+  url: <input type="url" placeholder="asdf" class="pui"><br>
+  <br>
+  email: <input type="email" placeholder="asdf" class="pui primary" bsize="1"><br>
+  number: <input type="number" placeholder="asdf" class="pui primary" bsize="1"><br>
+  password: <input type="password" placeholder="asdf" class="pui primary" bsize="1"><br>
+  search: <input type="search" placeholder="asdf" class="pui primary" bsize="1"><br>
+  tel: <input type="tel" placeholder="asdf" class="pui primary" bsize="1"><br>
+  text: <input type="text" placeholder="asdf" class="pui primary" bsize="1"><br>
+  url: <input type="url" placeholder="asdf" class="pui primary" bsize="1"><br>
+  <br>
+  email: <input type="email" placeholder="asdf" class="pui error" readonly bsize="2" value="111"><br>
+  number: <input type="number" placeholder="asdf" class="pui error" readonly bsize="2" value="111"><br>
+  password: <input type="password" placeholder="asdf" class="pui error" readonly bsize="2" value="111"><br>
+  search: <input type="search" placeholder="asdf" class="pui error" readonly bsize="2" value="111"><br>
+  tel: <input type="tel" placeholder="asdf" class="pui error" readonly bsize="2" value="111"><br>
+  text: <input type="text" placeholder="asdf" class="pui error" readonly bsize="2" value="111"><br>
+  url: <input type="url" placeholder="asdf" class="pui error" readonly bsize="2" value="111"><br>
+  <br>
+  email: <input type="email" placeholder="asdf" class="pui disabled"><br>
+  number: <input type="number" placeholder="asdf" class="pui disabled"><br>
+  password: <input type="password" placeholder="asdf" class="pui disabled"><br>
+  search: <input type="search" placeholder="asdf" class="pui disabled"><br>
+  tel: <input type="tel" placeholder="asdf" class="pui disabled"><br>
+  text: <input type="text" placeholder="asdf" class="pui disabled"><br>
+  url: <input type="url" placeholder="asdf" class="pui disabled"><br>
+  <br>
+  email: <input type="email" placeholder="asdf" class="pui" disabled><br>
+  number: <input type="number" placeholder="asdf" class="pui" disabled><br>
+  password: <input type="password" placeholder="asdf" class="pui" disabled><br>
+  search: <input type="search" placeholder="asdf" class="pui" disabled><br>
+  tel: <input type="tel" placeholder="asdf" class="pui" disabled><br>
+  text: <input type="text" placeholder="asdf" class="pui" disabled><br>
+  url: <input type="url" placeholder="asdf" class="pui" disabled><br>
+  <br>
+</body>
+</html>

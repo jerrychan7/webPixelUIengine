@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="../release/all.css" rel="stylesheet">
+  <style>
+    @font-face { font-family: dot_font; src: url(../fonts/DinkieBitmap-9pxDemo.woff2); }
+    @font-face { font-family: dot_font_code; src: url(../fonts/DinkieBitmap-9pxCodeDemo.woff2); }
+    @font-face { font-family: dot_font_italic; src: url(../fonts/DinkieBitmap-9pxItalicDemo.woff2); }
+    body {
+      font-family: dot_font_code, dot_font;
+      font-size: 1pc;
+      text-rendering: geometricPrecision;
+      background-color: pink;
+      -webkit-font-smoothing: none;
+    }
+    i, em { font-family: dot_font_italic; }
+  </style>
+  <style>
+    #min-test > .pui-balloon {
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="pui-balloon">asdf</div>
+  <div class="pui-balloon from-right">from-right</div>
+  <div class="pui-balloon on-left">on-left<br>asdf<br>asdf</div>
+  <div class="pui-balloon on-left from-top">on-left<br>from-top<br>asdf</div>
+  <div class="pui-balloon on-top">on-top</div>
+  <div class="pui-balloon on-top from-right">on-top from-right</div>
+  <div class="pui-balloon on-right">on-right<br>asdf<br>asdf</div>
+  <div class="pui-balloon on-right from-top">on-right<br>from-top<br>asdf</div>
+  <div id="min-test">
+    <div class="pui-balloon"></div><div class="pui-balloon from-right"></div><div class="pui-balloon on-left"></div><div class="pui-balloon on-left from-top"></div><div class="pui-balloon on-top"></div><div class="pui-balloon on-top from-right"></div><div class="pui-balloon on-right"></div><div class="pui-balloon on-right from-top"></div>
+  </div>
+  <script>
+    // let i = 1;
+    // setInterval(() => {
+    //   document.body.style.setProperty("--start-at", `${i++ % 101}%`);
+    // }, 50);
+  </script>
+</body>
+</html>

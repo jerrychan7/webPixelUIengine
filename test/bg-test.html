@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="../release/all.css" rel="stylesheet">
+  <style>
+    @font-face { font-family: dot_font; src: url(../fonts/DinkieBitmap-9pxDemo.woff2); }
+    @font-face { font-family: dot_font_code; src: url(../fonts/DinkieBitmap-9pxCodeDemo.woff2); }
+    @font-face { font-family: dot_font_italic; src: url(../fonts/DinkieBitmap-9pxItalicDemo.woff2); }
+    body {
+      font-family: dot_font_code, dot_font;
+      font-size: 1pc;
+      text-rendering: geometricPrecision;
+      background-color: pink;
+      -webkit-font-smoothing: none;
+    }
+    i, em { font-family: dot_font_italic; }
+  </style>
+  <style></style>
+</head>
+<body>
+  <div class="pui-bg" style="--img: url(../test/img-test.png);">content</div>
+  <div class="pui-bg" style="--img: url(../test/img-test.png); --brightness: 1.3; --size: auto 100%; --color: #888;"><p>brightness="1.3" size="auto 100%"</p></div>
+  <div class="pui-bg no-repeat" style="--img: url(../test/img-test.png); --size: 25ch 2em; --color: #888;"><p>size="25ch 2em" no-repeat color="#888"</p></div>
+  <script></script>
+</body>
+</html>
