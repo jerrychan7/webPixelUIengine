@@ -5,34 +5,94 @@ select.pui {
   --bw: var(--bwidth, 4px);
   --bc: var(--bcolor, #000);
   --bgc: var(--bg-color, #fff);
+  --bw2: calc(2 * var(--bw));
   --nbw: calc(-1 * var(--bw));
+  --nbw2: calc(-2 * var(--bw));
   --mw: var(--mark-width, 3px);
-  --mw7: calc(7 * var(--mw));
   --mc: var(--mark-color, var(--bc));
-  border: 0;
+  border: var(--bw) var(--bc) solid;
   padding: 1ex 1ch;
-  padding-right: calc(1ch + var(--mw7) + var(--bw));
-  margin: var(--bw);
-  box-shadow: 0 var(--nbw) var(--bc), var(--bw) 0 var(--bc), 0 var(--bw) var(--bc), var(--nbw) 0 var(--bc);
+  padding-right: calc(1ch + 7 * var(--mw) + var(--bw));
   cursor: pointer;
   appearance: none;
-  box-sizing: border-box;
   background-color: var(--bgc);
-  background-image:
-    linear-gradient(var(--mc), var(--mc)),
-    url("data:image/svg+xml,%3Csvg width='7' height='6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon fill='%23000' points='0 0,0 2,1 2,1 4,2 4,2 5,3 5,3 6,4 6,4 5,5 5,5 4,6 4,6 2,7 2,7 0' /%3E%3C/svg%3E"),
-    linear-gradient(var(--bgc), var(--bgc));
-  background-repeat: no-repeat, no-repeat, no-repeat;
-  background-size: var(--mw7), var(--mw7), var(--mw7);
-  background-position: calc(100% - var(--bw)), calc(100% - var(--bw)), calc(100% - var(--bw));
-  background-blend-mode: lighten, darken;
-  &.inline {
-    width: calc(100% - var(--bw) * 2);
-    display: block;
+
+  --bgtp: linear-gradient(var(--mc), var(--mc));
+  --bgti:
+    var(--bgtp), var(--bgtp), var(--bgtp), var(--bgtp), var(--bgtp), var(--bgtp), var(--bgtp),
+    var(--bgtp), var(--bgtp), var(--bgtp), var(--bgtp), var(--bgtp), var(--bgtp), var(--bgtp),
+    var(--bgtp), var(--bgtp), var(--bgtp), var(--bgtp), var(--bgtp),
+    var(--bgtp), var(--bgtp), var(--bgtp), var(--bgtp), var(--bgtp),
+    var(--bgtp), var(--bgtp), var(--bgtp),
+    var(--bgtp);
+  --bgts:
+    var(--mw) var(--mw), var(--mw) var(--mw), var(--mw) var(--mw), var(--mw) var(--mw), var(--mw) var(--mw), var(--mw) var(--mw), var(--mw) var(--mw),
+    var(--mw) var(--mw), var(--mw) var(--mw), var(--mw) var(--mw), var(--mw) var(--mw), var(--mw) var(--mw), var(--mw) var(--mw), var(--mw) var(--mw),
+    var(--mw) var(--mw), var(--mw) var(--mw), var(--mw) var(--mw), var(--mw) var(--mw), var(--mw) var(--mw),
+    var(--mw) var(--mw), var(--mw) var(--mw), var(--mw) var(--mw), var(--mw) var(--mw), var(--mw) var(--mw),
+    var(--mw) var(--mw), var(--mw) var(--mw), var(--mw) var(--mw),
+    var(--mw) var(--mw);
+  --x0: calc(100% - var(--bw));
+  --x1: calc(var(--x0) - 1 * var(--mw));
+  --x2: calc(var(--x0) - 2 * var(--mw));
+  --x3: calc(var(--x0) - 3 * var(--mw));
+  --x4: calc(var(--x0) - 4 * var(--mw));
+  --x5: calc(var(--x0) - 5 * var(--mw));
+  --x6: calc(var(--x0) - 6 * var(--mw));
+  --y2: calc(50% - 0.5 * var(--mw));
+  --y0: calc(var(--y2) - 2 * var(--mw));
+  --y1: calc(var(--y2) - 1 * var(--mw));
+  --y3: calc(var(--y2) + 1 * var(--mw));
+  --y4: calc(var(--y2) + 2 * var(--mw));
+  --y5: calc(var(--y2) + 3 * var(--mw));
+  --bgtpos:
+    var(--x6) var(--y0), var(--x5) var(--y0), var(--x4) var(--y0), var(--x3) var(--y0), var(--x2) var(--y0), var(--x1) var(--y0), var(--x0) var(--y0),
+    var(--x6) var(--y1), var(--x5) var(--y1), var(--x4) var(--y1), var(--x3) var(--y1), var(--x2) var(--y1), var(--x1) var(--y1), var(--x0) var(--y1),
+    var(--x5) var(--y2), var(--x4) var(--y2), var(--x3) var(--y2), var(--x2) var(--y2), var(--x1) var(--y2),
+    var(--x5) var(--y3), var(--x4) var(--y3), var(--x3) var(--y3), var(--x2) var(--y3), var(--x1) var(--y3),
+    var(--x4) var(--y4), var(--x3) var(--y4), var(--x2) var(--y4),
+    var(--x3) var(--y5);
+  background-repeat: no-repeat;
+  &:not([size]), &[size='0'], &[size='1'] {
+    background-image: var(--bgti);
+    background-size: var(--bgts);
+    background-position: var(--bgtpos);
+    &:hover { --bg-color: var(--pui-normal-hover); }
+  }
+  &[size]:not([size='0'], [size='1']) > option:hover { background-color: #0001; }
+  &.inline { width: 100%; display: block; }
+  &[bsize='1'] {
+    margin: var(--bw);
+    border: 0;
+    box-shadow: 0 var(--nbw) var(--bc), var(--bw) 0 var(--bc), 0 var(--bw) var(--bc), var(--nbw) 0 var(--bc);
+    &.inline { width: calc(100% - var(--bw) * 2); }
+  }
+  &[bsize='2'] {
+    margin: var(--bw);
+    border-color: transparent;
+    padding: calc(1ex - var(--bw)) calc(1ch - var(--bw));
+    padding-right: calc(1ch + 7 * var(--mw));
+    box-shadow: 0 var(--nbw2) 0 var(--nbw) var(--bc), var(--bw2) 0 0 var(--nbw) var(--bc), 0 var(--bw2) 0 var(--nbw) var(--bc), var(--nbw2) 0 0 var(--nbw) var(--bc);
+    --bgbp: linear-gradient(var(--bc), var(--bc));
+    --bgbi: var(--bgbp), var(--bgbp), var(--bgbp), var(--bgbp);
+    --bgbs: var(--bw) var(--bw), var(--bw) var(--bw), var(--bw) var(--bw), var(--bw) var(--bw);
+    --1bw: calc(100% + var(--bw));
+    --bgbpos: var(--nbw) var(--nbw), var(--nbw) var(--1bw), var(--1bw) var(--nbw), var(--1bw) var(--1bw);
+    --x0: 100%;
+    background-image: var(--bgbi);
+    background-size: var(--bgbs);
+    background-position: var(--bgbpos);
+    &:not([size]), &[size='0'], &[size='1'] {
+      background-image: var(--bgti), var(--bgbi);
+      background-size: var(--bgts), var(--bgbs);
+      background-position: var(--bgtpos), var(--bgbpos);
+    }
+    &.inline { width: calc(100% - var(--bw) * 2); }
   }
   @each $color in primary, success, warning, error {
     &.$(color) {
       --bcolor: var(--pui-$(color));
+      --mark-color: var(--pui-$(color));
       outline-color: var(--pui-$(color)-hover);
     }
   }
