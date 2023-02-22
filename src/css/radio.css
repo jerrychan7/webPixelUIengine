@@ -12,48 +12,58 @@
     &.$(color) { --mark-color: var(--pui-$(color)); }
   }
   &::after {
-    color: var(--mark-color, inherit);
     content: var(--mark, '_');
+    color: var(--mark-color, inherit);
     --r: var(--mark-zoom, 1.2);
     font-size: calc(1em * var(--r));
-    absolute: l 0 b 0;
+    absolute: r 0 b 0;
     transform: translateY(calc(100% * (var(--r) - 1) / (2 * var(--r))));
   }
-  &[after] {
-    &::after { right: auto; }
-    &:checked::after {
-      content: var(--mark-after-checked, var(--mark-checked, '<'));
-    }
+  &:indeterminate::after {
+    content: var(--mark-indeterminate, var(--mark, '='));
   }
   &:checked::after {
     content: var(--mark-checked, '>');
     color: var(--mark-checked-color, var(--mark-color, inherit));
   }
+  &.at-after, &[at-after] {
+    &::after { right: auto; }
+    &:checked::after {
+      content: var(--mark-after-checked, var(--mark-checked, '<'));
+    }
+  }
   &:hover::after, &:focus::after {
     animation: pui-radio-blink .5s infinite steps(1);
   }
-  &[triangle] {
+  &.triangle, &[triangle] {
     &:checked { vertical-align: baseline; }
-    &:checked::after, &[after]:checked::after {
+    &:checked::after {
       content: '';
       --r: calc(1px * var(--mark-triangle-zoom, var(--mark-zoom, 2)));
+      --r2: calc(2 * var(--r));
+      --r3: calc(3 * var(--r));
+      --r4: calc(4 * var(--r));
+      --r5: calc(5 * var(--r));
+      --r6: calc(6 * var(--r));
+      --r7: calc(7 * var(--r));
       size: var(--r);
-      bottom: calc(7 * var(--r));
-      right: calc(6 * var(--r));
+      bottom: var(--r7);
+      right: var(--r6);
       box-shadow:
-        var(--r) var(--r), calc(2 * var(--r)) var(--r),
-        var(--r) calc(2 * var(--r)), calc(2 * var(--r)) calc(2 * var(--r)), calc(3 * var(--r)) calc(2 * var(--r)), calc(4 * var(--r)) calc(2 * var(--r)),
-        var(--r) calc(3 * var(--r)), calc(2 * var(--r)) calc(3 * var(--r)), calc(3 * var(--r)) calc(3 * var(--r)), calc(4 * var(--r)) calc(3 * var(--r)), calc(5 * var(--r)) calc(3 * var(--r)),
-        var(--r) calc(4 * var(--r)), calc(2 * var(--r)) calc(4 * var(--r)), calc(3 * var(--r)) calc(4 * var(--r)), calc(4 * var(--r)) calc(4 * var(--r)), calc(5 * var(--r)) calc(4 * var(--r)), calc(6 * var(--r)) calc(4 * var(--r)),
-        var(--r) calc(5 * var(--r)), calc(2 * var(--r)) calc(5 * var(--r)), calc(3 * var(--r)) calc(5 * var(--r)), calc(4 * var(--r)) calc(5 * var(--r)), calc(5 * var(--r)) calc(5 * var(--r)),
-        var(--r) calc(6 * var(--r)), calc(2 * var(--r)) calc(6 * var(--r)), calc(3 * var(--r)) calc(6 * var(--r)), calc(4 * var(--r)) calc(6 * var(--r)),
-        var(--r) calc(7 * var(--r)), calc(2 * var(--r)) calc(7 * var(--r));
+        var(--r) var(--r), var(--r2) var(--r),
+        var(--r) var(--r2), var(--r2) var(--r2), var(--r3) var(--r2), var(--r4) var(--r2),
+        var(--r) var(--r3), var(--r2) var(--r3), var(--r3) var(--r3), var(--r4) var(--r3), var(--r5) var(--r3),
+        var(--r) var(--r4), var(--r2) var(--r4), var(--r3) var(--r4), var(--r4) var(--r4), var(--r5) var(--r4), var(--r6) var(--r4),
+        var(--r) var(--r5), var(--r2) var(--r5), var(--r3) var(--r5), var(--r4) var(--r5), var(--r5) var(--r5),
+        var(--r) var(--r6), var(--r2) var(--r6), var(--r3) var(--r6), var(--r4) var(--r6),
+        var(--r) var(--r7), var(--r2) var(--r7);
       transform: none;
     }
-    &[after]:checked::after {
+    &.at-after, &[at-after] { &:checked::after {
       transform: rotateY(180deg);
-      right: calc(4 * var(--r));
-    }
+      right: auto;
+      left: var(--r6);
+    } }
   }
   &::before {
     content: '';
@@ -62,4 +72,4 @@
   }
   & > span { cursor: pointer; }
 }
-@keyframes pui-radio-blink { 0% { opacity: 0; } 50% { opacity: 1; } }
+@keyframes pui-radio-blink { 50% { opacity: 0; } }
