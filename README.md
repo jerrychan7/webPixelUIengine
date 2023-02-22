@@ -12,6 +12,19 @@
 
 感谢 [NES.css](https://github.com/nostalgic-css/NES.css) 和 [Pixel borders](https://github.com/NigelOToole/pixel-borders) 给予我的灵感。他们在使用 `box-shadow` 和 `svg` 方面出神入化，使我受益匪浅。
 
+对比于 [NES.css](https://github.com/nostalgic-css/NES.css)
+
+优点：
+
+* 更多的客制化
+* 不用在项目中导入scss类框架
+* 更丰富的样式
+
+缺点：
+
+* 更大的体积
+* 不支持IE ~~（IE已死，Chrome当立）~~
+
 我喜欢追求像素完美，换句话说，在高分辨率的屏幕中实现低分辨率的屏幕显示效果，一切的一切都是像素对齐的，而平滑的光影和动画在暗示着科技的进步，这就是一种艺术。
 为了实现这种效果，文字的像素和图片的像素应该尽可能的保持一致才是最和谐的表现形式。
 而将低分辨率的内容“邻近插值”到高分辨中似乎是一个麻烦的事情。
