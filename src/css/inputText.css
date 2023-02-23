@@ -37,9 +37,9 @@ textarea {
       background-position: var(--nbw) var(--nbw), var(--nbw) var(--1bw), var(--1bw) var(--nbw), var(--1bw) var(--1bw);
     }
     &.inline {
-      width: calc(100% - var(--bw) * 2);
       display: block;
       box-sizing: border-box;
+      &[bsize='1'], &[bsize='2'] { width: calc(100% - var(--bw) * 2); }
     }
     @each $color in primary, success, warning, error {
       &.$(color) {
@@ -64,6 +64,12 @@ textarea.pui.resizer::-webkit-resizer {
   background-image: var(--bgi), var(--bgi), var(--bgi), var(--bgi);
   background-size: var(--bw) var(--bw);
   background-position: 0 var(--bw2), var(--bw) var(--bw), var(--bw2) 0, var(--bw2) var(--bw2);
+}
+textarea.pui.resizer2::-webkit-resizer {
+  background-repeat: no-repeat;
+  background-image: var(--bgi), var(--bgi), var(--bgi);
+  background-size: var(--bw) var(--bw);
+  background-position: 0 var(--bw2), var(--bw2) 0, var(--bw2) var(--bw2);
 }
 
 input[type=search].pui::-webkit-search-cancel-button {

@@ -215,6 +215,7 @@ TODO: `aria-label`目前仅在chrome中有效果，兼容Firefox
 |`disabled`|使用 disabled 配色方案|
 |`inline`|使输入框占用一整行|
 |`resizer`|赋予缩放器样式<br>仅在`webkit`中的`textarea`元素生效|
+|`resizer2`|赋予缩放器样式2<br>仅在`webkit`中的`textarea`元素生效|
 
 除`class=disabled`外，`[disabled], :disabled`也会激活disabled主题配色。
 
@@ -264,6 +265,8 @@ TODO: `aria-label`目前仅在chrome中有效果，兼容Firefox
 |属性名|缺省值|可选值|说明|
 |---|---|---|---|
 |`bsize`|`0`|`0`, `1`, `2`|边框的圆角|
+
+TODO: `[size=2]`在移动端显示和`[size=1]`一致，需要显示标志。
 
 ## Background
 
