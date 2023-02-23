@@ -342,6 +342,11 @@ TODO: `aria-label`目前仅在chrome中有效果，兼容Firefox
 
 |class名|说明|
 |---|---|
+|`primary`|设置边框颜色为 primary 主题的常态色|
+|`success`|设置边框颜色为 success 主题的常态色|
+|`warning`|设置边框颜色为 warning 主题的常态色|
+|`error`|设置边框颜色为 error 主题的常态色|
+|`disabled`|设置边框颜色为 disabled 主题的常态色|
 |`.centered`|详见下方对于`centered`属性的描述|
 
 ### css变量
@@ -406,6 +411,11 @@ TODO: `aria-label`目前仅在chrome中有效果，兼容Firefox
 
 |class名|说明|
 |---|---|
+|`primary`|设置边框颜色为 primary 主题的常态色|
+|`success`|设置边框颜色为 success 主题的常态色|
+|`warning`|设置边框颜色为 warning 主题的常态色|
+|`error`|设置边框颜色为 error 主题的常态色|
+|`disabled`|设置边框颜色为 disabled 主题的常态色|
 |`unbordered`|去除表格最外层边框|
 |`hollow`|表格内的单元的边框的相交处镂空|
 |`unbordered-inside`|去除表格内单元的边框|

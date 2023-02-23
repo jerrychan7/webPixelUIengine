@@ -9,6 +9,10 @@
   word-break: break-word;
   background-color: var(--bgc);
   background-clip: padding-box;
+  min-width: 0;
+  @each $color in primary, success, warning, error, disabled {
+    &.$(color) { --bcolor: var(--pui-$(color)); }
+  }
   & > legend {
     padding: 0 1ch;
     /* 抵消padding带来的偏移，使得legend第一个字符对齐内容的第一个字符。 */

@@ -10,6 +10,10 @@ table.pui, .pui-table {
   background-color: var(--bgc);
   background-clip: padding-box;
   position: relative;
+  @each $color in primary, success, warning, error {
+    &.$(color) { --bcolor: var(--pui-$(color)); }
+  }
+  &.disabled { --bcolor: var(--pui-disabled-shadow); opacity: .6; }
   & th, & td {
     border: var(--bc) solid;
     border-width: 0 var(--bw) var(--bw) 0;
