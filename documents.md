@@ -310,11 +310,11 @@ TODO: `aria-label`目前仅在chrome中有效果，兼容Firefox
 
 |class名|说明|
 |---|---|
-|`primary`|设置边框颜色为 primary 主题的 hover 色|
-|`success`|设置边框颜色为 success 主题的 hover 色|
-|`warning`|设置边框颜色为 warning 主题的 hover 色|
-|`error`|设置边框颜色为 error 主题的 hover 色|
-|`disabled`|设置边框颜色为 disabled 主题的 hover 色|
+|`primary`|设置边框颜色为 primary 主题的常态色|
+|`success`|设置边框颜色为 success 主题的常态色|
+|`warning`|设置边框颜色为 warning 主题的常态色|
+|`error`|设置边框颜色为 error 主题的常态色|
+|`disabled`|设置边框颜色为 disabled 主题的常态色|
 
 ### css变量
 

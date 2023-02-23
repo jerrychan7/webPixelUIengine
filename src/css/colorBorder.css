@@ -7,8 +7,10 @@
   border: var(--bw) var(--bc) solid;
   background-color: var(--bgc);
   background-clip: padding-box;
+  display: inline-block;
+  padding: 1ex 1ch;
   @each $color in primary, success, warning, error, disabled {
-    &.$(color) { --bcolor: var(--pui-$(color)-hover); }
+    &.$(color) { --bcolor: var(--pui-$(color)); }
   }
   &[size='1'], &[size='2'] {
     border-color: transparent;
