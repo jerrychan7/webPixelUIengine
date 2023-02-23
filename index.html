@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WPUIE</title>
+  <style>
+    a {
+      text-decoration: none;
+      color: var(--pui-primary-hover);
+    }
+    a:hover {
+      text-decoration: underline;
+      color: var(--pui-primary-shadow);
+    }
+  </style>
+  <link href="./prism.css" rel="stylesheet">
+  <script src="./prism.js"></script>
+  <link href="./release/all.css" rel="stylesheet">
+  <style>
+    @font-face { font-family: dot_font; src: url(./fonts/DinkieBitmap-9pxDemo.woff2); }
+    @font-face { font-family: dot_font_code; src: url(./fonts/DinkieBitmap-9pxCodeDemo.woff2); }
+    @font-face { font-family: dot_font_italic; src: url(./fonts/DinkieBitmap-9pxItalicDemo.woff2); }
+    body {
+      font-family: dot_font_code, dot_font;
+      font-size: 1pc;
+      text-rendering: geometricPrecision;
+      -webkit-font-smoothing: none;
+    }
+    i, em { font-family: dot_font_italic; }
+  </style>
+  <style>
+    body {
+      display: flex;
+      padding: 0; margin: 0;
+    }
+    .sideBar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      background-color: #eee;
+      padding: 2ex 2ch;
+      border-right: 1px #ccc solid;
+      box-sizing: border-box;
+      min-width: fit-content;
+      /* Golden ratio! */
+      width: 38.2%;
+      overflow: auto;
+      overflow: overlay;
+      display: grid;
+    }
+    .sideBar > nav {
+      float: right;
+      height: auto;
+      align-self: center;
+      justify-self: end;
+    }
+    .sideBar > nav > h1 { font-size: 1.7em; margin: 0; }
+    .octocat {
+      display: block;
+      text-decoration: none !important;
+      color: inherit !important;
+      text-align: end;
+    }
+    .octocat > .pui-balloon { display: inline-block; vertical-align: top; text-align: center; }
+    .octocat > .pui-octocat { --pixel-width: 6px; margin-top: 2em; }
+    main {
+      max-width: min(980px, 61.8%);
+      padding: 2ex 4ch;
+    }
+    main > section { margin-top: 2em; }
+    main > section > fieldset > legend { font-size: 1.2em; font-weight: bold; }
+    main > section > fieldset { padding-bottom: 2.8em !important; }
+    #usage-btn fieldset a, #usage-btn fieldset button, #usage-btn fieldset input {
+      margin-top: 2ex !important;
+    }
+    .items > table.shelf { width: 100%; }
+    .items > table.shelf td:first-child {
+      text-align: end;
+      padding: 0;
+    }
+    .items > table.shelf td:not(:first-child) { padding: 0; }
+    #usage-radio td:not(:first-child) { border-bottom: 1px #ddd solid; }
+    #usage-input input { margin-top: 1ex; }
+    #usage-input td { word-break: keep-all; }
+    #usage-textarea textarea { margin-top: 1ex; }
+    #usage-select select { margin-top: 1ex; }
+    #usage-container > fieldset fieldset {
+      display: inline-block;
+    }
+    #usage-dialog > fieldset > div > section { margin-top: 1ex; }
+    #usage-table > fieldset > div > table {
+      display: inline-table;
+      vertical-align: middle;
+      margin-top: 1ex;
+    }
+    #usage-progress progress { margin-top: 1ex; }
+    #usage-balloon > fieldset .pui-balloon { display: inline-block; }
+    #usage-cb .pui-cb {
+      margin-top: 1ex;
+    }
+    #usage-bg > fieldset > div > .pui-bg { color:#fff; }
+    [id^=usage-] > fieldset, pre[class*=language-] { margin: 0; }
+    pre[class*=language-] { padding: 1ex 2ch; }
+    pre[class*=language-] > * {
+      font-family: dot_font_code;
+    }
+    [id^=usage-] > fieldset + * {
+      border: 4px #000 solid;
+      border-top: 0;
+      display: none;
+    }
+    .code-toolbar { position: relative; }
+    .code-toolbar > .toolbar {
+      position: absolute;
+      top: -4px; right: -4px;
+    }
+    [id^=usage-] > fieldset > div {
+      overflow: auto hidden;
+    }
+    [id^=usage-] > fieldset {
+      position: relative;
+    }
+    [id^=usage-] > fieldset > .toolbar {
+      position: absolute;
+      bottom: 0; right: 0;
+      border-bottom: 0; border-right: 0;
+    }
+    [id^=usage-] > fieldset > .toolbar > * {
+      border-bottom: 0;
+      margin-left: 1ch;
+    }
+    [id^=usage-] > fieldset > .toolbar > *:last-child { border-right: 0; }
+    #back2top {
+      position: fixed;
+      bottom: 2em;
+      right: 2em;
+      width: 1em;
+      height: 1em;
+      text-align: center;
+      padding: .5em;
+      filter: drop-shadow(0 4px 20px #0007);
+      transition: all 0.3s ease;
+    }
+    #back2top:active { filter: drop-shadow(0 0); }
+
+    #showNav { display: none; }
+    @media (max-width: 768px) {
+      body {
+        display: block;
+      }
+      .sideBar {
+        z-index: 9;
+        width: fit-content;
+        min-width: 0;
+        max-width: 68.2%;
+        position: fixed;
+        transform: translateX(-100%);
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+      #showNav {
+        display: block;
+        position: fixed;
+        bottom: 5em; right: 2em;
+        width: 2.5em; height: 2.5em;
+        text-align: center;
+        line-height: 1em;
+        transition: all 0.3s ease;
+      }
+      #showNav:active { filter: drop-shadow(0 0); }
+      #showNav > * {
+        font-family: dot_font;
+        display: inline-block;
+        font-size: 1.5em;
+        transform: translate(-0.1em, -0.05em) rotateZ(-90deg);
+      }
+      #sideBarCover {
+        height: 100vh;
+        width: 100vw;
+        background-color: #0004;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: block;
+        opacity: 0;
+        transition: all 0.3s ease;
+        pointer-events: none;
+      }
+      main {
+        max-width: 100vw;
+      }
+    }
+    @media (max-width: 480px) {
+      .sideBar > nav > ul { padding-left: 3ch; }
+      .sideBar > nav > ul ul { padding-left: 2ch; }
+    }
+    @media (max-width: 347px) {
+      .octocat > .pui-balloon { font-size: .7em; }
+      .octocat > .pui-octocat { --pixel-width: 4px; }
+    }
+  </style>
+</head>
+<body>
+  <aside class="sideBar">
+    <nav>
+      <h1><a href="https://github.com/jerrychan7/webPixelUIengine">WPUIE</a></h1>
+      <ul class="pui">
+        <li><a href="#about">About</a></li>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#usage">Usage</a>
+          <ul class="pui circle">
+            <li><a href="#usage-text">Texts</a></li>
+            <li><a href="#usage-btn">Buttons</a></li>
+            <li><a href="#usage-radio">Radios</a></li>
+            <li><a href="#usage-checkbox">Checkboxes</a></li>
+            <li><a href="#usage-input">Inputs</a></li>
+            <li><a href="#usage-textarea">Textarea</a></li>
+            <li><a href="#usage-select">Selects</a></li>
+            <li><a href="#usage-container">Containers</a></li>
+            <li><a href="#usage-dialog">Dialogs</a></li>
+            <li><a href="#usage-list">Lists</a></li>
+            <li><a href="#usage-table">Table</a></li>
+            <li><a href="#usage-progress">Progress</a></li>
+            <li><a href="#usage-balloon">Balloons</a></li>
+            <li><a href="#usage-pixel-art">Pixel-arts</a></li>
+            <li><a href="#usage-cb">Colored Border</a></li>
+            <li><a href="#usage-bg">Pixelated Background</a></li>
+            <li><a href="#usage-img">Pixelated Image</a></li>
+          </ul>
+        </li>
+      </ul>
+      <a class="octocat" href="https://github.com/jerrychan7/webPixelUIengine" target="_blank">
+        <b class="pui-balloon from-right">Fork me<br>on GitHub</b><i class="pui-octocat"></i>
+      </a>
+    </nav>
+  </aside>
+  <main>
+    <header></header>
+    <h1><a href="https://github.com/jerrychan7/webPixelUIengine">Web Pixel UI Engine (WPUIE)</a></h1>
+    <h2 id="about"><a href="#about">#</a> About</h2>
+    <p>WPUIE 皆在为像素风格网页或像素游戏提供组件。</p>
+    <h2 id="installation"><a href="#installation">#</a> Installation</h2>
+    <p>
+      目前仅有css文件，你可以<a href="./release/all.css" target="_blank" download>点击此处下载</a>。未来会加入js脚本以提供更丰富的操作。当然你可以仅仅使用css。<br/>
+      如果你没有更丰富的定制需求(例如页面中不同大小和颜色的border)，你可以使用<a href="https://nostalgic-css.github.io/NES.css/" target="_blank">NES.css</a>，其对网络更为友好。</p>
+    <h2 id="usage"><a href="#usage">#</a> Usage</h2>
+    <p>
+      下方提供了一些基础示例。详细请参考<a href="https://github.com/jerrychan7/webPixelUIengine/blob/master/documents.md" target="_blank">document</a>。
+    </p>
+    <section id="usage-text">
+      <fieldset class="pui">
+        <legend>Texts</legend>
+        <div class="items">
+          <span class="pui-text primary">Primary</span>
+          <span class="pui-text success">Success</span>
+          <span class="pui-text warning">Warning</span>
+          <span class="pui-text error">Error</span>
+          <span class="pui-text disabled">Disabled</span>
+        </div>
+      </fieldset>
+    </section>
+    <section id="usage-btn">
+      <fieldset class="pui">
+        <legend>Buttons</legend>
+        <div class="items">
+          <a href="#" class="pui-btn">Link</a>
+          <a href="#" class="pui-btn primary" size="1">Link</a>
+          <a href="#" class="pui-btn success" size="2">Link</a>
+          <a href="#" class="pui-btn warning" size="2">Warning</a>
+          <a href="#" class="pui-btn error" size="2">Error</a>
+          <a href="#" class="pui-btn disabled" size="2">Disabled</a>
+          <br/>
+          <button type="button" class="pui">Button</button>
+          <button type="button" class="pui primary" size="1">Primary</button>
+          <button type="button" class="pui success" size="2">Success</button>
+          <button type="button" class="pui warning" size="2">Warning</button>
+          <button type="button" class="pui error" size="2">Error</button>
+          <button type="button" class="pui" disabled size="2">Disabled</button>
+          <br/>
+          <input type="button" class="pui" value="Input button" />
+          <input type="button" class="pui primary" size="1" value="Primary" />
+          <input type="button" class="pui success" size="2" value="Success" />
+          <input type="button" class="pui warning" size="2" value="Warning" />
+          <input type="button" class="pui error" size="2" value="Error" />
+          <input type="button" class="pui" disabled size="2" value="Disabled" />
+          <br/>
+          <input type="file" class="pui primary" size="2" />
+        </div>
+      </fieldset>
+    </section>
+    <section id="usage-radio">
+      <fieldset class="pui">
+        <legend>Radios</legend>
+        <div class="items">
+          <table class="shelf">
+            <tr><td>Before&ensp;text:</td>
+              <td>
+                <label><input class="pui" type="radio" name="bie" checked />Yes</label>
+                <label><input class="pui" type="radio" name="bie" />No</label>
+              </td>
+            </tr>
+            <tr><td>After&ensp;&ensp;text:</td>
+              <td>
+                <label>Yes<input class="pui" type="radio" name="bier" at-after checked /></label>
+                <label>No<input class="pui" type="radio" name="bier" at-after /></label>
+              </td>
+            </tr>
+            <tr><td>Primary:</td>
+              <td>
+                <label><input class="pui primary" type="radio" name="biep" checked />Yes</label>
+                <label><input class="pui primary" type="radio" name="biep" />No</label>
+              </td>
+            </tr>
+            <tr><td>Indeterminate:</td>
+              <td>
+                <label><input class="pui triangle" type="radio" name="biei" />Yes</label>
+                <label><input class="pui triangle" type="radio" name="biei" />No</label>
+              </td>
+            </tr>
+            <tr><td>Size and Color:</td>
+              <td style="font-size: 2em; color: #00bcd4; --mark-color: #ff9800; --mark-checked-color: #9c27b0; --mark-zoom: .5; --mark: '='; --mark-checked: '->'; --mark-after-checked: '<-';">
+                <label><input class="pui" type="radio" name="bieb" checked />Yes</label>
+                <label>No<input class="pui" type="radio" name="bieb" at-after /></label>
+              </td>
+            </tr>
+            <tr><td>Work with triangle marker:</td>
+              <td style="font-size: 2em; color: #00bcd4; --mark-color: #ff9800; --mark-checked-color: #9c27b0; --mark-triangle-zoom: 4; --mark: '=';">
+                <label><input class="pui triangle" type="radio" name="biet" checked />Yes</label>
+                <label>No<input class="pui triangle" type="radio" name="biet" at-after /></label>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </fieldset>
+    </section>
+    <section id="usage-checkbox">
+      <fieldset class="pui">
+        <legend>Checkboxes</legend>
+        <div class="items">
+          <label><input class="pui" type="checkbox" checked />Normal</label>
+          <label style="color: #2196f3;"><input class="pui" type="checkbox" checked />Colored</label>
+          <label style="--mark-color: #ff9800;"><input class="pui error" type="checkbox" checked />Colored2</label>
+          <label style="color: #2196f3; --mark-color: #ff9800; --mark-check-color: #4caf50;"><input class="pui" type="checkbox" checked />Colored3</label>
+          <label style="color: #9c27b0; --mark-check-color: #4caf50;"><input class="pui" type="checkbox" animation />!CLICK ME! Animation!</label>
+          <label style="font-size: 2em; --mark-zoom: 3;"><input class="pui" type="checkbox" checked />Big</label>
+          <br/>
+          <label>Normal<input class="pui" type="checkbox" at-after checked /></label>
+          <label style="color: #2196f3;">Colored<input class="pui" type="checkbox" at-after checked /></label>
+          <label style="--mark-color: #ff9800;">Colored2<input class="pui error" type="checkbox" at-after checked /></label>
+          <label style="color: #2196f3; --mark-color: #ff9800; --mark-check-color: #4caf50;">Colored3<input class="pui" type="checkbox" at-after checked /></label>
+          <label style="color: #9c27b0; --mark-check-color: #4caf50;">!CLICK ME! Animation!<input class="pui" type="checkbox" animation at-after /></label>
+          <label style="font-size: 2em; --mark-zoom: 3;">Big<input class="pui" type="checkbox" at-after checked /></label>
+          <br/>
+          <label><input class="pui" type="checkbox" ind />Indeterminate</label>
+          <label>Indeterminate<input class="pui" type="checkbox" at-after ind /></label>
+          <label><input class="pui disc primary" type="checkbox" ind />Indeterminate</label>
+          <label><input class="pui circle" style="--mark-check-color: #9c27b0;" type="checkbox" ind />Indeterminate</label>
+          <label><input class="pui square" style="--mark-color: #ff9800; --mark-check-color: #9c27b0; --mark-indeterminate-color: #4caf50;" type="checkbox" ind />Indeterminate</label>
+          <label><input class="pui rect" type="checkbox" ind />Indeterminate</label>
+          <label><input class="pui anti" type="checkbox" ind />Indeterminate</label>
+          <script>
+            document.querySelectorAll("[ind]").forEach(i => i.indeterminate = true);
+          </script>
+        </div>
+      </fieldset>
+    </section>
+    <section id="usage-input">
+      <fieldset class="pui">
+        <legend>Inputs</legend>
+        <div class="items">
+          <table class="shelf">
+            <tr><td>email:    </td><td><input placeholder="placeholder" type="email" class="pui"></td></tr>
+            <tr><td>number:   </td><td><input placeholder="placeholder" bsize="1" type="number" class="pui primary"></td></tr>
+            <tr><td>password: </td><td><input placeholder="placeholder" bsize="2" type="password" class="pui success"></td></tr>
+            <tr><td>search:   </td><td><input placeholder="placeholder" bsize="2" type="search" class="pui error"></td></tr>
+            <tr><td>tel:      </td><td><input placeholder="placeholder" bsize="2" type="tel" class="pui warning"></td></tr>
+            <tr><td>url:      </td><td><input placeholder="placeholder" bsize="2" type="url" class="pui" style="--bcolor: #088;"></td></tr>
+            <tr><td>disabled: </td><td><input placeholder="placeholder" bsize="2" type="text" class="pui" disabled></td></tr>
+            <tr><td>text:     </td><td><input placeholder="placeholder" bsize="2" type="text" class="pui"></td></tr>
+          </table>
+          inline:   <input placeholder="placeholder" bsize="2" type="text" class="pui inline">
+        </div>
+      </fieldset>
+    </section>
+    <section id="usage-textarea">
+      <fieldset class="pui">
+        <legend>Textarea</legend>
+        <div class="items">
+          <textarea name="" id="" cols="23" rows="2" class="pui" placeholder="Normal"></textarea>
+          <textarea name="" id="" cols="23" rows="2" class="pui primary resizer" bsize="1" placeholder="Radius 1; Primary; resizer"></textarea>
+          <textarea name="" id="" cols="23" rows="2" class="pui success resizer2" bsize="2" placeholder="Radius 2; Success; resizer2"></textarea>
+          <textarea name="" id="" cols="23" rows="2" class="pui inline" placeholder="inline" bsize="2"></textarea>
+        </div>
+      </fieldset>
+    </section>
+    <section id="usage-select">
+      <fieldset class="pui">
+        <legend>Selects</legend>
+        <div class="items">
+          <select required class="pui">
+            <option value="" disabled selected hidden>Normal</option>
+            <option value="0">To be</option>
+            <option value="1">Not to be</option>
+          </select>
+          <select required class="pui primary" bsize="1">
+            <option value="" disabled selected hidden>Radius 1; Primary</option>
+            <option value="0">To be</option>
+            <option value="1">Not to be</option>
+          </select>
+          <select required class="pui success" bsize="2">
+            <option value="" disabled selected hidden>Radius 2; Success</option>
+            <option value="0">To be</option>
+            <option value="1">Not to be</option>
+          </select>
+          <select required class="pui warning" size="2" bsize="2">
+            <option value="" disabled selected hidden>Radius 2; Size 2; Warning</option>
+            <option value="0">Radius 2</option>
+            <option value="1">Size 2</option>
+            <option value="2">Warning</option>
+          </select>
+          <select required class="pui error inline" bsize="2">
+            <option value="" disabled selected hidden>Radius 2; Error; Inline</option>
+            <option value="0">To be</option>
+            <option value="1">Not to be</option>
+          </select>
+          <select required class="pui" disabled bsize="2">
+            <option value="" disabled selected hidden>Disabled</option>
+            <option value="0">To be</option>
+            <option value="1">Not to be</option>
+          </select>
+        </div>
+      </fieldset>
+    </section>
+    <section id="usage-container">
+      <fieldset class="pui">
+        <legend>Containers</legend>
+        <div class="items">
+          <fieldset class="pui">no-legend</fieldset>
+          <fieldset class="pui primary" size="1"><legend>legend</legend>text</fieldset>
+          <fieldset class="pui success" centered size="2"><legend>centered</legend>centered centered centered</fieldset>
+          <br/>
+          <fieldset class="pui error" size="2" style="overflow: auto; height: 100px; width: 150px;">
+            <legend>scroll</legend>
+            <p>long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long</p>
+            <p>longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong</p>
+          </fieldset>
+          <fieldset class="pui centered" size="2" style="--bwidth: 6px; --bcolor: #088; --bg-color: #0084;">
+            <legend>centered</legend>
+            class="pui centered" size="2" style="--bwidth: 6px; --bcolor: #088; --bg-color: #0084;"
+          </fieldset>
+        </div>
+      </fieldset>
+    </section>
+    <section id="usage-dialog">
+      <fieldset class="pui">
+        <legend>Dialogs</legend>
+        <div class="items">
+          <!-- Dialog -->
+          <section>
+            <button class="pui primary" size="2" onclick="document.getElementById('dialog-default').showModal();">
+              Open dialog
+            </button>
+            <dialog class="pui" size="0" id="dialog-default">
+              <form method="dialog">
+                <p class="title">Dialog</p>
+                <p>Alert: this is a dialog.</p>
+                <menu class="dialog-menu">
+                  <button class="pui" size=1>Cancel</button>
+                  <button class="pui primary" size=1>Confirm</button>
+                </menu>
+              </form>
+            </dialog>
+          </section>
+
+          <!-- Dark dialog -->
+          <section>
+            <button class="pui primary" size="2" onclick="document.getElementById('dialog-dark').showModal();">
+              Open dark dialog
+            </button>
+            <dialog class="pui" style="background-color: black; color: #fff; --bc: #fff;" id="dialog-dark">
+              <form method="dialog">
+                <p class="title">Dark dialog</p>
+                <p>Alert: this is a dialog.</p>
+                <menu class="dialog-menu">
+                  <button class="pui" size=1 style="color: #000; --bcolor: #fff;">Cancel</button>
+                  <button class="pui primary" size=1 style="--bcolor: #fff;">Confirm</button>
+                </menu>
+              </form>
+            </dialog>
+          </section>
+
+          <!-- Rounded dialog -->
+          <section>
+            <button class="pui primary" size="2" onclick="document.getElementById('dialog-rounded').showModal();">
+              Open rounded dialog
+            </button>
+            <dialog class="pui" size="2" id="dialog-rounded">
+              <form method="dialog">
+                <p class="title">Rounded dialog</p>
+                <p>Alert: this is a dialog.</p>
+                <menu class="dialog-menu">
+                  <button class="pui" size=1>Cancel</button>
+                  <button class="pui primary" size=1>Confirm</button>
+                </menu>
+              </form>
+            </dialog>
+          </section>
+
+          <!-- Dark and Rounded dialog -->
+          <section>
+            <button class="pui primary" size="2" onclick="document.getElementById('dialog-dark-rounded').showModal();">
+              Open dark and rounded dialog
+            </button>
+            <dialog class="pui" size="2" style="background-color: black; color: #fff; --bcolor: #fff;" id="dialog-dark-rounded">
+              <form method="dialog">
+                <p class="title">Dark and Rounded dialog</p>
+                <p>Alert: this is a dialog.</p>
+                <menu class="dialog-menu">
+                  <button class="pui" size=1 style="color: #000; --bcolor: #fff;">Cancel</button>
+                  <button class="pui primary" size=1 style="--bcolor: #fff;">Confirm</button>
+                </menu>
+              </form>
+            </dialog>
+          </section>
+
+          <!-- Dark and Rounded dialog -->
+          <section>
+            <button class="pui primary" size="2" onclick="document.getElementById('dialog-dark-rounded-long').showModal();">
+              Open dark, rounded and long dialog
+            </button>
+            <dialog class="pui" size="2" style="background-color: black; color: #fff; --bcolor: #fff;" id="dialog-dark-rounded-long">
+              <form method="dialog">
+                <p class="title">Dark and Rounded dialog</p>
+                <p>Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog.</p>
+                <p>Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog.</p>
+                <p>Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog.</p>
+                <p>Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog.</p>
+                <p>Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog.</p>
+                <p>Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog.</p>
+                <p>Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog.</p>
+                <p>Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog.</p>
+                <p>Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog. Alert: this is a dialog.</p>
+                <menu class="dialog-menu">
+                  <button class="pui" size=1 style="color: #000; --bcolor: #fff;">Cancel</button>
+                  <button class="pui primary" size=1 style="--bcolor: #fff;">Confirm</button>
+                </menu>
+              </form>
+            </dialog>
+          </section>
+        </div>
+      </fieldset>
+    </section>
+    <section id="usage-list">
+      <fieldset class="pui">
+        <legend>Lists</legend>
+        <div class="items">
+          <ul class="pui disc">
+            <li>Good morning.</li>
+            <li>Thou hast had a good night's sleep, I hope.</li>
+            <li>Thou hast had a good afternoon</li>
+            <li>a long long long long long long long long long long long long long long long long long long long long long text.</li>
+            <li>Good night.</li>
+          </ul>
+          <ul class="pui circle">
+            <li>Good morning.</li>
+            <li>Thou hast had a good night's sleep, I hope.</li>
+            <li>Thou hast had a good afternoon</li>
+            <li>a long long long long long long long long long long long long long long long long long long long long long text.</li>
+            <li>Good night.</li>
+          </ul>
+        </div>
+      </fieldset>
+    </section>
+    <section id="usage-table">
+      <fieldset class="pui">
+        <legend>Table</legend>
+        <div class="items">
+          <table class="pui" size="0">
+            <tr><th>Title</th><th>Title</th><th>Title</th></tr>
+            <tr><td>A</td><td>A long long A</td><td>A</td></tr>
+            <tr><td>A</td><td>A long long A</td><td>A</td></tr>
+          </table>
+          <table class="pui primary" size="1">
+            <tr><th>Title</th><th>Title</th><th>Title</th></tr>
+            <tr><td>A</td><td>A long long A</td><td>A</td></tr>
+            <tr><td>A</td><td>A long long A</td><td>A</td></tr>
+          </table>
+          <table class="pui hollow success" size="1">
+            <tr><th>Title</th><th>Title</th><th>Title</th></tr>
+            <tr><td>A</td><td>A long long A</td><td>A</td></tr>
+            <tr><td>A</td><td>A long long A</td><td>A</td></tr>
+          </table>
+          <table class="pui hollow warning" size="2">
+            <tr><th>Title</th><th>Title</th><th>Title</th></tr>
+            <tr><td>A</td><td>A long long A</td><td>A</td></tr>
+            <tr><td>A</td><td>A long long A</td><td>A</td></tr>
+          </table>
+          <table class="pui unbordered-inside error" size="2">
+            <tr><th>Title</th><th>Title</th><th>Title</th></tr>
+            <tr><td>A</td><td>A long long A</td><td>A</td></tr>
+            <tr><td>A</td><td>A long long A</td><td>A</td></tr>
+          </table>
+          <table class="pui hollow unbordered disabled" size="2">
+            <tr><th>Title</th><th>Title</th><th>Title</th></tr>
+            <tr><td>A</td><td>A long long A</td><td>A</td></tr>
+            <tr><td>A</td><td>A long long A</td><td>A</td></tr>
+          </table>
+        </div>
+      </fieldset>
+    </section>
+    <section id="usage-progress">
+      <fieldset class="pui">
+        <legend>Progress</legend>
+        <div class="items">
+          <progress size="0" class="pui" value="90" max="100"></progress>
+          <progress size="1" class="pui primary" value="80" max="100"></progress>
+          <progress size="2" class="pui warning" value="30" max="100"></progress>
+          <progress size="2" class="pui success hollow" value="50" max="100"></progress>
+          <progress size="2" class="pui error hollow" value="10" max="100"></progress>
+          <progress size="2" class="pui pattern" value="50" max="100"></progress>
+          <progress size="2" class="pui hollow pattern primary" value="50" max="100"></progress><br/>
+
+          <progress class="pui primary"></progress>
+          <progress size="2" class="pui warning"></progress>
+          <progress size="2" class="pui error hollow"></progress>
+          <progress size="2" class="pui pattern success"></progress>
+          <progress size="2" class="pui pattern primary hollow"></progress>
+        </div>
+      </fieldset>
+    </section>
+    <section id="usage-balloon">
+      <fieldset class="pui">
+        <legend>Balloons</legend>
+        <div class="items">
+          <div class="pui-balloon">Normal balloon</div>
+          <div class="pui-balloon from-right">from-right</div>
+          <div class="pui-balloon on-left">on-left<br>foo<br>foo</div>
+          <div class="pui-balloon on-left from-top">on-left<br>from-top<br>foo</div><br/>
+          <div class="pui-balloon on-top">on-top</div>
+          <div class="pui-balloon on-top from-right">on-top from-right</div>
+          <div class="pui-balloon on-right">on-right<br>foo<br>foo</div>
+          <div class="pui-balloon on-right from-top">on-right<br>from-top<br>foo</div><br/>
+          <div class="pui-balloon on-top" id="shark">! Shark !</div>
+          <style>
+            #shark {
+              background-image: linear-gradient(#3ab0ff 15%, #bafaff);
+              display: inline-block;
+              width: 150px;
+              text-align: center;
+              vertical-align: bottom;
+              margin-top: 1em;
+            }
+            #shark::after { --bgc: rgb(55, 66, 75); }
+          </style>
+          <script>
+            (() => {
+              let i = 0;
+              const frame = () => {
+                const shark = document.getElementById("shark");
+                if (!shark) return;
+                if (i % 100 == 0)
+                  if ((i / 50) & 2) shark.classList.add("from-right");
+                  else shark.classList.remove("from-right");
+                shark.style.setProperty("--start-at", (i++ % 100) + "%");
+                shark.style.boxShadow = `
+                  inset 0 ${-6 + -8 * (Math.sin(i / 70) + 1) / 2}px #ffdd37,
+                  inset 0 ${-6 + -8 * (Math.sin((i - 60) / 70) + 1) / 2}px #ceebff,
+                  inset 0 ${-6 + -8 * (Math.sin((i + 75) / 70) + 1) / 2}px #d3b72b`;
+                window.requestAnimationFrame(frame);
+              };
+              frame();
+            })();
+          </script>
+        </div>
+      </fieldset>
+    </section>
+    <section id="usage-pixel-art">
+      <fieldset class="pui">
+        <legend>Pixel-arts</legend>
+        <div class="items">
+          <i class="pui-octocat"></i>
+        </div>
+      </fieldset>
+    </section>
+    <section id="usage-cb">
+      <fieldset class="pui">
+        <legend>Colored Border</legend>
+        <div class="items">
+          <span class="pui-cb">Radius 0; Normal</span>
+          <span class="pui-cb primary" size="1">Radius 1; Primary</span>
+          <span class="pui-cb success" size="2">Radius 2; Success</span>
+        </div>
+      </fieldset>
+    </section>
+    <section id="usage-bg">
+      <fieldset class="pui">
+        <legend>Pixelated Background</legend>
+        <div class="items">
+          <div class="pui-bg" style="--img: url(../test/img-test.png);">content</div>
+          <div class="pui-bg" style="--img: url(../test/img-test.png); --brightness: 1.3; --size: auto 100%; --color: #888;"><p>brightness="1.3" size="auto 100%"</p></div>
+          <div class="pui-bg no-repeat" style="--img: url(../test/img-test.png); --size: 25ch 2em; --color: #888;"><p>size="25ch 2em" no-repeat color="#888"</p></div>
+        </div>
+      </fieldset>
+    </section>
+    <section id="usage-img">
+      <fieldset class="pui">
+        <legend>Pixelated Image</legend>
+        <div class="items">
+          <img style="width: 100px;" class="pui" src="./test/img-test.png" />
+          <br/>Original: <img src="./test/img-test.png" />
+        </div>
+      </fieldset>
+    </section>
+    <footer>
+      <p>Font in this page: <a href="https://3type.cn/fonts/dinkie_bitmap/">Dinkie Bitmap</a> (丁卯点阵体) 9px <sub><i>Demo</i></sub></p>
+    </footer>
+  </main>
+  <a id="back2top" class="pui-btn error" size="1">^</a>
+  <div id="sideBarCover"></div>
+  <button id="showNav" class="pui primary" size="1"><span>iii</span></button>
+  <script>
+    const showcode = function() {
+      const code = this.parentNode.parentNode.parentNode.querySelectorAll(".code-toolbar")[0];
+      if (!code) return;
+      code.style.display = code.style.display? null: "block";
+    };
+    const trimStartPreLine = (str) => {
+      str = str.split("\n");
+      while (str[0].trimStart() === "") str.shift();
+      while (str[str.length - 1]?.trimStart() === "") str.pop();
+      const spNum = str[0]?.search(/\S/) || -1;
+      if (~spNum) str = str.map(s => s.substring(spNum));
+      return str.join("\n");
+    }
+    document.querySelectorAll("[id^=usage-] > fieldset > .items").forEach(div => {
+      const fieldset = div.parentElement;
+      const pre = document.createElement("pre");
+      let text = "";
+      if (fieldset.parentNode.id == "usage-radio") {
+        const tds = div.querySelectorAll("td"), str = [];
+        for (let i = 0; i < tds.length; i += 2) {
+          str.push(trimStartPreLine(tds[i].innerHTML), trimStartPreLine(tds[i + 1].innerHTML));
+        }
+        text = str.join("\n");
+      }
+      else if (fieldset.parentNode.id == "usage-input") {
+        const tds = div.querySelectorAll("td"), str = [];
+        for (let i = 0; i < tds.length; i += 2) {
+          str.push(trimStartPreLine(tds[i].innerHTML) + trimStartPreLine(tds[i + 1].innerHTML));
+        }
+        text = str.join("\n") + "\n" + div.innerHTML.replace(/[\s\S]*<\/table>\s*/, "").trim();
+      }
+      else {
+        text = trimStartPreLine(div.innerHTML);
+      }
+      pre.innerHTML = `<code class="language-html">${text.replace(/</g, "&lt;")}</code>`;
+      fieldset.parentNode.insertBefore(pre, fieldset.nextSibling);
+
+      const toolbar = document.createElement("div");
+      toolbar.className = "toolbar";
+      fieldset.appendChild(toolbar);
+      const showCodeBtn = document.createElement("button");
+      showCodeBtn.type = "button";
+      showCodeBtn.innerHTML = "< >";
+      showCodeBtn.className = "pui primary show-code";
+      showCodeBtn.setAttribute("size", "1");
+      showCodeBtn.onclick = showcode;
+      const docBtn = document.createElement("a");
+      docBtn.innerHTML = "Document";
+      docBtn.className = "pui-btn success go2document";
+      docBtn.setAttribute("size", "1");
+      docBtn.setAttribute("target", "_blank");
+      docBtn.href = "https://github.com/jerrychan7/webPixelUIengine/blob/master/documents.md#" + ({
+        "usage-text": "texts",
+        "usage-btn": "bottons",
+        "usage-radio": "radios",
+        "usage-checkbox": "checkboxes",
+        "usage-input": "inputs--textarea",
+        "usage-textarea": "inputs--textarea",
+        "usage-select": "selects",
+        "usage-container": "containers",
+        "usage-dialog": "dialogs",
+        "usage-list": "lists",
+        "usage-table": "tables",
+        "usage-progress": "progress",
+        "usage-balloon": "balloons",
+        "usage-pixel-art": "pixel-arts---octocat",
+        "usage-cb": "colored-border",
+        "usage-bg": "background",
+        "usage-img": "image",
+      })[fieldset.parentNode.id];
+      toolbar.append(docBtn, showCodeBtn);
+    });
+    const mo = new MutationObserver((mrs) => {
+      mrs.forEach(mr => {
+        mr.addedNodes[0]?.querySelectorAll(".copy-to-clipboard-button").forEach(btn => {
+          btn.classList.add("pui");
+          btn.setAttribute("size", "1");
+        });
+      });
+    });
+    document.querySelectorAll("[id^=usage-]").forEach(e => mo.observe(e, { childList: true, }));
+
+    // 滚动条到页面顶部的水平和垂直距离
+    const getTopDistance = () => ({
+        x: Math.max(document.documentElement?.scrollLeft || 0, document.body?.scrollLeft || 0, window.scrollX || 0),
+        y: Math.max(document.documentElement?.scrollTop || 0, document.body?.scrollTop || 0, window.scrollY || 0)
+    });
+    const atTheTop = ({x, y} = getTopDistance()) => x <= 0 && y <= 0;
+    const goTop = (acceleration = 0.1) => {
+        let dis = getTopDistance(), {x, y} = dis;
+        // 如果距离不为零, 继续调用迭代本函数
+        if (atTheTop(dis)) return;
+        // 滚动距离 = 目前距离 / 速度, 因为距离原来越小, 速度是大于 1 的数, 所以滚动距离会越来越小
+        let speed = 1 + acceleration;
+        if (x / speed <= 10) x = 0;
+        if (y / speed <= 10) y = 0;
+        window.scrollTo(~~(x / speed), ~~(y / speed));
+        window.requestAnimationFrame(() => goTop(acceleration));
+    };
+
+    const back2topBtn = document.getElementById("back2top");
+    back2topBtn.onclick = () => goTop() && false;
+    back2topBtn.style.display = atTheTop()? "none": "block";
+    window.addEventListener("scroll", () => {
+        const scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+        back2topBtn.style.display = null;
+        back2topBtn.style.bottom = scrollTop > 100? null: "-2.5em";
+        back2topBtn.style.opacity = scrollTop > 100? null: "0";
+    });
+
+    const sideBarCover = document.getElementById("sideBarCover");
+    sideBarCover.onclick =
+    document.getElementById("showNav").onclick = () => {
+      const sideBar = document.getElementsByClassName("sideBar")[0];
+      // sideBar.style.display = sideBar.style.display? null: "grid";
+      // sideBarCover.style.display = sideBarCover.style.display? null: "block";
+      sideBar.style.transform = sideBarCover.style.opacity? null: "translateX(0)";
+      sideBar.style.opacity = sideBarCover.style.opacity? null: "1";
+      sideBarCover.style.pointerEvents = sideBarCover.style.opacity? null: "all";
+      sideBarCover.style.opacity = sideBarCover.style.opacity? null: "1";
+      return false;
+    };
+  </script>
+</body>
+</html>
