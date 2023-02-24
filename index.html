@@ -97,6 +97,10 @@
       display: inline-block;
     }
     #usage-dialog > fieldset > div > section { margin-top: 1ex; }
+    #usage-details > fieldset > .items details.pui {
+      margin: 1ex;
+      display: inline-block;
+    }
     #usage-table > fieldset > div > table {
       display: inline-table;
       vertical-align: middle;
@@ -233,6 +237,7 @@
             <li><a href="#usage-container">Containers</a></li>
             <li><a href="#usage-dialog">Dialogs</a></li>
             <li><a href="#usage-list">Lists</a></li>
+            <li><a href="#usage-details">Details</a></li>
             <li><a href="#usage-table">Table</a></li>
             <li><a href="#usage-progress">Progress</a></li>
             <li><a href="#usage-balloon">Balloons</a></li>
@@ -604,6 +609,30 @@
         </div>
       </fieldset>
     </section>
+    <section id="usage-details">
+      <fieldset class="pui">
+        <legend>Details</legend>
+        <div class="items">
+          <details class="pui"><summary>Details</summary><p>Content</p></details>
+          <details class="pui" open><summary>Details</summary><p>Content</p></details>
+          <details class="pui sideline" open>
+            <summary>sideline</summary>
+            <details class="pui sideline dashed" open>
+              <summary>dashed</summary>
+              <p>Content</p>
+            </details>
+            <details class="pui sideline dotted" open>
+              <summary>dotted</summary>
+              <p>Content</p>
+            </details>
+          </details>
+          <details class="pui sideline dashed pui-cb" size="2" open>
+            <summary>Work with</summary>
+            <p><a href="#usage-cb">Colored border</a></p>
+          </details>
+        </div>
+      </fieldset>
+    </section>
     <section id="usage-table">
       <fieldset class="pui">
         <legend>Table</legend>
@@ -821,6 +850,7 @@
         "usage-cb": "colored-border",
         "usage-bg": "background",
         "usage-img": "image",
+        "usage-details": "details",
       })[fieldset.parentNode.id];
       toolbar.append(docBtn, showCodeBtn);
     });

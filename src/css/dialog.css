@@ -12,7 +12,7 @@ dialog.pui, .pui-dialog {
   box-sizing: border-box;
   overflow: overlay;
   overflow: auto;
-  &::backdrop { background-color: #0005; }
+  &::backdrop { background-color: rgba(0, 0, 0, 0.35); }
   &[size='0'] { border-color: var(--bc); box-shadow: none; }
   &[size='2'] {
     box-shadow:

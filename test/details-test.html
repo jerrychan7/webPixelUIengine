@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="../release/all.css" rel="stylesheet">
+  <style>
+    @font-face { font-family: dot_font; src: url(../fonts/DinkieBitmap-9pxDemo.woff2); }
+    @font-face { font-family: dot_font_code; src: url(../fonts/DinkieBitmap-9pxCodeDemo.woff2); }
+    @font-face { font-family: dot_font_italic; src: url(../fonts/DinkieBitmap-9pxItalicDemo.woff2); }
+    body {
+      font-family: dot_font_code, dot_font;
+      font-size: 1pc;
+      text-rendering: geometricPrecision;
+      background-color: pink;
+      -webkit-font-smoothing: none;
+    }
+    i, em { font-family: dot_font_italic; }
+  </style>
+  <style></style>
+</head>
+<body>
+  <details class="pui" open style="margin-left: 50px;">
+    <summary>Summary</summary>
+    <p>Content</p>
+    <details class="pui" open>
+      <summary>Summary</summary>
+      <p>Content</p>
+    </details>
+    <details class="pui"><summary>close</summary></details>
+    <!-- empty -->
+    <!-- 好像在不存在summary时会始终显示marker -->
+    <details class="pui"></details>
+    <details class="pui" open></details>
+    <details class="pui" open><p>Content</p></details>
+  </details>
+  <details class="pui sideline" open style="margin-left: 50px;">
+    <summary>sideline</summary>
+    <p>Content</p>
+    <details class="pui" open>
+      <summary>Summary</summary>
+      <p>Content</p>
+    </details>
+    <details class="pui"><summary>close</summary></details>
+    <!-- empty -->
+    <!-- 好像在不存在summary时会始终显示marker -->
+    <details class="pui"></details>
+    <details class="pui" open></details>
+    <details class="pui" open><p>Content</p></details>
+  </details>
+  <details class="pui sideline dashed" open style="margin-left: 50px;">
+    <summary>sideline</summary>
+    <p>Content</p>
+    <details class="pui" open>
+      <summary>Summary</summary>
+      <p>Content</p>
+    </details>
+    <details class="pui"><summary>close</summary></details>
+    <!-- empty -->
+    <!-- 好像在不存在summary时会始终显示marker -->
+    <details class="pui"></details>
+    <details class="pui" open></details>
+    <details class="pui" open><p>Content</p></details>
+  </details>
+  <details class="pui sideline dotted" open style="margin-left: 50px;">
+    <summary>sideline</summary>
+    <p>Content</p>
+    <details class="pui" open>
+      <summary>Summary</summary>
+      <p>Content</p>
+    </details>
+    <details class="pui"><summary>close</summary></details>
+    <!-- empty -->
+    <!-- 好像在不存在summary时会始终显示marker -->
+    <details class="pui"></details>
+    <details class="pui" open></details>
+    <details class="pui" open><p>Content</p></details>
+  </details>
+  <details class="pui sideline dashed pui-cb" size="2" open style="margin-left: 50px; display: block;">
+    <summary>sideline</summary>
+    <p>Content</p>
+    <details class="pui" open>
+      <summary>Summary</summary>
+      <p>Content</p>
+    </details>
+    <details class="pui"><summary>close</summary></details>
+    <!-- empty -->
+    <!-- 好像在不存在summary时会始终显示marker -->
+    <details class="pui"></details>
+    <details class="pui" open></details>
+    <details class="pui" open><p>Content</p></details>
+  </details>
+  <script></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+
+details.pui {
+  --ms: var(--mark-size, 4px);
+  --mc: var(--mark-color, #000);
+  --mo: var(--mark-offset, -1pc);
+  --ps: calc(var(--ms) / 2);
+  --nps: calc(var(--ms) / -2);
+  --ps4: calc(var(--ms) / 4);
+  --nps4: calc(var(--ms) / -4);
+  --sc: var(--sideline-color, rgba(0, 0, 0, 0.35));
+  --pl: var(--padding-left, 0px);
+  padding-left: calc(4 * var(--ps) - var(--mo) + var(--pl));
+  position: relative;
+  & > summary {
+    list-style: none;
+    cursor: pointer;
+  }
+  & > summary::marker { display: none; }
+  & > summary::-webkit-details-marker { display: none; }
+  & > summary:first-of-type { list-style-type: none; }
+  & > summary > * { display: inline; }
+  & > summary::before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    relative: t calc(var(--ms) / -2);
+    left: calc(var(--mo) - var(--ps));
+    color: var(--mc);
+    background-color: var(--mc);
+    size: calc(3 * var(--ps));
+    margin-right: calc(-3 * var(--ps));
+    box-shadow:
+      var(--ps) 0, 0 var(--ps), var(--nps) 0, 0 var(--nps),
+      calc(-3 * var(--ps4)) calc(-5 * var(--ps4)) 0 var(--nps4),
+      calc(-3 * var(--ps4)) calc(5 * var(--ps4)) 0 var(--nps4),
+      calc(3 * var(--ps)) 0 0 var(--nps);
+  }
+  &[open] > summary::before { transform: rotateZ(90deg); }
+  &[open].sideline {
+    /* overflow-y: hidden; */
+    clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+  }
+  &[open].sideline > summary::after {
+    content: '';
+    absolute: l calc(4 * var(--ps) + var(--pl));
+    size: 0 100%;
+    /* height: -webkit-fill-available; */
+    border-left: var(--ps) var(--sc) solid;
+    display: block;
+  }
+  &[open].sideline.dashed > summary::after { border-left-style: dashed; }
+  &[open].sideline.dotted > summary::after {
+    width: var(--ps);
+    border: 0;
+    background: linear-gradient(var(--sc) 50%, transparent 0) 0 0 / var(--ps) var(--ms);
+  }
+  &.pui-cb {
+    --padding-left: 1ch;
+  }
+}

@@ -29,11 +29,13 @@ ul.pui, .pui-list {
     --ns4: calc(var(--ms) / -4);
     left: calc(var(--mo) - var(--s));
     size: calc(var(--ms) * 1.5);
+    margin-right: calc(var(--ms) * -1.5);
+    color: var(--mc);
     box-shadow:
-      var(--s) 0 var(--mc), 0 var(--s)var(--mc), var(--ns) 0 var(--mc), 0 var(--ns)var(--mc),
-      calc(-3 * var(--s4)) calc(-5 * var(--s4)) 0 var(--ns4) var(--mc),
-      calc(-3 * var(--s4)) calc(5 * var(--s4)) 0 var(--ns4) var(--mc),
-      calc(1.5 * var(--ms)) 0 0 var(--ns) var(--mc);
+      var(--s) 0, 0 var(--s), var(--ns) 0, 0 var(--ns),
+      calc(-3 * var(--s4)) calc(-5 * var(--s4)) 0 var(--ns4),
+      calc(-3 * var(--s4)) calc(5 * var(--s4)) 0 var(--ns4),
+      calc(1.5 * var(--ms)) 0 0 var(--ns);
   } }
   &.disclosure-closed > *, & > *.disclosure-closed { &::before { transform: rotateZ(90deg); } }
   &.none > *, & > *.none { &::before { box-shadow: none; background-color: transparent; } }
