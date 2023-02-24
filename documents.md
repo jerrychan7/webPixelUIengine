@@ -496,10 +496,10 @@ TODO: `[size=2]`在移动端显示和`[size=1]`一致，需要显示标志。
 |---|---|---|
 |`--bwidth`|`4px`|边框的宽度|
 |`--bcolor`|`#000`|边框的颜色|
-|`--bg-color`|`#fff`|背景的颜色<br>无法使用带有透明度的颜色|
+|`--bg-color`|`transparent`|背景的颜色|
+|`--toe-bcolor`|`--bcolor`|气泡的脚的边框色|
+|`--toe-bg-color`|`--bg-color`|气泡的脚的背景色|
 |`--start-at`|`2ch - --bwidth`|气泡的脚的偏移位置<br>当`from-right`时，从气泡的右边缘开始计算；<br>当`from-top`时，从气泡的下边缘开始计算。|
-
-TODO: 无法使用带有透明度的背景色
 
 ### 属性
 
