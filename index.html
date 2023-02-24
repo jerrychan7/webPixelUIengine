@@ -27,6 +27,7 @@
       font-size: 1pc;
       text-rendering: geometricPrecision;
       -webkit-font-smoothing: none;
+      background-color: #fff;
     }
     i, em { font-family: dot_font_italic; }
   </style>
@@ -116,9 +117,11 @@
       position: absolute;
       top: -4px; right: -4px;
     }
-    [id^=usage-] > fieldset > div {
+    [id^=usage-] > fieldset > .items {
       overflow: auto hidden;
     }
+    /* 微信内置浏览器在这里会抽风 故有此特例 */
+    #usage-container > fieldset > .items { overflow: visible; }
     [id^=usage-] > fieldset {
       position: relative;
     }
@@ -179,7 +182,7 @@
       #sideBarCover {
         height: 100vh;
         width: 100vw;
-        background-color: #0004;
+        background-color: rgba(0, 0, 0, 0.25);
         position: fixed;
         top: 0;
         left: 0;
@@ -446,7 +449,7 @@
             <p>long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long</p>
             <p>longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong</p>
           </fieldset>
-          <fieldset class="pui centered" size="2" style="--bwidth: 6px; --bcolor: #088; --bg-color: #0084;">
+          <fieldset class="pui centered" size="2" style="--bwidth: 6px; --bcolor: #088; --bg-color: rgba(0, 0, 136, 0.25);">
             <legend>centered</legend>
             class="pui centered" size="2" style="--bwidth: 6px; --bcolor: #088; --bg-color: #0084;"
           </fieldset>

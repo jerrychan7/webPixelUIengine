@@ -40,7 +40,7 @@
   }
   &[at-after], &.at-after { &::after { left: calc(-1 * var(--r)); } }
   &:checked::after {
-    --c: var(--mark-check-color,);
+    --c: var(--mark-check-color, );
     --f0: var(--r)var(--r3)var(--c),var(--r)var(--r4)var(--c);
     --f1: var(--f0),var(--r1)var(--r3)var(--c),var(--r1)var(--r4)var(--c);
     --f2: var(--f1),var(--r2)var(--r4)var(--c),var(--r2)var(--r5)var(--c);
@@ -58,7 +58,7 @@
     animation: pui-checkbox-draw .2s steps(1);
   } }
   &:indeterminate::after {
-    --c: var(--mark-indeterminate-color,var(--mark-check-color,));
+    --c: var(--mark-indeterminate-color,var(--mark-check-color, ));
     --mark: var(--r2)var(--r3)var(--c),var(--r3)var(--r4)var(--c),var(--r4)var(--r3)var(--c),var(--r5)var(--r4)var(--c);
     --bs: var(--box),var(--mark);
   }

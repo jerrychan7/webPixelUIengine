@@ -10,6 +10,7 @@
   background-color: var(--bgc);
   background-clip: padding-box;
   min-width: 0;
+  margin-inline: 0;
   @each $color in primary, success, warning, error, disabled {
     &.$(color) { --bcolor: var(--pui-$(color)); }
   }
@@ -24,13 +25,15 @@
     box-shadow:
       calc(-2 * var(--bw)) 0 0 var(--nbw) var(--bc),
       calc(2 * var(--bw)) 0 0 var(--nbw) var(--bc);
-    margin-inline: calc(var(--bw) + 2px);
+    /* margin-inline: calc(var(--bw) + 2px); */
+    margin-inline: var(--bw);
   }
   &[size='2'] {
     box-shadow:
       calc(-3 * var(--bw)) 0 0 calc(-2 * var(--bw)) var(--bc),
       calc(3 * var(--bw)) 0 0 calc(-2 * var(--bw)) var(--bc);
-    margin-inline: calc(var(--bw) + 2px);
+    /* margin-inline: calc(var(--bw) + 2px); */
+    margin-inline: var(--bw);
     border-image: linear-gradient(90deg, transparent 33.333%, var(--bc) 33.333%, var(--bc) 66.666%, transparent 0) 34%;
     background-repeat: no-repeat;
     background-color: transparent;

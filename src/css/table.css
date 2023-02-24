@@ -22,11 +22,15 @@ table.pui, .pui-table {
     &:last-child { border-right-width: 0; }
   }
   &.unbordered-inside { & th, & td { border: 0; } }
-  & :not(thead:not(:last-child)) tr:last-child { & th, & td {
-    border-bottom-width: 0;
-  } }
+  & tbody, & thead:last-child {
+    & tr:last-child {
+      & th, & td {
+        border-bottom-width: 0;
+      }
+    }
+  }
   &.unbordered { border: 0; }
-  &:not(.unbordered, [size='0'])::before {
+  &:not(.unbordered):not([size='0'])::before {
     content: '';
     absolute: t 0 l 0;
     size: 100%;
@@ -97,9 +101,13 @@ table.pui, .pui-table {
       }
       &:last-child::before { --br: 0 0; }
     }
-    & :not(thead:not(:last-child)) tr:last-child { & th, & td {
-      &::before { --bb: 0 0; }
-    } }
+    & tbody, & thead:last-child {
+      & tr:last-child {
+        & th, & td {
+          &::before { --bb: 0 0; }
+        }
+      }
+    }
   }
 }
 
@@ -111,7 +119,7 @@ table.pui, .pui-table {
       left: 0;
       top: 0;
     }
-    &:not(.unbordered, [size='0'])::before {
+    &:not(.unbordered):not([size='0'])::before {
       size: calc(100% - 2 * var(--bw));
       left: var(--bw);
       top: var(--bw);

@@ -10,6 +10,8 @@ dialog.pui, .pui-dialog {
   max-width: calc(100% - 2 * var(--bw));
   max-height: calc(100% - 2 * var(--bw));
   box-sizing: border-box;
+  overflow: overlay;
+  overflow: auto;
   &::backdrop { background-color: #0005; }
   &[size='0'] { border-color: var(--bc); box-shadow: none; }
   &[size='2'] {
