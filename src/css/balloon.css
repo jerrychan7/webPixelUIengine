@@ -1,5 +1,4 @@
 
-/* TODO: 带透明度的背景色 通过mask-border也许可以办到 */
 .pui-balloon {
   --bw: var(--bwidth, 4px);
   --bc: var(--bcolor, #000);

@@ -68,6 +68,8 @@
   &:indeterminate.circle::after { --mark: var(--circle); }
   &:indeterminate.rect::after { --mark: var(--circle),var(--r2)var(--r2)var(--c),var(--r5)var(--r5)var(--c),var(--r2)var(--r5)var(--c),var(--r5)var(--r2)var(--c); }
   &:indeterminate.square::after { --d: calc(1.5 * var(--r)); --d2: calc(var(--r2) + var(--d)); --mark: var(--d2)var(--d2)0 var(--d)var(--c); }
+  &:indeterminate.pattern::after { --mark: var(--r3)var(--r2)var(--c),var(--r5)var(--r2)var(--c),var(--r2)var(--r3)var(--c),var(--r4)var(--r3)var(--c),var(--r3)var(--r4)var(--c),var(--r5)var(--r4)var(--c),var(--r2)var(--r5)var(--c),var(--r4)var(--r5)var(--c); }
+  &:indeterminate.pattern.anti::after { --mark: var(--r2)var(--r2)var(--c),var(--r4)var(--r2)var(--c),var(--r3)var(--r3)var(--c),var(--r5)var(--r3)var(--c),var(--r2)var(--r4)var(--c),var(--r4)var(--r4)var(--c),var(--r3)var(--r5)var(--c),var(--r5)var(--r5)var(--c); }
   & > label { cursor: pointer; }
 }
 @keyframes pui-checkbox-draw {

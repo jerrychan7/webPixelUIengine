@@ -183,6 +183,12 @@ TODO: `aria-label`目前仅在chrome中有效果，兼容Firefox
 |`disabled`|使用 disabled 配色方案|
 |`at-after`|详见下方对于`at-after`属性的描述|
 |`animation`|详见下方对于`animation`属性的描述|
+|`disc`|不确定时，标志为实心圆|
+|`circle`|不确定时，标志为空心圆|
+|`square`|不确定时，标志为实心方形|
+|`rect`|不确定时，标志为空心方形|
+|`pattern`|不确定时，标志为网格状图案|
+|`anti`|不确定时，标志镜像（仅在默认图案和网格状图案时有效果）|
 
 ### css变量
 
@@ -396,15 +402,33 @@ TODO: `[size=2]`在移动端显示和`[size=1]`一致，需要显示标志。
 |---|---|
 |`disc`|列表项标志为实心圆|
 |`circle`|列表项标记为空心圆|
+|`square`|列表项标记为实心方形|
+|`rect`|列表项标记为空心方形|
+|`disclosure-open`|列表项标记为向右指的三角形|
+|`disclosure-closed`|列表项标记为向下指的三角形|
+|`none`|无列表项标记|
+|`nil`|列表项标记，同时无左侧缩进|
 
 默认样式为实心圆`disc`。
+
+你可以通过对列表中单个列表项的class进行设置来应用样式。例如：
+
+```html
+<ul class="pui circle">
+  <li class="square">list item</li>
+</ul>
+```
+
+将会显示`square`，而不是`circle`。
 
 ### css变量
 
 |变量名|缺省值|说明|
 |---|---|---|
-|`--mark-size`|`4px`|列表项标志的核心的大小（空心圆的内径）<br>总大小为核心大小*3|
+|`--mark-size`|`4px`|列表项标志的核心的大小（空心圆的内径）|
 |`--mark-color`|`#000`|列表项标志的颜色|
+|`--mark-offset`|`-1pc`|列表项标志的核心的偏移（从列表项左侧边缘开始）|
+|`--padding-left`|`4ch`|列表左侧的缩进|
 
 ## Tables
 

@@ -4,16 +4,37 @@ ul.pui, .pui-list {
   --nms: calc(-1 * var(--ms));
   --mc: var(--mark-color, #000);
   list-style-type: none;
-  & > *::before, &.disc > *::before {
-    content: '';
+  --pl: var(--padding-left, 4ch);
+  --mo: var(--mark-offset, -1pc);
+  padding-left: var(--pl);
+  &.nil { padding-left: 0; }
+  & > .nil { margin-left: calc(-1 * var(--pl)); }
+  &:not(.nil) > *:not(.nil)::before { content: ''; }
+  &:not(.nil) > *, &.disc > *, & > .disc { &::before {
     display: inline-block;
     size: var(--ms);
     vertical-align: middle;
-    relative: l -1pc t calc(var(--ms) / -2);
+    relative: l var(--mo) t calc(var(--ms) / -2);
     margin-right: var(--nms);
     color: var(--mc);
     background-color: var(--mc);
     box-shadow: var(--nms) 0, var(--ms) 0, 0 var(--nms), 0 var(--ms), 0 0 0 calc(var(--ms) / 2);
-  }
-  &.circle > *::before { background-color: transparent; }
+  } }
+  &.rect > *, & > .rect, &.circle > *, & > *.circle { &::before { background-color: transparent; } }
+  &.rect > *, & > *.rect, &.square > *, & > *.square { &::before { box-shadow: 0 0 0 calc(var(--ms) / 2); } }
+  &.disclosure-open > *, & > *.disclosure-open, &.disclosure-closed > *, & > *.disclosure-closed { &::before {
+    --s: calc(var(--ms) / 2);
+    --ns: calc(var(--ms) / -2);
+    --s4: calc(var(--ms) / 4);
+    --ns4: calc(var(--ms) / -4);
+    left: calc(var(--mo) - var(--s));
+    size: calc(var(--ms) * 1.5);
+    box-shadow:
+      var(--s) 0 var(--mc), 0 var(--s)var(--mc), var(--ns) 0 var(--mc), 0 var(--ns)var(--mc),
+      calc(-3 * var(--s4)) calc(-5 * var(--s4)) 0 var(--ns4) var(--mc),
+      calc(-3 * var(--s4)) calc(5 * var(--s4)) 0 var(--ns4) var(--mc),
+      calc(1.5 * var(--ms)) 0 0 var(--ns) var(--mc);
+  } }
+  &.disclosure-closed > *, & > *.disclosure-closed { &::before { transform: rotateZ(90deg); } }
+  &.none > *, & > *.none { &::before { box-shadow: none; background-color: transparent; } }
 }

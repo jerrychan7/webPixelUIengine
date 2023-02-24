@@ -70,11 +70,11 @@ input[type=file].pui,
 input[type=button].pui, input[type=submit].pui, input[type=reset].pui {
   &:hover {
     --bgc: var(--bg-color, var(--pui-normal-hover));
-    --iwbr: calc(var(--inset-width-br, var(--inset-width, 1.5 * var(--bw))));
+    --iwbr: var(--inset-width-br, var(--inset-width, calc(1.5 * var(--bw))));
   }
   &:active:not(.disabled, [disabled], :disabled) {
-    --iwbr: calc(var(--inset-width-br, var(--inset-width, 0px)));
-    --iwtl: calc(var(--inset-width-tl, var(--inset-width, 1.5 * var(--bw))));
+    --iwbr: var(--inset-width-br, var(--inset-width, 0px));
+    --iwtl: var(--inset-width-tl, var(--inset-width, calc(1.5 * var(--bw))));
     --default-br-color: var(--bgc);
     --default-tl-color: var(--pui-normal-shadow);
   }

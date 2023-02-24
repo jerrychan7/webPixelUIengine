@@ -57,7 +57,12 @@
       align-self: center;
       justify-self: end;
     }
-    .sideBar > nav > h1 { font-size: 1.7em; margin: 0; }
+    .sideBar > nav h1 { font-size: 1.7em; margin: 0 0 1rem; }
+    .sideBar > nav > ul ul {
+      --padding-left: calc(4ch - 2px + 1pc);
+      margin-left: -1pc;
+      border-left: 2px #ddd dashed;
+    }
     .octocat {
       display: block;
       text-decoration: none !important;
@@ -83,6 +88,7 @@
     }
     .items > table.shelf td:not(:first-child) { padding: 0; }
     #usage-radio td:not(:first-child) { border-bottom: 1px #ddd solid; }
+    #usage-checkbox label { display: inline-block; }
     #usage-input input { margin-top: 1ex; }
     #usage-input td { word-break: keep-all; }
     #usage-textarea textarea { margin-top: 1ex; }
@@ -196,8 +202,11 @@
       }
     }
     @media (max-width: 480px) {
-      .sideBar > nav > ul { padding-left: 3ch; }
-      .sideBar > nav > ul ul { padding-left: 2ch; }
+      .sideBar > nav > ul { --padding-left: 3ch; }
+      .sideBar > nav > ul ul {
+        --padding-left: calc(2ch - 2px + 1pc);
+        margin-left: -1pc;
+      }
     }
     @media (max-width: 347px) {
       .octocat > .pui-balloon { font-size: .7em; }
@@ -208,11 +217,11 @@
 <body>
   <aside class="sideBar">
     <nav>
-      <h1><a href="https://github.com/jerrychan7/webPixelUIengine">WPUIE</a></h1>
-      <ul class="pui">
+      <ul class="pui disclosure-open">
+        <li class="nil"><h1><a href="https://github.com/jerrychan7/webPixelUIengine">WPUIE</a></h1></li>
         <li><a href="#about">About</a></li>
         <li><a href="#installation">Installation</a></li>
-        <li><a href="#usage">Usage</a>
+        <li class="disclosure-closed"><a href="#usage">Usage</a>
           <ul class="pui circle">
             <li><a href="#usage-text">Texts</a></li>
             <li><a href="#usage-btn">Buttons</a></li>
@@ -322,16 +331,22 @@
                 <label><input class="pui triangle" type="radio" name="biei" />No</label>
               </td>
             </tr>
-            <tr><td>Size and Color:</td>
-              <td style="font-size: 2em; color: #00bcd4; --mark-color: #ff9800; --mark-checked-color: #9c27b0; --mark-zoom: .5; --mark: '='; --mark-checked: '->'; --mark-after-checked: '<-';">
-                <label><input class="pui" type="radio" name="bieb" checked />Yes</label>
-                <label>No<input class="pui" type="radio" name="bieb" at-after /></label>
+            <tr><td>Triangle:</td>
+              <td>
+                <label><input class="pui triangle" type="radio" name="biet" checked />Yes</label>
+                <label><input class="pui triangle" type="radio" name="biet" />No</label>
               </td>
             </tr>
-            <tr><td>Work with triangle marker:</td>
+            <tr><td>Mixed:</td>
+              <td style="font-size: 2em; color: #00bcd4; --mark-color: #ff9800; --mark-checked-color: #9c27b0; --mark-zoom: .5; --mark: '='; --mark-checked: '->'; --mark-after-checked: '<-';">
+                <label><input class="pui" type="radio" name="biem" checked />Yes</label>
+                <label>No<input class="pui" type="radio" name="biem" at-after /></label>
+              </td>
+            </tr>
+            <tr><td>Mixed2:</td>
               <td style="font-size: 2em; color: #00bcd4; --mark-color: #ff9800; --mark-checked-color: #9c27b0; --mark-triangle-zoom: 4; --mark: '=';">
-                <label><input class="pui triangle" type="radio" name="biet" checked />Yes</label>
-                <label>No<input class="pui triangle" type="radio" name="biet" at-after /></label>
+                <label><input class="pui triangle" type="radio" name="biem2" checked />Yes</label>
+                <label>No<input class="pui triangle" type="radio" name="biem2" at-after /></label>
               </td>
             </tr>
           </table>
@@ -356,13 +371,15 @@
           <label style="color: #9c27b0; --mark-check-color: #4caf50;">!CLICK ME! Animation!<input class="pui" type="checkbox" animation at-after /></label>
           <label style="font-size: 2em; --mark-zoom: 3;">Big<input class="pui" type="checkbox" at-after checked /></label>
           <br/>
-          <label><input class="pui" type="checkbox" ind />Indeterminate</label>
-          <label>Indeterminate<input class="pui" type="checkbox" at-after ind /></label>
-          <label><input class="pui disc primary" type="checkbox" ind />Indeterminate</label>
-          <label><input class="pui circle" style="--mark-check-color: #9c27b0;" type="checkbox" ind />Indeterminate</label>
-          <label><input class="pui square" style="--mark-color: #ff9800; --mark-check-color: #9c27b0; --mark-indeterminate-color: #4caf50;" type="checkbox" ind />Indeterminate</label>
-          <label><input class="pui rect" type="checkbox" ind />Indeterminate</label>
-          <label><input class="pui anti" type="checkbox" ind />Indeterminate</label>
+          Indeterminate:<br/>
+          <label><input class="pui" type="checkbox" ind />default</label>
+          <label><input class="pui disc primary" type="checkbox" ind />disc</label>
+          <label><input class="pui circle" style="--mark-check-color: #9c27b0;" type="checkbox" ind />circle</label>
+          <label><input class="pui square" style="--mark-color: #ff9800; --mark-check-color: #9c27b0; --mark-indeterminate-color: #4caf50;" type="checkbox" ind />square</label>
+          <label><input class="pui rect" type="checkbox" ind />rect</label>
+          <label><input class="pui anti" type="checkbox" ind />anti default</label>
+          <label><input class="pui pattern" type="checkbox" ind />pattern</label>
+          <label><input class="pui pattern anti" type="checkbox" ind />anti pattern</label>
           <script>
             document.querySelectorAll("[ind]").forEach(i => i.indeterminate = true);
           </script>
@@ -572,6 +589,17 @@
             <li>Thou hast had a good afternoon</li>
             <li>a long long long long long long long long long long long long long long long long long long long long long text.</li>
             <li>Good night.</li>
+          </ul>
+          <ul class="pui">
+            <li>default</li>
+            <li class="none">none</li>
+            <li class="disc">disc</li>
+            <li class="circle">circle</li>
+            <li class="square">square</li>
+            <li class="nil">nil</li>
+            <li class="rect">rect</li>
+            <li class="disclosure-open">disclosure-open</li>
+            <li class="disclosure-closed">disclosure-closed</li>
           </ul>
         </div>
       </fieldset>
