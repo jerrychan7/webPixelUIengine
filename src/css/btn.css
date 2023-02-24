@@ -30,10 +30,32 @@ input[type=file].pui::file-selector-button {
   utils-inherit-font-and-color: x;
   cursor: pointer;
 }
+input[type=file].pui::-webkit-file-upload-button {
+  utils-inherit-font-and-color: x;
+  cursor: pointer;
+}
 
 a.pui-btn, button.pui,
-input[type=file].pui::file-selector-button,
 input[type=button].pui, input[type=submit].pui, input[type=reset].pui {
+  display: inline-block;
+  position: relative;
+  padding: 1ex 1ch;
+  background-color: var(--bgc);
+  background-clip: padding-box;
+  border: var(--bw) solid var(--bc);
+  box-shadow: var(--ishadow);
+}
+/* 有些浏览器不支持::file-selector-button，放在上方会导致其他按钮样式失效 */
+input[type=file].pui::file-selector-button {
+  display: inline-block;
+  position: relative;
+  padding: 1ex 1ch;
+  background-color: var(--bgc);
+  background-clip: padding-box;
+  border: var(--bw) solid var(--bc);
+  box-shadow: var(--ishadow);
+}
+input[type=file].pui::-webkit-file-upload-button {
   display: inline-block;
   position: relative;
   padding: 1ex 1ch;
@@ -234,6 +256,7 @@ input[type=file].pui {
   position: relative;
   &.primary, &.success, &.error {
     &::file-selector-button { color: #fff; }
+    &::-webkit-file-upload-button { color: #fff; }
     &[fill], &.fill { &::before { color: #fff; } }
   }
   &.disabled, &[disabled], &:disabled { &::file-selector-button {
