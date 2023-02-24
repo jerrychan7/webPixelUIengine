@@ -14,6 +14,7 @@ module.exports = {
     require("postcss-nesting")({
       noIsPseudoSelector: true,
     }),
+    require("autoprefixer"),
     require("cssnano"),
   ],
 };
