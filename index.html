@@ -112,6 +112,7 @@
       margin-top: 1ex;
     }
     #usage-background .items > .pui-bg { color:#fff; }
+    #usage-image-border .items > .pui-ib { margin-bottom: 1ex; }
     [id^=usage-] > fieldset, pre[class*=language-] { margin: 0; }
     pre[class*=language-] { padding: 1ex 2ch; }
     pre[class*=language-] > * {
@@ -245,6 +246,7 @@
             <li><a href="#usage-colored-border">Colored Border</a></li>
             <li><a href="#usage-background">Pixelated Background</a></li>
             <li><a href="#usage-image">Pixelated Image</a></li>
+            <li><a href="#usage-image-border">Image Border</a></li>
           </ul>
         </li>
       </ul>
@@ -770,6 +772,19 @@
         <div class="items">
           <img style="width: 100px;" class="pui" src="./test/img-test.png" />
           <br/>Original: <img src="./test/img-test.png" />
+        </div>
+      </fieldset>
+    </section>
+    <section id="usage-image-border">
+      <fieldset class="pui">
+        <legend>Image Border</legend>
+        <div class="items">
+          <div class="pui-ib" style="--bimg: url(../test/img-test.png); --bw: 4;">
+            image border
+          </div>
+          <div class="pui-ib fill" style="--bimg: url(../test/img-test.png); --bw: 4;">
+            image border (fill center)
+          </div>
         </div>
       </fieldset>
     </section>

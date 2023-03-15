@@ -1,0 +1,21 @@
+
+.pui-ib {
+  --bw: var(--bwidth, 4);
+  --bwu: var(--bw-up, var(--bw));
+  --bwr: var(--bw-right, var(--bw));
+  --bwb: var(--bw-bottom, var(--bw));
+  --bwl: var(--bw-left, var(--bw));
+  image-rendering: pixelated;
+  border: transparent solid;
+  border-width:
+    calc(1px * var(--bwu))
+    calc(1px * var(--bwr))
+    calc(1px * var(--bwb))
+    calc(1px * var(--bwl));
+  border-image-source: var(--bimg);
+  border-image-slice: var(--bwu) var(--bwr) var(--bwb) var(--bwl);
+  border-image-repeat: repeat;
+  &.fill {
+    border-image-slice: fill var(--bwu) var(--bwr) var(--bwb) var(--bwl);
+  }
+}

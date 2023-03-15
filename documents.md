@@ -565,3 +565,24 @@ TODO: 缺少size属性实现
 |变量名|缺省值|说明|
 |---|---|---|
 |`--pixel-width`|`4px`|每个像素的大小|
+
+## Image Border
+
+图片边框。触发方式：`.pui-ib`
+
+### class
+
+|class名|说明|
+|---|---|
+|`fill`|边框是否填充中间区域|
+
+### css变量
+
+|变量名|缺省值|说明|
+|---|---|---|
+|`--bwidth`|`4`|边框的宽度，按图片像素计算|
+|`--bw-up`|`--bwidth`|上边框的宽度|
+|`--bw-right`|`--bwidth`|右边框的宽度|
+|`--bw-bottom`|`--bwidth`|下边框的宽度|
+|`--bw-left`|`--bwidth`|左边框的宽度|
+|`--bimg`||`border-image-source: var(--bimg);`<br>由于css变量限制，请使用`--bimg: url(/path/to/your/img)`来引用url<br>相对路径是相对于css文件来说的。如果需要相对于`html`文件，请在`html`中手动加入`<style>.pui-ib{border-image-image:var(--bimg);}</style>`|
