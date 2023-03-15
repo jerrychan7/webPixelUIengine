@@ -77,9 +77,9 @@
     }
     main > section { margin-top: 2em; }
     main > section > fieldset > legend { font-size: 1.2em; font-weight: bold; }
-    main > section > fieldset { padding-bottom: 2.8em !important; }
-    #usage-btn fieldset a, #usage-btn fieldset button, #usage-btn fieldset input {
-      margin-top: 2ex !important;
+    main > section > fieldset.pui { padding-bottom: 2.8em; }
+    #usage-bottons .items a, #usage-bottons .items button, #usage-bottons .items input {
+      margin-top: 2ex;
     }
     .items > table.shelf { width: 100%; }
     .items > table.shelf td:first-child {
@@ -87,31 +87,31 @@
       padding: 0;
     }
     .items > table.shelf td:not(:first-child) { padding: 0; }
-    #usage-radio td:not(:first-child) { border-bottom: 1px #ddd solid; }
-    #usage-checkbox label { display: inline-block; }
-    #usage-input input { margin-top: 1ex; }
-    #usage-input td { word-break: keep-all; }
-    #usage-textarea textarea { margin-top: 1ex; }
-    #usage-select select { margin-top: 1ex; }
-    #usage-container > fieldset fieldset {
+    #usage-radios .items td:not(:first-child) { border-bottom: 1px #ddd solid; }
+    #usage-checkboxes .items label { display: inline-block; }
+    #usage-input .items input { margin-top: 1ex; }
+    #usage-input .items td { word-break: keep-all; }
+    #usage-textarea .items textarea { margin-top: 1ex; }
+    #usage-selects .items select { margin-top: 1ex; }
+    #usage-containers .items fieldset {
       display: inline-block;
     }
-    #usage-dialog > fieldset > div > section { margin-top: 1ex; }
-    #usage-details > fieldset > .items details.pui {
+    #usage-dialogs .items > section { margin-top: 1ex; }
+    #usage-details .items details.pui {
       margin: 1ex;
       display: inline-block;
     }
-    #usage-table > fieldset > div > table {
+    #usage-tables .items > table {
       display: inline-table;
       vertical-align: middle;
       margin-top: 1ex;
     }
-    #usage-progress progress { margin-top: 1ex; }
-    #usage-balloon > fieldset .pui-balloon { display: inline-block; }
-    #usage-cb .pui-cb {
+    #usage-progress .items progress { margin-top: 1ex; }
+    #usage-balloons .items .pui-balloon { display: inline-block; }
+    #usage-colored-border .pui-cb {
       margin-top: 1ex;
     }
-    #usage-bg > fieldset > div > .pui-bg { color:#fff; }
+    #usage-background .items > .pui-bg { color:#fff; }
     [id^=usage-] > fieldset, pre[class*=language-] { margin: 0; }
     pre[class*=language-] { padding: 1ex 2ch; }
     pre[class*=language-] > * {
@@ -127,11 +127,11 @@
       position: absolute;
       top: -4px; right: -4px;
     }
-    [id^=usage-] > fieldset > .items {
+    [id^=usage-] .items {
       overflow: auto hidden;
     }
     /* 微信内置浏览器在这里会抽风 故有此特例 */
-    #usage-container > fieldset > .items { overflow: visible; }
+    #usage-containers .items { overflow: visible; }
     [id^=usage-] > fieldset {
       position: relative;
     }
@@ -227,24 +227,24 @@
         <li><a href="#installation">Installation</a></li>
         <li class="disclosure-closed"><a href="#usage">Usage</a>
           <ul class="pui circle">
-            <li><a href="#usage-text">Texts</a></li>
-            <li><a href="#usage-btn">Buttons</a></li>
-            <li><a href="#usage-radio">Radios</a></li>
-            <li><a href="#usage-checkbox">Checkboxes</a></li>
+            <li><a href="#usage-texts">Texts</a></li>
+            <li><a href="#usage-bottons">Buttons</a></li>
+            <li><a href="#usage-radios">Radios</a></li>
+            <li><a href="#usage-checkboxes">Checkboxes</a></li>
             <li><a href="#usage-input">Inputs</a></li>
             <li><a href="#usage-textarea">Textarea</a></li>
-            <li><a href="#usage-select">Selects</a></li>
-            <li><a href="#usage-container">Containers</a></li>
-            <li><a href="#usage-dialog">Dialogs</a></li>
-            <li><a href="#usage-list">Lists</a></li>
+            <li><a href="#usage-selects">Selects</a></li>
+            <li><a href="#usage-containers">Containers</a></li>
+            <li><a href="#usage-dialogs">Dialogs</a></li>
+            <li><a href="#usage-lists">Lists</a></li>
             <li><a href="#usage-details">Details</a></li>
-            <li><a href="#usage-table">Table</a></li>
+            <li><a href="#usage-tables">Table</a></li>
             <li><a href="#usage-progress">Progress</a></li>
-            <li><a href="#usage-balloon">Balloons</a></li>
-            <li><a href="#usage-pixel-art">Pixel-arts</a></li>
-            <li><a href="#usage-cb">Colored Border</a></li>
-            <li><a href="#usage-bg">Pixelated Background</a></li>
-            <li><a href="#usage-img">Pixelated Image</a></li>
+            <li><a href="#usage-balloons">Balloons</a></li>
+            <li><a href="#usage-pixel-arts---octocat">Pixel-arts</a></li>
+            <li><a href="#usage-colored-border">Colored Border</a></li>
+            <li><a href="#usage-background">Pixelated Background</a></li>
+            <li><a href="#usage-image">Pixelated Image</a></li>
           </ul>
         </li>
       </ul>
@@ -266,7 +266,7 @@
     <p>
       下方提供了一些基础示例。详细请参考<a href="https://github.com/jerrychan7/webPixelUIengine/blob/master/documents.md" target="_blank">document</a>。
     </p>
-    <section id="usage-text">
+    <section id="usage-texts">
       <fieldset class="pui">
         <legend>Texts</legend>
         <div class="items">
@@ -278,7 +278,7 @@
         </div>
       </fieldset>
     </section>
-    <section id="usage-btn">
+    <section id="usage-bottons">
       <fieldset class="pui">
         <legend>Buttons</legend>
         <div class="items">
@@ -307,7 +307,7 @@
         </div>
       </fieldset>
     </section>
-    <section id="usage-radio">
+    <section id="usage-radios">
       <fieldset class="pui">
         <legend>Radios</legend>
         <div class="items">
@@ -358,7 +358,7 @@
         </div>
       </fieldset>
     </section>
-    <section id="usage-checkbox">
+    <section id="usage-checkboxes">
       <fieldset class="pui">
         <legend>Checkboxes</legend>
         <div class="items">
@@ -413,14 +413,14 @@
       <fieldset class="pui">
         <legend>Textarea</legend>
         <div class="items">
-          <textarea name="" id="" cols="23" rows="2" class="pui" placeholder="Normal"></textarea>
-          <textarea name="" id="" cols="23" rows="2" class="pui primary resizer" bsize="1" placeholder="Radius 1; Primary; resizer"></textarea>
-          <textarea name="" id="" cols="23" rows="2" class="pui success resizer2" bsize="2" placeholder="Radius 2; Success; resizer2"></textarea>
-          <textarea name="" id="" cols="23" rows="2" class="pui inline" placeholder="inline" bsize="2"></textarea>
+          <textarea cols="23" rows="2" class="pui" placeholder="Normal"></textarea>
+          <textarea cols="23" rows="2" class="pui primary resizer" bsize="1" placeholder="Radius 1; Primary; resizer"></textarea>
+          <textarea cols="23" rows="2" class="pui success resizer2" bsize="2" placeholder="Radius 2; Success; resizer2"></textarea>
+          <textarea cols="23" rows="2" class="pui inline" placeholder="inline" bsize="2"></textarea>
         </div>
       </fieldset>
     </section>
-    <section id="usage-select">
+    <section id="usage-selects">
       <fieldset class="pui">
         <legend>Selects</legend>
         <div class="items">
@@ -458,7 +458,7 @@
         </div>
       </fieldset>
     </section>
-    <section id="usage-container">
+    <section id="usage-containers">
       <fieldset class="pui">
         <legend>Containers</legend>
         <div class="items">
@@ -478,7 +478,7 @@
         </div>
       </fieldset>
     </section>
-    <section id="usage-dialog">
+    <section id="usage-dialogs">
       <fieldset class="pui">
         <legend>Dialogs</legend>
         <div class="items">
@@ -577,7 +577,7 @@
         </div>
       </fieldset>
     </section>
-    <section id="usage-list">
+    <section id="usage-lists">
       <fieldset class="pui">
         <legend>Lists</legend>
         <div class="items">
@@ -628,12 +628,12 @@
           </details>
           <details class="pui sideline dashed pui-cb" size="2" open>
             <summary>Work with</summary>
-            <p><a href="#usage-cb">Colored border</a></p>
+            <p><a href="#usage-colored-border">Colored border</a></p>
           </details>
         </div>
       </fieldset>
     </section>
-    <section id="usage-table">
+    <section id="usage-tables">
       <fieldset class="pui">
         <legend>Table</legend>
         <div class="items">
@@ -690,7 +690,7 @@
         </div>
       </fieldset>
     </section>
-    <section id="usage-balloon">
+    <section id="usage-balloons">
       <fieldset class="pui">
         <legend>Balloons</legend>
         <div class="items">
@@ -736,7 +736,7 @@
         </div>
       </fieldset>
     </section>
-    <section id="usage-pixel-art">
+    <section id="usage-pixel-arts---octocat">
       <fieldset class="pui">
         <legend>Pixel-arts</legend>
         <div class="items">
@@ -744,7 +744,7 @@
         </div>
       </fieldset>
     </section>
-    <section id="usage-cb">
+    <section id="usage-colored-border">
       <fieldset class="pui">
         <legend>Colored Border</legend>
         <div class="items">
@@ -754,7 +754,7 @@
         </div>
       </fieldset>
     </section>
-    <section id="usage-bg">
+    <section id="usage-background">
       <fieldset class="pui">
         <legend>Pixelated Background</legend>
         <div class="items">
@@ -764,7 +764,7 @@
         </div>
       </fieldset>
     </section>
-    <section id="usage-img">
+    <section id="usage-image">
       <fieldset class="pui">
         <legend>Pixelated Image</legend>
         <div class="items">
@@ -815,7 +815,7 @@
       else {
         text = trimStartPreLine(div.innerHTML);
       }
-      pre.innerHTML = `<code class="language-html">${text.replace(/</g, "&lt;")}</code>`;
+      pre.innerHTML = `<code class="language-html">${text.replace(/=""/g, "").replace(/</g, "&lt;")}</code>`;
       fieldset.parentNode.insertBefore(pre, fieldset.nextSibling);
 
       const toolbar = document.createElement("div");
@@ -833,25 +833,9 @@
       docBtn.setAttribute("size", "1");
       docBtn.setAttribute("target", "_blank");
       docBtn.href = "https://github.com/jerrychan7/webPixelUIengine/blob/master/documents.md#" + ({
-        "usage-text": "texts",
-        "usage-btn": "bottons",
-        "usage-radio": "radios",
-        "usage-checkbox": "checkboxes",
         "usage-input": "inputs--textarea",
         "usage-textarea": "inputs--textarea",
-        "usage-select": "selects",
-        "usage-container": "containers",
-        "usage-dialog": "dialogs",
-        "usage-list": "lists",
-        "usage-table": "tables",
-        "usage-progress": "progress",
-        "usage-balloon": "balloons",
-        "usage-pixel-art": "pixel-arts---octocat",
-        "usage-cb": "colored-border",
-        "usage-bg": "background",
-        "usage-img": "image",
-        "usage-details": "details",
-      })[fieldset.parentNode.id];
+      }[fieldset.parentNode.id] || fieldset.parentNode.id.replace("usage-", ""));
       toolbar.append(docBtn, showCodeBtn);
     });
     const mo = new MutationObserver((mrs) => {
