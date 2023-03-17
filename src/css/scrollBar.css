@@ -1,0 +1,222 @@
+
+.pui-scroller, html.pui-scroller * {
+  /* overflow: auto; */
+  --sbw: var(--scrollbar-width, 8px);
+  --sbh: var(--scrollbar-height, var(--sbw));
+
+  --trc:  var(--track, transparent);
+  --etrc: var(--end-track, var(--trc));
+  --strc: var(--start-track, var(--trc));
+  --htrc:  var(--hover-track, var(--trc));
+  --hetrc: var(--hover-end-track, var(--htrc));
+  --hstrc: var(--hover-start-track, var(--htrc));
+  --atrc:  var(--active-track, var(--trc));
+  --aetrc: var(--active-end-track, var(--atrc));
+  --astrc: var(--active-start-track, var(--atrc));
+  --itrc:  var(--inactive-track, var(--trc));
+  --ietrc: var(--inactive-end-track, var(--itrc));
+  --istrc: var(--inactive-start-track, var(--itrc));
+
+  --btnbgc:  var(--btn-bg, var(--trc));
+  --ebtnbgc: var(--end-btn-bg, var(--btnbgc));
+  --sbtnbgc: var(--start-btn-bg, var(--btnbgc));
+  --hbtnbgc:  var(--hover-btn-bg, var(--btnbgc));
+  --hebtnbgc: var(--hover-end-btn-bg, var(--hbtnbgc));
+  --hsbtnbgc: var(--hover-start-btn-bg, var(--hbtnbgc));
+  --abtnbgc:  var(--active-btn-bg, var(--btnbgc));
+  --aebtnbgc: var(--active-end-btn-bg, var(--abtnbgc));
+  --asbtnbgc: var(--active-start-btn-bg, var(--abtnbgc));
+  --ibtnbgc:  var(--inactive-btn-bg, var(--btnbgc));
+  --iebtnbgc: var(--inactive-end-btn-bg, var(--ibtnbgc));
+  --isbtnbgc: var(--inactive-start-btn-bg, var(--ibtnbgc));
+
+  --btnc:  var(--btn, rgb(136, 136, 136, .5));
+  --ebtnc: var(--end-btn, var(--btnc));
+  --sbtnc: var(--start-btn, var(--btnc));
+  --hbtnc:  var(--hover-btn, var(--btn, rgb(187, 187, 187, .5)));
+  --hebtnc: var(--hover-end-btn, var(--hbtnc));
+  --hsbtnc: var(--hover-start-btn, var(--hbtnc));
+  --abtnc:  var(--active-btn, var(--btn, rgb(85, 85, 85, .5)));
+  --aebtnc: var(--active-end-btn, var(--abtnc));
+  --asbtnc: var(--active-start-btn, var(--abtnc));
+  --ibtnc:  var(--inactive-btn, var(--btnc));
+  --iebtnc: var(--inactive-end-btn, var(--ibtnc));
+  --isbtnc: var(--inactive-start-btn, var(--ibtnc));
+
+  --thc:  var(--thumb, rgb(119, 119, 119, .65));
+  --hthc: var(--hover-thumb, var(--thumb, rgb(187, 187, 187, .75)));
+  --athc: var(--active-thumb, var(--thumb, rgb(187, 187, 187, .5)));
+  --ithc: var(--inactive-thumb, var(--thc));
+
+  --cc: var(--corner, var(--trc));
+  --acc: var(--active-corner, var(--cc));
+  --icc: var(--inactive-corner, var(--cc));
+
+  --rc: var(--resizer, rgb(119, 119, 119, .5));
+
+  /* FireFox 按钮和滑块同色 thin时无按钮 */
+  scrollbar-color: var(--thc) var(--trc);
+  &:not(.has-btn) { scrollbar-width: thin; }
+  &:not(.resizer):not(.resizer2) { resize: none; }
+
+  /* webkit */
+  &::-webkit-scrollbar {
+    width: var(--sbw);
+    height: var(--sbh);
+  }
+  &::-webkit-scrollbar-track-piece {
+    &:decrement { background-color: var(--strc); }
+    &:increment { background-color: var(--etrc); }
+    &:hover {
+      &:decrement { background-color: var(--hstrc); }
+      &:increment { background-color: var(--hetrc); }
+    }
+    &:active {
+      &:decrement { background-color: var(--astrc); }
+      &:increment { background-color: var(--aetrc); }
+    }
+    &:window-inactive {
+      &:decrement { background-color: var(--istrc); }
+      &:increment { background-color: var(--ietrc); }
+    }
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--thc);
+    &:hover { background-color: var(--hthc); }
+    &:active { background-color: var(--athc); }
+    &:window-inactive { background-color: var(--ithc); }
+  }
+  &::-webkit-scrollbar-corner {
+    background-color: var(--cc);
+    &:active { background-color: var(--acc); }
+    &:window-inactive { background-color: var(--icc); }
+  }
+  &::-webkit-resizer { opacity: 0; }
+  &.resizer, &.resizer2 {
+    &::-webkit-resizer {
+      opacity: 1;
+      --bgi: linear-gradient(var(--rc), var(--rc));
+      background-repeat: no-repeat;
+      background-size: 25% 25%;
+    }
+  }
+  &.resizer::-webkit-resizer {
+    background-image: var(--bgi), var(--bgi), var(--bgi), var(--bgi);
+    background-position: 100% calc(100% / 3), 100% 100%, calc(100% / 3) 100%, calc(2 * 100% / 3) calc(2 * 100% / 3);
+  }
+  &.resizer2::-webkit-resizer {
+    background-image: var(--bgi), var(--bgi), var(--bgi);
+    background-position: 100% calc(100% / 3), 100% 100%, calc(100% / 3) 100%;
+  }
+  &.has-btn {
+    --sbw: var(--scrollbar-width, 14px);
+    &::-webkit-scrollbar-button {
+      --bgi: linear-gradient(var(--c), var(--c));
+      background-image:
+        var(--bgi),
+        var(--bgi), var(--bgi), var(--bgi),
+        var(--bgi), var(--bgi), var(--bgi), var(--bgi), var(--bgi),
+        var(--bgi), var(--bgi), var(--bgi), var(--bgi), var(--bgi),
+        var(--bgi), var(--bgi), var(--bgi), var(--bgi), var(--bgi), var(--bgi), var(--bgi),
+        var(--bgi), var(--bgi), var(--bgi), var(--bgi), var(--bgi), var(--bgi), var(--bgi);
+      background-repeat: no-repeat;
+      background-size: calc(100% / 7) calc(100% / 7);
+      --dx: 0;
+      --x0: calc((var(--dx) + 0) * 100% / 6);
+      --x1: calc((var(--dx) + 1) * 100% / 6);
+      --x2: calc((var(--dx) + 2) * 100% / 6);
+      --x3: calc((var(--dx) + 3) * 100% / 6);
+      --x4: calc((var(--dx) + 4) * 100% / 6);
+      --x5: calc((var(--dx) + 5) * 100% / 6);
+      --x6: calc((var(--dx) + 6) * 100% / 6);
+      --dy: 0;
+      --y0: calc((var(--dy) + 0) * 100% / 6);
+      --y1: calc((var(--dy) + 1) * 100% / 6);
+      --y2: calc((var(--dy) + 2) * 100% / 6);
+      --y3: calc((var(--dy) + 3) * 100% / 6);
+      --y4: calc((var(--dy) + 4) * 100% / 6);
+      --y5: calc((var(--dy) + 5) * 100% / 6);
+      --y6: calc((var(--dy) + 6) * 100% / 6);
+      /* up/left */
+      &:decrement {
+        background-position:
+                                                                         var(--x3) var(--y1),
+                                                    var(--x2) var(--y2), var(--x3) var(--y2), var(--x4) var(--y2),
+                               var(--x1) var(--y3), var(--x2) var(--y3), var(--x3) var(--y3), var(--x4) var(--y3), var(--x5) var(--y3),
+                               var(--x1) var(--y4), var(--x2) var(--y4), var(--x3) var(--y4), var(--x4) var(--y4), var(--x5) var(--y4),
+          var(--x0) var(--y5), var(--x1) var(--y5), var(--x2) var(--y5), var(--x3) var(--y5), var(--x4) var(--y5), var(--x5) var(--y5), var(--x6) var(--y5),
+          var(--x0) var(--y6), var(--x1) var(--y6), var(--x2) var(--y6), var(--x3) var(--y6), var(--x4) var(--y6), var(--x5) var(--y6), var(--x6) var(--y6);
+        --c: var(--sbtnc); background-color: var(--sbtnbgc);
+        &:hover { --c: var(--hsbtnc); background-color: var(--hsbtnbgc); }
+        &:active { --c: var(--asbtnc); background-color: var(--asbtnbgc); }
+        &:window-inactive { --c: var(--isbtnc); background-color: var(--isbtnbgc); }
+      }
+      /* bottom/right */
+      &:increment {
+        background-position:
+          var(--x0) var(--y0), var(--x1) var(--y0), var(--x2) var(--y0), var(--x3) var(--y0), var(--x4) var(--y0), var(--x5) var(--y0), var(--x6) var(--y0),
+          var(--x0) var(--y1), var(--x1) var(--y1), var(--x2) var(--y1), var(--x3) var(--y1), var(--x4) var(--y1), var(--x5) var(--y1), var(--x6) var(--y1),
+                               var(--x1) var(--y2), var(--x2) var(--y2), var(--x3) var(--y2), var(--x4) var(--y2), var(--x5) var(--y2),
+                               var(--x1) var(--y3), var(--x2) var(--y3), var(--x3) var(--y3), var(--x4) var(--y3), var(--x5) var(--y3),
+                                                    var(--x2) var(--y4), var(--x3) var(--y4), var(--x4) var(--y4),
+                                                                         var(--x3) var(--y5);
+        --c: var(--ebtnc); background-color: var(--ebtnbgc);
+        &:hover { --c: var(--hebtnc); background-color: var(--hebtnbgc); }
+        &:active { --c: var(--aebtnc); background-color: var(--aebtnbgc); }
+        &:window-inactive { --c: var(--iebtnc); background-color: var(--iebtnbgc); }
+      }
+      &:vertical { height: var(--sbw); }
+      &:horizontal {
+        width: var(--sbh);
+        &:decrement {
+          background-position:
+                                                                                                var(--x5) var(--y0), var(--x6) var(--y0),
+                                                      var(--x3) var(--y1), var(--x4) var(--y1), var(--x5) var(--y1), var(--x6) var(--y1),
+                                 var(--x2) var(--y2), var(--x3) var(--y2), var(--x4) var(--y2), var(--x5) var(--y2), var(--x6) var(--y2),
+            var(--x1) var(--y3), var(--x2) var(--y3), var(--x3) var(--y3), var(--x4) var(--y3), var(--x5) var(--y3), var(--x6) var(--y3),
+                                 var(--x2) var(--y4), var(--x3) var(--y4), var(--x4) var(--y4), var(--x5) var(--y4), var(--x6) var(--y4),
+                                                      var(--x3) var(--y5), var(--x4) var(--y5), var(--x5) var(--y5), var(--x6) var(--y5),
+                                                                                                var(--x5) var(--y6), var(--x6) var(--y6);
+        }
+        &:increment {
+          background-position:
+            var(--x0) var(--y0), var(--x1) var(--y0),
+            var(--x0) var(--y1), var(--x1) var(--y1), var(--x2) var(--y1), var(--x3) var(--y1),
+            var(--x0) var(--y2), var(--x1) var(--y2), var(--x2) var(--y2), var(--x3) var(--y2), var(--x4) var(--y2),
+            var(--x0) var(--y3), var(--x1) var(--y3), var(--x2) var(--y3), var(--x3) var(--y3), var(--x4) var(--y3), var(--x5) var(--y3),
+            var(--x0) var(--y4), var(--x1) var(--y4), var(--x2) var(--y4), var(--x3) var(--y4), var(--x4) var(--y4),
+            var(--x0) var(--y5), var(--x1) var(--y5), var(--x2) var(--y5), var(--x3) var(--y5),
+            var(--x0) var(--y6), var(--x1) var(--y6);
+        }
+      }
+    }
+    &.double-start, &.double-end, &.double { &::-webkit-scrollbar-button { display: block; } }
+    &.vdouble-start, &.vdouble-end, &.vdouble { &::-webkit-scrollbar-button:vertical { display: block; } }
+    &.hdouble-start, &.hdouble-end, &.hdouble { &::-webkit-scrollbar-button:horizontal { display: block; } }
+    &.double-start::-webkit-scrollbar-button:end,
+    &.double-end::-webkit-scrollbar-button:start,
+    &.single-start::-webkit-scrollbar-button:end,
+    &.single-end::-webkit-scrollbar-button:start,
+
+    &.vdouble-start::-webkit-scrollbar-button:vertical:end,
+    &.vdouble-end::-webkit-scrollbar-button:vertical:start,
+    &.vsingle-start::-webkit-scrollbar-button:vertical:end,
+    &.vsingle-end::-webkit-scrollbar-button:vertical:start,
+
+    &.hdouble-start::-webkit-scrollbar-button:horizontal:end,
+    &.hdouble-end::-webkit-scrollbar-button:horizontal:start,
+    &.hsingle-start::-webkit-scrollbar-button:horizontal:end,
+    &.hsingle-end::-webkit-scrollbar-button:horizontal:start,
+
+    &.vnone::-webkit-scrollbar-button:vertical,
+    &.hnone::-webkit-scrollbar-button:horizontal { display: none; }
+    &.double-start, &.double-end, &.double, &.vdouble, &.hdouble, &.vdouble-start, &.hdouble-start, &.vdouble-end, &.hdouble-end { &::-webkit-scrollbar-button {
+      &:vertical:start:increment { --dy: 1; }
+      &:vertical:end:decrement { --dy: -1; }
+      &:horizontal:start:increment { --dx: 1; }
+      &:horizontal:end:decrement { --dx: -1; }
+    } }
+  }
+}
+
+.pui-scroller { overflow: auto; }

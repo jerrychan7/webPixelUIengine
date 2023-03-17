@@ -121,7 +121,7 @@ TODO: `button[size=2]`的边框不占用`margin`。
 对于文件选择按钮：
 
 |属性名|类型|说明|
-|---|---|---|---|
+|---|---|---|
 |`fill`||按钮占据文件名回显的空间<br>在Firefox中和`size=2`一起使用显示有问题|
 |`aria-label`|字符串|label的内容<br>仅在`fill`模式中运行<br>目前仅在chrome中有效果|
 
@@ -586,3 +586,48 @@ TODO: 缺少size属性实现
 |`--bw-bottom`|`--bwidth`|下边框的宽度|
 |`--bw-left`|`--bwidth`|左边框的宽度|
 |`--bimg`||`border-image-source: var(--bimg);`<br>由于css变量限制，请使用`--bimg: url(/path/to/your/img)`来引用url<br>相对路径是相对于css文件来说的。如果需要相对于`html`文件，请在`html`中手动加入`<style>.pui-ib{border-image-image:var(--bimg);}</style>`|
+
+## Scroll Bar
+
+滚动条。触发方式：`.pui-scroller`
+
+### class
+
+|class名|说明|
+|---|---|
+|`resizer`|显示resizer。仅`webkit`有样式。|
+|`resizer2`|显示resizer。仅`webkit`有样式2。|
+|`has-btn`|指示是否有上下按钮。当没有按钮时，Firefox中会显示窄类型的边框。|
+|`[v\|h\|]double[-start\|-end\|]`|仅`webkit`有效，指示是否是双按钮。<br>可选项`[v\|h\|]`：`v`时为垂直；`h`为水平；空为水平和垂直。<br>可选项`[-start\|-end\|]`：`-start`表示按钮在滑块上面(垂直)/左边(水平)；`-end`表示按钮在滑块下面(垂直)/右边(水平)；空表示所有。|
+|`[v\|h\|]single[-start\|-end]`|仅`webkit`有效，指示是否是单按钮。<br>可选项`[v\|h\|]`：`v`时为垂直；`h`为水平；空为水平和垂直。<br>可选项`[-start\|-end\|]`：`-start`表示按钮在滑块上面(垂直)/左边(水平)；`-end`表示按钮在滑块下面(垂直)/右边(水平)。|
+|`[v\|h]none`|仅`webkit`有效，指示有无按钮。<br>可选项`[v\|h]`：`v`时为垂直；`h`为水平。|
+
+### css变量
+
+|变量名|缺省值|说明|
+|---|---|---|
+|`--scrollbar-width`| if `.has-btn`: `14px`<br>else: `8px`|仅`webkit`有效，滚动条的宽度|
+|`--scrollbar-height`|`--scrollbar-width`|仅`webkit`有效，滚动条的高度|
+|`--[hover-\|active-\|inactive-\|][start-\|end-\|]track`|`transparent`|滑轨背景色。可选项参考下方。|
+|`--[hover-\|active-\|inactive-\|][start-\|end-\|]btn-bg`|`--track`|仅`webkit`有效，按钮背景色。<br>可选项`[start-\|end-\|]`：`start`上/左箭头；`end`下/右箭头；空时指全部。<br>其他可选项参考下方。|
+|`--[hover-\|active-\|inactive-\|][start-\|end-\|]btn`|`rgb(136, 136, 136, .5)`<br>`hover`: `rgb(187, 187, 187, .5)`<br>`active`: `rgb(85, 85, 85, .5)`<br>`inactive`: `--btn`|仅`webkit`有效，按钮前景色。可选项参考下方。|
+|`--[hover-\|active-\|inactive-\|]thumb`|`rgb(119, 119, 119, .65)`<br>`hover`: `rgb(187, 187, 187, .75)`<br>`active`: `rgb(187, 187, 187, .5)`|滑块颜色。可选项参考下方。|
+|`--[active-\|inactive-]corner`|`--track`|仅`webkit`有效，resizer背景色。|
+|`--resizer`|`rgb(119, 119, 119, .5)`|仅`webkit`有效，resizer的颜色|
+
+Firefox 中按钮和滑块同色。状态可选项和位置可选项都只能在`webkit`中工作。Firefox 的状态颜色是自动生成的。
+
+状态可选项解释：
+
+|可选项|说明|
+|---|---|
+|`hover`|鼠标悬在目标上方时|
+|`active`|目标处于激活状态|
+|`inactive`|窗口(整个网页页面)处于非活动状态|
+
+位置可选项解释：
+
+|可选项|说明|
+|---|---|
+|`start`|按钮或背景位于滑块上面(垂直)/左边(水平)|
+|`end`|按钮或背景位于滑块下面(垂直)/右边(水平)|

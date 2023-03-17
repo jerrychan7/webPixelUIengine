@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="pui-scroller">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -81,12 +81,14 @@
     #usage-bottons .items a, #usage-bottons .items button, #usage-bottons .items input {
       margin-top: 2ex;
     }
-    .items > table.shelf { width: 100%; }
+    .items > table.shelf { margin: auto; }
+    .items > table.shelf td {
+      padding: 0;
+      white-space: nowrap;
+    }
     .items > table.shelf td:first-child {
       text-align: end;
-      padding: 0;
     }
-    .items > table.shelf td:not(:first-child) { padding: 0; }
     #usage-radios .items td:not(:first-child) { border-bottom: 1px #ddd solid; }
     #usage-checkboxes .items label { display: inline-block; }
     #usage-input .items input { margin-top: 1ex; }
@@ -113,6 +115,12 @@
     }
     #usage-background .items > .pui-bg { color:#fff; }
     #usage-image-border .items > .pui-ib { margin-bottom: 1ex; }
+    #usage-scroll-bar .items > .pui-scroller {
+      width: 125px; height: 100px;
+      display: inline-block;
+      margin: 10px;
+      background-color: rgba(0, 136, 136, .25);
+    }
     [id^=usage-] > fieldset, pre[class*=language-] { margin: 0; }
     pre[class*=language-] { padding: 1ex 2ch; }
     pre[class*=language-] > * {
@@ -146,6 +154,7 @@
       margin-left: 1ch;
     }
     [id^=usage-] > fieldset > .toolbar > *:last-child { border-right: 0; }
+    footer { height: 6em; }
     #back2top {
       position: fixed;
       bottom: 2em;
@@ -227,27 +236,7 @@
         <li><a href="#about">About</a></li>
         <li><a href="#installation">Installation</a></li>
         <li class="disclosure-closed"><a href="#usage">Usage</a>
-          <ul class="pui circle">
-            <li><a href="#usage-texts">Texts</a></li>
-            <li><a href="#usage-bottons">Buttons</a></li>
-            <li><a href="#usage-radios">Radios</a></li>
-            <li><a href="#usage-checkboxes">Checkboxes</a></li>
-            <li><a href="#usage-input">Inputs</a></li>
-            <li><a href="#usage-textarea">Textarea</a></li>
-            <li><a href="#usage-selects">Selects</a></li>
-            <li><a href="#usage-containers">Containers</a></li>
-            <li><a href="#usage-dialogs">Dialogs</a></li>
-            <li><a href="#usage-lists">Lists</a></li>
-            <li><a href="#usage-details">Details</a></li>
-            <li><a href="#usage-tables">Table</a></li>
-            <li><a href="#usage-progress">Progress</a></li>
-            <li><a href="#usage-balloons">Balloons</a></li>
-            <li><a href="#usage-pixel-arts---octocat">Pixel-arts</a></li>
-            <li><a href="#usage-colored-border">Colored Border</a></li>
-            <li><a href="#usage-background">Pixelated Background</a></li>
-            <li><a href="#usage-image">Pixelated Image</a></li>
-            <li><a href="#usage-image-border">Image Border</a></li>
-          </ul>
+          <ul id="nav-usage" class="pui circle"></ul>
         </li>
       </ul>
       <a class="octocat" href="https://github.com/jerrychan7/webPixelUIengine" target="_blank">
@@ -788,6 +777,30 @@
         </div>
       </fieldset>
     </section>
+    <section id="usage-scroll-bar">
+      <fieldset class="pui">
+        <legend>Scroll Bar</legend>
+        <div class="items">
+          <div class="pui-scroller">
+            <div style="width: 400px; padding: 10px">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi et nisi ut est venenatis viverra. Aenean pede orci, blandit quis, faucibus quis, egestas ut, mi. Pellentesque enim purus, venenatis dignissim, tincidunt a, ullamcorper eget, nibh. Nullam ut sem adipiscing orci vehicula interdum. Proin a enim. Phasellus sollicitudin, magna vitae vestibulum facilisis, tellus nunc iaculis arcu, in molestie sem velit tempus est. In eleifend velit at sem adipiscing sodales. Nunc sapien felis, aliquam et, volutpat rhoncus, condimentum ut, tortor. Integer est. Quisque viverra. Praesent sed arcu. Maecenas id lorem a leo lobortis condimentum.</div>
+          </div>
+          <div class="pui-scroller" style="background: #000; color: #fff;">
+            <div style="width: 400px; padding: 10px">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi et nisi ut est venenatis viverra. Aenean pede orci, blandit quis, faucibus quis, egestas ut, mi. Pellentesque enim purus, venenatis dignissim, tincidunt a, ullamcorper eget, nibh. Nullam ut sem adipiscing orci vehicula interdum. Proin a enim. Phasellus sollicitudin, magna vitae vestibulum facilisis, tellus nunc iaculis arcu, in molestie sem velit tempus est. In eleifend velit at sem adipiscing sodales. Nunc sapien felis, aliquam et, volutpat rhoncus, condimentum ut, tortor. Integer est. Quisque viverra. Praesent sed arcu. Maecenas id lorem a leo lobortis condimentum.</div>
+          </div>
+          <div class="pui-scroller has-btn vdouble-start resizer" style="
+            resize: both;
+            --track: #800;
+            --btn-bg: #08f;
+            --btn: #0f0;
+            --thumb: #f0f;
+            --corner: #f88;
+            --resizer: #8ff;
+          ">
+            <div style="width: 400px; padding: 10px">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi et nisi ut est venenatis viverra. Aenean pede orci, blandit quis, faucibus quis, egestas ut, mi. Pellentesque enim purus, venenatis dignissim, tincidunt a, ullamcorper eget, nibh. Nullam ut sem adipiscing orci vehicula interdum. Proin a enim. Phasellus sollicitudin, magna vitae vestibulum facilisis, tellus nunc iaculis arcu, in molestie sem velit tempus est. In eleifend velit at sem adipiscing sodales. Nunc sapien felis, aliquam et, volutpat rhoncus, condimentum ut, tortor. Integer est. Quisque viverra. Praesent sed arcu. Maecenas id lorem a leo lobortis condimentum.</div>
+          </div>
+        </div>
+      </fieldset>
+    </section>
     <footer>
       <p>Font in this page: <a href="https://3type.cn/fonts/dinkie_bitmap/">Dinkie Bitmap</a> (丁卯点阵体) 9px <sub><i>Demo</i></sub></p>
     </footer>
@@ -833,6 +846,9 @@
       pre.innerHTML = `<code class="language-html">${text.replace(/=""/g, "").replace(/</g, "&lt;")}</code>`;
       fieldset.parentNode.insertBefore(pre, fieldset.nextSibling);
 
+      document.getElementById("nav-usage").innerHTML += `
+        <li><a href="#${fieldset.parentNode.id}">${fieldset.querySelector("legend").innerHTML}</a></li>
+      `;
       const toolbar = document.createElement("div");
       toolbar.className = "toolbar";
       fieldset.appendChild(toolbar);
