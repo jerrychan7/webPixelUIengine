@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="../release/all.css" rel="stylesheet">
+  <style>
+    @font-face { font-family: dot_font; src: url(../fonts/DinkieBitmap-9pxDemo.woff2); }
+    @font-face { font-family: dot_font_code; src: url(../fonts/DinkieBitmap-9pxCodeDemo.woff2); }
+    @font-face { font-family: dot_font_italic; src: url(../fonts/DinkieBitmap-9pxItalicDemo.woff2); }
+    body {
+      font-family: dot_font_code, dot_font;
+      font-size: 1pc;
+      text-rendering: geometricPrecision;
+      background-color: pink;
+      -webkit-font-smoothing: none;
+    }
+    i, em { font-family: dot_font_italic; }
+  </style>
+  <style></style>
+</head>
+<body>
+  <input class="pui" type="range" />
+  <input class="pui primary" type="range" />
+  <input class="pui error" bsize="1" type="range" />
+  <input class="pui success" bsize="2" type="range" />
+  <br />
+  <input class="pui" type="range" style="--bwidth: 6px;" />
+  <input class="pui primary" type="range" style="--thumb-size: 2em;" />
+  <input class="pui error" bsize="1" type="range" style="--bg-color: red;" />
+  <br />
+  <input class="pui hollow" type="range" style="--bg-color: #fff8; --bcolor: #0008;" />
+  <input class="pui hollow error" bsize="1" type="range" style="--bg-color: #fff8; --bcolor: #0008;" />
+  <input class="pui hollow success" bsize="2" type="range" style="--bg-color: #fff8; --bcolor: #0008;" />
+  <input class="pui hollow success" bsize="2" type="range" disabled />
+  <br />
+  <input class="pui thin" type="range" />
+  <input class="pui thin primary" bsize="1" type="range" style="--track-h: 2px;" />
+  <input class="pui thin success" bsize="2" type="range" style="--thumb-size: 2em;" />
+  <!-- 判断thin和hollow是否冲突 -->
+  <input class="pui thin hollow success" bsize="2" type="range" />
+  <input class="pui thin primary" bsize="1" type="range" style="--track-h: 2em;" />
+  <input class="pui hollow success" bsize="2" type="range" style="--track-h: 4px;" />
+  <br />
+  <input class="pui thin short" type="range" />
+  <input class="pui thin short primary" bsize="1" type="range" style="--track-h: 2px;" />
+  <input class="pui thin short success" bsize="2" type="range" style="--thumb-size: 2em;" />
+  <br />
+  <input test class="pui" type="range" />
+  <input test class="pui primary" bsize="1" type="range" />
+  <input test class="pui success" bsize="2" type="range" />
+  <input test class="pui hollow" type="range" />
+  <input test class="pui hollow primary" bsize="1" type="range" />
+  <input test class="pui hollow success" bsize="2" type="range" />
+  <input test class="pui thin" type="range" />
+  <input test class="pui thin primary" bsize="1" type="range" />
+  <input test class="pui thin success" bsize="2" type="range" />
+  <input test class="pui thin short" type="range" />
+  <input test class="pui thin short primary" bsize="1" type="range" />
+  <input test class="pui thin short success" bsize="2" type="range" />
+  <br />
+  <input type="range" class="pui success thin short" bsize="2" />
+  <input type="range" class="pui success short hollow" bsize="2" style="--track-h: 4px;" />
+  <input type="range" class="pui primary hollow square" bsize="1" />
+  <!-- <script>
+    document.querySelectorAll("[test]").forEach(ele => {
+      ele.addEventListener("input", e => {
+        let input = e.target, {max, min, value} = input;
+        min = min || 0;
+        max = max || 100;
+        e.target.style.setProperty("--percentage", (value - min) / (max - min));
+      });
+    });
+  </script> -->
+</body>
+</html>

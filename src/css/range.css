@@ -1,0 +1,226 @@
+
+.pui-range, .pui-slider, input[type=range].pui {
+  --bc: var(--bcolor, #000);
+  --bgc: var(--bg-color, #fff);
+  --bbgi: linear-gradient(var(--bc), var(--bc));
+  --bgi: linear-gradient(var(--bgc), var(--bgc));
+  --bw: var(--bwidth, 4px);
+  --bw2: calc(2 * var(--bw));
+  --nbw: calc(-1 * var(--bw));
+  --ths: var(--thumb-size, 1em);
+  --thw: max(calc(3 * var(--bw)), var(--thumb-size-w, var(--ths)));
+  --thh: max(calc(3 * var(--bw)), var(--thumb-size-h, var(--ths)));
+  --thwd2: calc(var(--thw) / 2);
+  --nthwd2: calc(var(--thw) / -2);
+  --trh: max(0px, var(--track-h, 100%));
+  --thc: var(--thumb-color, #888);
+  /* foreground color */
+  --fgc: var(--fg-color, rgba(128, 128, 128, .4));
+  --iw: var(--width, 10em);
+  cursor: pointer;
+  utils-inherit-font-and-color: x;
+  appearance: none;
+  min-height: calc(3 * var(--bw));
+  height: var(--thh);
+  background-color: transparent;
+  border: var(--bw) var(--bc) solid;
+  min-width: var(--thw);
+  width: var(--iw);
+  overflow: hidden;
+
+  &::-webkit-slider-runnable-track {
+    background-color: transparent;
+    box-sizing: border-box;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-image: var(--bgi);
+    background-size: 100% var(--trh);
+    background-position: 0 0;
+  }
+  &:not(.thin)::-webkit-slider-runnable-track {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  &::-moz-range-track {
+    background-color: var(--bgc);
+    box-sizing: border-box;
+    size: calc(100% + var(--thw)) var(--trh);
+  }
+  &::-moz-range-progress {
+    background-color: var(--fgc);
+    height: var(--trh);
+    box-shadow: 0 0 0 var(--thwd2) var(--fgc);
+    clip-path: polygon(var(--nthwd2) 0, 100% 0, 100% 100%, var(--nthwd2) 100%);
+  }
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    border: 0;
+    border-radius: 0;
+    size: var(--thw) var(--thh);
+    background-color: var(--thc);
+    box-shadow: calc(-100vmax - var(--thwd2)) 0 0 100vmax var(--fgc);
+  }
+  &::-moz-range-thumb {
+    -moz-appearance: none;
+    appearance: none;
+    border: 0;
+    border-radius: 0;
+    size: 0 0;
+    box-shadow: 0 0 0 100vmax var(--thc);
+    clip-path: polygon(
+      var(--nthwd2) var(--nthwd2),
+      var(--thwd2) var(--nthwd2),
+      var(--thwd2) var(--thwd2),
+      var(--nthwd2) var(--thwd2)
+    );
+  }
+  &:not(.square) {
+    --tbgi: linear-gradient(var(--thc), var(--thc));
+    &::-webkit-slider-thumb {
+      height: max(100%, var(--thh));
+      background-color: transparent;
+      background-repeat: no-repeat;
+      background-image: var(--tbgi), var(--tbgi), var(--tbgi), linear-gradient(var(--fgc), var(--fgc));
+      background-size:
+        calc(var(--bw) / 2) calc(var(--thh) - var(--bw2)),
+        calc(var(--bw) / 2) calc(var(--thh) - var(--bw)),
+        calc(100% - var(--bw)) var(--thh),
+        50% var(--trh);
+      background-position: 0 50%, calc(var(--bw) / 2) 50%, var(--bw) 50%, 0 50%;
+      utils-clip-path-with-bsize2: calc(var(--bw) / 2) 0px calc(50% - var(--thh) / 2) var(--thw) var(--thh);
+      --sx: var(--thwd2);
+      --half-trh: calc(var(--trh) / 2);
+      --ty: calc(50% - var(--half-trh));
+      --by: calc(50% + var(--half-trh));
+      clip-path: polygon(
+        var(--bsize2-clip-polygon-path),
+        /* track */
+        var(--sx) var(--ty),
+        -100vmax  var(--ty),
+        -100vmax  var(--by),
+        var(--sx) var(--by),
+        var(--sx) var(--ty)
+      );
+    }
+    &::-moz-range-thumb {
+      background-color: var(--thc);
+      utils-clip-path-with-bsize2: (var(--bw) / 2) 0px 0px 100% 100%;
+      --w: var(--thw);
+      --h: var(--thh);
+      --startX: var(--nthwd2);
+      --startY: calc(var(--thh) / -2);
+    }
+  }
+  &[bsize='1']:not(.thin) {
+    utils-clip-path-with-bsize1: var(--bw) 0px 0px 100% 100%;
+  }
+  &[bsize='2']:not(.thin) {
+    utils-clip-path-with-bsize2: var(--bw) 0px 0px 100% 100%;
+    background-repeat: no-repeat;
+    background-image: var(--bbgi), var(--bbgi), var(--bbgi), var(--bbgi);
+    background-size: var(--bw) var(--bw);
+    background-position: 0 0, 0 100%, 100% 0, 100% 100%;
+    --1-bw2: calc(100% - var(--bw2));
+    &::-webkit-slider-runnable-track {
+      background-color: transparent;
+      background-repeat: no-repeat;
+      background-image: var(--bgi), var(--bgi), var(--bgi);
+      background-position: var(--bw) 50%, 0 50%, 100% 50%;
+      background-size: var(--1-bw2) var(--trh), var(--bw) min(var(--trh), var(--1-bw2)), var(--bw) min(var(--trh), var(--1-bw2));
+      utils-clip-path-with-bsize2: (var(--bw) / 2) 0px 0px 100% 100%;
+    }
+    &::-moz-range-track {
+      background-color: transparent;
+      background-repeat: no-repeat;
+      --bgi: linear-gradient(var(--bgc), var(--bgc));
+      background-image: var(--bgi), var(--bgi), var(--bgi);
+      background-position: var(--bw) 50%, 0 50%, 100% 50%;
+      background-size: var(--1-bw2) 100%, var(--bw) var(--1-bw2), var(--bw) var(--1-bw2);
+    }
+    &::-moz-range-progress {
+      utils-clip-path-with-bsize2: calc(var(--bw) / 2) var(--nthwd2) 0px calc(100% + var(--thwd2)) 100%;
+      clip-path: polygon(
+        var(--bsize2-clip-polygon-path),
+        var(--nbw) 0, var(--nbw) 100%, 100% 100%, 100% 0, var(--nbw) 0
+      );
+    }
+  }
+  &.thin {
+    --trh: max(0px, var(--track-h, var(--bw)));
+    height: max(var(--thh), var(--trh));
+    border: 0;
+    &::-webkit-slider-runnable-track {
+      height: var(--trh);
+    }
+    &::-webkit-slider-thumb {
+      transform: translateY(calc(-50% + var(--trh) / 2));
+    }
+    &::-moz-range-track {
+      height: var(--trh);
+    }
+    &.short {
+      /*
+      &::-webkit-slider-runnable-track {
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-image: var(--bgi);
+        background-size: calc(100% - var(--thw)) 100%;
+        background-position: var(--thwd2) 0;
+      }
+      */
+      &::-moz-range-track {
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-image: var(--bgi);
+        background-size: calc(100% - var(--thw)) 100%;
+        background-position: var(--thwd2) 0;
+      }
+      &::-moz-range-progress {
+        box-shadow: none;
+      }
+    }
+  }
+  &.short:not(.thin) {
+    &::-moz-range-track {
+      border: transparent solid;
+      border-width: 0 var(--thwd2);
+      background: var(--bgc);
+      background-clip: padding-box;
+    }
+    &::-moz-range-progress { box-shadow: none; }
+  }
+  &.hollow:not(.thin) {
+    padding: var(--bw);
+  }
+  &.disabled, &[disabled], &:disabled {
+    cursor: not-allowed;
+    opacity: .6;
+    &:active { opacity: .75; }
+  }
+  @each $color in primary, success, warning, error {
+    &.$(color) {
+      --bc: var(--bcolor, var(--pui-$(color)));
+      --fgc: var(--fg-color, var(--pui-$(color)-hover));
+      --thc: var(--thumb-color, var(--pui-$(color)-shadow));
+      outline-color: var(--pui-$(color)-hover);
+      &:hover {
+        --fgc: var(--fg-color, var(--pui-$(color)));
+      }
+      &:active {
+        --fgc: var(--fg-color, var(--pui-$(color)-shadow));
+        --thc: var(--thumb-color, var(--pui-$(color)-hover));
+      }
+    }
+  }
+}
+
+@-moz-document url-prefix() {
+  .pui-range, .pui-slider, input[type=range].pui {
+    width: calc(var(--iw) - var(--thw));
+    overflow: unset;
+    padding: 0 var(--thwd2);
+    &.hollow:not(.thin) {
+      padding: var(--bw) calc(var(--bw) + var(--thwd2));
+    }
+  }
+}

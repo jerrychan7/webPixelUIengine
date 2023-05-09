@@ -21,7 +21,118 @@
 }
 
 @def-utils inherit-font-and-color skip {
-  font-size: inherit;
-  font-family: inherit;
+  font: inherit;
   color: inherit;
+}
+
+/*         1         12
+startXY *- +---------+ - - -> x
+        :  |         |
+      3 +--+ 2    11 +--+ 10
+        |               |
+      4 +--+ 5     8 +--+ 9
+        :  |         |
+        :  +---------+
+        :  6         7
+        V
+        y
+    x1 < x12, x6 < x7
+    y3 < y4, y10 < y9
+    unit = y2 - y1 = x2 - x3
+    width = x3 - x10
+    height = y6 - y1
+*/
+@def-utils clip-path-with-bsize1 unit startX startY width height {
+  --u1: max(0px, calc($unit));
+  --w: max(0px, calc($width)); --h: max(0px, calc($height));
+  --wd2: calc(var(--w) / 2); --hd2: calc(var(--h) / 2);
+  --w-u1: calc(var(--w) - var(--u1));
+  --h-u1: calc(var(--h) - var(--u1));
+  --lx1: min(var(--wd2), var(--u1));
+  --rx1: max(var(--wd2), var(--w-u1));
+  --uy1: min(var(--hd2), var(--u1));
+  --by1: max(var(--hd2), var(--h-u1));
+  --startX: calc($startX); --startY: calc($startY);
+  --bsize1-clip-polygon-path:
+    /* point 1 ~ 3 */
+    calc(var(--startX) + var(--lx1))      var(--startY),
+    calc(var(--startX) + var(--lx1)) calc(var(--startY) + var(--uy1)),
+         var(--startX)               calc(var(--startY) + var(--uy1)),
+    /* point 4 ~ 6 */
+         var(--startX)               calc(var(--startY) + var(--by1)),
+    calc(var(--startX) + var(--lx1)) calc(var(--startY) + var(--by1)),
+    calc(var(--startX) + var(--lx1)) calc(var(--startY) + var(--h)),
+    /* point 7 ~ 9 */
+    calc(var(--startX) + var(--rx1)) calc(var(--startY) + var(--h)),
+    calc(var(--startX) + var(--rx1)) calc(var(--startY) + var(--by1)),
+    calc(var(--startX) + var(--w))   calc(var(--startY) + var(--by1)),
+    /* point 10 ~ 12 */
+    calc(var(--startX) + var(--w))   calc(var(--startY) + var(--uy1)),
+    calc(var(--startX) + var(--rx1)) calc(var(--startY) + var(--uy1)),
+    calc(var(--startX) + var(--rx1))      var(--startY),
+    /* point 1 for close path */
+    calc(var(--startX) + var(--lx1)) var(--startY);
+  clip-path: polygon(var(--bsize1-clip-polygon-path));
+}
+
+/*           1               20
+startXY * - - +-------------+ - - - - - -> x
+        : 3   |             |   18
+        :  +--+             +--+
+        :  |   2          19   |
+      5 +--+ 4              17 +--+ 16
+        |                         |
+      6 +--+ 7              14 +--+ 15
+        :  |   9          12   |
+        :  +--+             +--+
+        : 8   |             |   13
+        :     +-------------+
+        :    10             11
+        V
+        y
+    x1 < x20, x10 < x11
+    y5 < y6, y15 < y16
+    unit = y2 - y1 = x2 - x3
+    width = x16 - x5
+    height = y10 - y1
+*/
+@def-utils clip-path-with-bsize2 unit startX startY width height {
+  --u1: max(0px, calc($unit)); --u2: calc(var(--u1) * 2);
+  --w: max(0px, calc($width)); --h: max(0px, calc($height));
+  --wd2: calc(var(--w) / 2); --hd2: calc(var(--h) / 2);
+  --w-u1: calc(var(--w) - var(--u1)); --w-u2: calc(var(--w) - var(--u2));
+  --h-u1: calc(var(--h) - var(--u1)); --h-u2: calc(var(--h) - var(--u2));
+  --lx1: min(var(--wd2), var(--u1));   --lx2: min(var(--wd2), var(--u2));
+  --rx1: max(var(--wd2), var(--w-u1)); --rx2: max(var(--wd2), var(--w-u2));
+  --uy1: min(var(--hd2), var(--u1));   --uy2: min(var(--hd2), var(--u2));
+  --by1: max(var(--hd2), var(--h-u1)); --by2: max(var(--hd2), var(--h-u2));
+  --startX: calc($startX); --startY: calc($startY);
+  --bsize2-clip-polygon-path:
+    /* point 1 ~ 5 */
+    calc(var(--startX) + var(--lx2))      var(--startY),
+    calc(var(--startX) + var(--lx2)) calc(var(--startY) + var(--uy1)),
+    calc(var(--startX) + var(--lx1)) calc(var(--startY) + var(--uy1)),
+    calc(var(--startX) + var(--lx1)) calc(var(--startY) + var(--uy2)),
+         var(--startX)               calc(var(--startY) + var(--uy2)),
+    /* point 6 ~ 10 */
+         var(--startX)               calc(var(--startY) + var(--by2)),
+    calc(var(--startX) + var(--lx1)) calc(var(--startY) + var(--by2)),
+    calc(var(--startX) + var(--lx1)) calc(var(--startY) + var(--by1)),
+    calc(var(--startX) + var(--lx2)) calc(var(--startY) + var(--by1)),
+    calc(var(--startX) + var(--lx2)) calc(var(--startY) + var(--h)),
+    /* point 11 ~ 15 */
+    calc(var(--startX) + var(--rx2)) calc(var(--startY) + var(--h)),
+    calc(var(--startX) + var(--rx2)) calc(var(--startY) + var(--by1)),
+    calc(var(--startX) + var(--rx1)) calc(var(--startY) + var(--by1)),
+    calc(var(--startX) + var(--rx1)) calc(var(--startY) + var(--by2)),
+    calc(var(--startX) + var(--w))   calc(var(--startY) + var(--by2)),
+    /* point 16 ~ 20 */
+    calc(var(--startX) + var(--w))   calc(var(--startY) + var(--uy2)),
+    calc(var(--startX) + var(--rx1)) calc(var(--startY) + var(--uy2)),
+    calc(var(--startX) + var(--rx1)) calc(var(--startY) + var(--uy1)),
+    calc(var(--startX) + var(--rx2)) calc(var(--startY) + var(--uy1)),
+    calc(var(--startX) + var(--rx2))      var(--startY),
+    /* point 1 for close path */
+    calc(var(--startX) + var(--lx2)) var(--startY);
+  clip-path: polygon(var(--bsize2-clip-polygon-path));
 }

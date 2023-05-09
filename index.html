@@ -121,6 +121,10 @@
       margin: 10px;
       background-color: rgba(0, 136, 136, .25);
     }
+    #usage-slider fieldset {
+      background-image:
+        repeating-linear-gradient(-45deg, transparent 1.5px, rgba(128, 128, 128, .25) 2px 4px, transparent 4.5px 6px);
+    }
     [id^=usage-] > fieldset, pre[class*=language-] { margin: 0; }
     pre[class*=language-] { padding: 1ex 2ch; }
     pre[class*=language-] > * {
@@ -801,6 +805,20 @@
         </div>
       </fieldset>
     </section>
+    <section id="usage-slider">
+      <fieldset class="pui">
+        <legend>Slider</legend>
+        <div class="items">
+          <input type="range" class="pui" />
+          <input type="range" class="pui primary" bsize="1" />
+          <input type="range" class="pui warning" bsize="2" />
+          <input type="range" class="pui success hollow" bsize="2" />
+          <input type="range" class="pui success thin short" bsize="2" />
+          <input type="range" class="pui success short hollow" bsize="2" style="--track-h: 4px;" />
+          <input type="range" class="pui primary hollow square" bsize="1" />
+        </div>
+      </fieldset>
+    </section>
     <footer>
       <p>Font in this page: <a href="https://3type.cn/fonts/dinkie_bitmap/">Dinkie Bitmap</a> (丁卯点阵体) 9px <sub><i>Demo</i></sub></p>
     </footer>
@@ -826,7 +844,7 @@
       const fieldset = div.parentElement;
       const pre = document.createElement("pre");
       let text = "";
-      if (fieldset.parentNode.id == "usage-radio") {
+      if (fieldset.parentNode.id == "usage-radios") {
         const tds = div.querySelectorAll("td"), str = [];
         for (let i = 0; i < tds.length; i += 2) {
           str.push(trimStartPreLine(tds[i].innerHTML), trimStartPreLine(tds[i + 1].innerHTML));

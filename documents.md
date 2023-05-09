@@ -631,3 +631,42 @@ Firefox 中按钮和滑块同色。状态可选项和位置可选项都只能在
 |---|---|
 |`start`|按钮或背景位于滑块上面(垂直)/左边(水平)|
 |`end`|按钮或背景位于滑块下面(垂直)/右边(水平)|
+
+## Slider
+
+滑动条。触发方式：`.pui-range, .pui-slider, input[type=range].pui`
+
+### class
+
+|class名|说明|
+|---|---|
+|`primary`|使用 primary 配色方案|
+|`success`|使用 success 配色方案|
+|`warning`|使用 warning 配色方案|
+|`error`|使用 error 配色方案|
+|`disabled`|使用 disabled 配色方案|
+|`hollow`|镂空（边框与滑动条背景/滑块之间的间隙）|
+|`short`|仅Firefox有效果。显示较短的滑动条背景。由于纯css的限制，chrome目前无法显示较短的前景，故放弃实现。|
+|`thin`|显示无边框的滑动条|
+|`square`|显示矩形的滑块|
+
+### css变量
+
+|变量名|缺省值|说明|
+|---|---|---|
+|`--bwidth`|`4px`|边框的宽度。可以为透明。|
+|`--bcolor`|`#000`|边框的颜色|
+|`--bg-color`|`#fff`|滑动条背景的颜色。可以为透明。|
+|`--fg-color`|`rgba(128, 128, 128, .4)`|滑块左侧的滑动条的颜色。可以为透明。|
+|`--thumb-size`|`1em`|滑块的大小|
+|`--thumb-size-w`|`--thumb-size`，最小不小于 `3 * --bwidth`|滑块的宽度|
+|`--thumb-size-h`|`--thumb-size`，最小不小于 `3 * --bwidth`|滑块的高度|
+|`--thumb-color`|`#888` 或 主题色|滑块的颜色。可以为透明。|
+|`--track-h`|`100%`|滑动条背景的高度。|
+|`--width`|`10em`|滑动条的整体宽度。Firefox中借助了`padding`属性，使用时需要注意。|
+
+### 属性
+
+|属性名|缺省值|可选值|说明|
+|---|---|---|---|
+|`bsize`|`0`|`0`, `1`, `2`|边框的圆角|
