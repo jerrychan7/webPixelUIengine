@@ -9,6 +9,7 @@ progress.pui, .pui-progress {
   background-color: var(--bgc);
   height: calc(1em + 4 * var(--bw));
   box-sizing: border-box;
+  /* utils-clip-path-with-bsize1: var(--bw) 0% 0% 100% 100%; */
   --cp: polygon(
     var(--bw) 0, var(--bw) var(--bw), 0 var(--bw), 0 calc(100% - var(--bw)), var(--bw) calc(100% - var(--bw)), var(--bw) 100%,
     calc(100% - var(--bw)) 100%, calc(100% - var(--bw)) calc(100% - var(--bw)), 100% calc(100% - var(--bw)),
@@ -50,6 +51,7 @@ progress.pui, .pui-progress {
   }
   &[size='0'] { clip-path: none; }
   &[size='2'] {
+    /* utils-clip-path-with-bsize2: var(--bw) 0% 0% 100% 100%; */
     --bw2: calc(2 * var(--bw));
     --1bw: calc(100% - var(--bw));
     --1bw2: calc(100% - var(--bw2));

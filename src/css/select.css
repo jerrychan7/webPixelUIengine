@@ -3,7 +3,6 @@
 
 select.pui {
   utils-inherit-font-and-color: x;
-  color: var(--pui-normal-shadow);
   --bw: var(--bwidth, 4px);
   --bc: var(--bcolor, #000);
   --bgc: var(--bg-color, #fff);
@@ -55,6 +54,9 @@ select.pui {
     var(--x4) var(--y4), var(--x3) var(--y4), var(--x2) var(--y4),
     var(--x3) var(--y5);
   background-repeat: no-repeat;
+  &:invalid {
+    color: var(--pui-normal-shadow);
+  }
   &:not([size]), &[size='0'], &[size='1'] {
     background-image: var(--bgti);
     background-size: var(--bgts);
