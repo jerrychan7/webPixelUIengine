@@ -2,7 +2,8 @@
 a.pui-btn { text-decoration: none; }
 a.pui-btn, button.pui,
 input[type=file].pui,
-input[type=button].pui, input[type=submit].pui, input[type=reset].pui {
+input[type=button].pui, input[type=submit].pui, input[type=reset].pui,
+input[type=color].pui {
   utils-inherit-font-and-color: x;
   cursor: pointer;
 
@@ -36,7 +37,8 @@ input[type=file].pui::-webkit-file-upload-button {
 }
 
 a.pui-btn, button.pui,
-input[type=button].pui, input[type=submit].pui, input[type=reset].pui {
+input[type=button].pui, input[type=submit].pui, input[type=reset].pui,
+input[type=color].pui {
   display: inline-block;
   position: relative;
   padding: 1ex 1ch;
@@ -67,7 +69,8 @@ input[type=file].pui::-webkit-file-upload-button {
 
 a.pui-btn, button.pui,
 input[type=file].pui,
-input[type=button].pui, input[type=submit].pui, input[type=reset].pui {
+input[type=button].pui, input[type=submit].pui, input[type=reset].pui,
+input[type=color].pui {
   &:hover {
     --bgc: var(--bg-color, var(--pui-normal-hover));
     --iwbr: var(--inset-width-br, var(--inset-width, calc(1.5 * var(--bw))));
@@ -558,6 +561,48 @@ input[type=file].pui {
           box-shadow: 0 var(--bw) var(--bc), 0 var(--nbw) var(--bc);
         }
       }
+    }
+  }
+}
+
+input[type=color].pui {
+  padding: 0;
+  box-shadow: none;
+  &::-webkit-color-swatch-wrapper { padding: 0; }
+  &::-webkit-color-swatch { border: 0; border-radius: 0; }
+  &::-moz-color-swatch, &::-moz-focus-inner { border: 0; }
+  &::-moz-focus-inner { padding: 0; }
+  /* 使用 background image 去模拟边框 */
+  &[size='1'] {
+    border-color: transparent;
+    background-color: transparent;
+    --bgi: linear-gradient(var(--bc), var(--bc));
+    background-clip: border-box;
+    background-repeat: no-repeat;
+    background-image: var(--bgi), var(--bgi), var(--bgi), var(--bgi);
+    background-size: 100% var(--bw), var(--bw) 100%;
+    background-position: 0 var(--nbw), calc(100% + var(--bw)) 0, 0 calc(100% + var(--bw)), var(--nbw) 0;
+  }
+  &[size='2'] {
+    border-color: transparent;
+    background-color: transparent;
+    --bgi: linear-gradient(var(--bc), var(--bc));
+    background-clip: border-box;
+    background-repeat: no-repeat;
+    background-image: var(--bgi), var(--bgi), var(--bgi), var(--bgi);
+    background-size: calc(100% - var(--bw2)) var(--bw), var(--bw) calc(100% - var(--bw2));
+    background-position: var(--bw) var(--nbw), calc(100% + var(--bw)) var(--bw), var(--bw) calc(100% + var(--bw)), var(--nbw) var(--bw);
+    &::-webkit-color-swatch {
+      background-repeat: no-repeat;
+      background-image: var(--bgi), var(--bgi), var(--bgi), var(--bgi);
+      background-size: var(--bw) var(--bw);
+      background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+    }
+    &::-moz-color-swatch, &::-moz-focus-inner {
+      background-repeat: no-repeat;
+      background-image: var(--bgi), var(--bgi), var(--bgi), var(--bgi);
+      background-size: var(--bw) var(--bw);
+      background-position: 0 0, 100% 0, 100% 100%, 0 100%;
     }
   }
 }

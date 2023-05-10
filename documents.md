@@ -51,6 +51,7 @@ disabled没有hover。
 2. `button`
 3. input按钮 `input[type=button|submit|reset]`
 4. 文件选择按钮 `input[type=file]`
+5. 颜色选择按钮 `input[type=color]`
 
 每种按钮的触发方式：
 
@@ -58,6 +59,7 @@ disabled没有hover。
 2. `button.pui`
 3. `input[type=button|submit|reset].pui`
 4. `input[type=file].pui`
+5. `input[type=color].pui`
 
 文件选择按钮 在 Firefox 中还有很多问题。
 
