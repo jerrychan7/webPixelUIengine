@@ -466,11 +466,17 @@ input[type=file].pui {
       width: 100%;
     } }
     &[size='1']::file-selector-button {
-      width: calc(100% - 2 * var(--bw));
+      width: calc(100% - var(--bw2));
     }
     &[size='2']:not([aria-label]) {
+      --bgi: linear-gradient(var(--bc), var(--bc));
+      background-color: transparent;
+      background-repeat: no-repeat;
+      background-image: var(--bgi), var(--bgi), var(--bgi), var(--bgi);
+      background-size: var(--bw) var(--bw);
+      background-position: var(--bw) var(--bw), calc(100% - var(--bw)) var(--bw), calc(100% - var(--bw)) calc(100% - var(--bw)), var(--bw) calc(100% - var(--bw));
       &::file-selector-button {
-        width: calc(100% - 2 * var(--bw));
+        width: calc(100% - var(--bw2));
         border: 0;
         margin: var(--bw);
         box-shadow: var(--ishadow),
@@ -478,15 +484,9 @@ input[type=file].pui {
           0 var(--bw2) 0 var(--nbw) var(--bc),
           var(--bw2) 0 0 var(--nbw) var(--bc),
           var(--nbw2) 0 0 var(--nbw) var(--bc);
+        /* 切掉四个角 */
+        utils-clip-path-with-bsize1: var(--bw2) var(--nbw) var(--nbw) calc(100% + var(--bw2)) calc(100% + var(--bw2));
       }
-      &::before, &::after {
-        content: '';
-        absolute: t var(--bw2);
-        size: var(--bw) calc(100% - 2 * var(--bw2));
-        box-shadow: 0 var(--bw) var(--bc), 0 var(--nbw) var(--bc);
-      }
-      &::before { left: var(--bw); z-index: 1; }
-      &::after { right: var(--bw); }
     }
     &[aria-label] {
       &[size='0'], &:not([size]) {

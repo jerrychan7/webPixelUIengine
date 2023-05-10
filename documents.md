@@ -82,7 +82,7 @@ TODO: class内有`disabled`但按钮本身并没有`disabled`性质时，用户�
 |class名|说明|
 |---|---|
 |`fill`|详见下方对于`fill`属性的描述|
-|`border`|显示在文件名回显部分的边框<br>目前仅在chrome中有效果|
+|`border`|显示在文件名回显部分的边框<br>目前仅在chrome中有效果，Firefox中显示有问题。|
 |`center-ellipsis`|在过长的文件名回显的中间进行省略<br>目前仅在chrome中有效果<br>和`.border[size=2]`不兼容|
 
 TODO: `border`仅在chrome中有效果，兼容Firefox。
@@ -112,6 +112,8 @@ TODO: `border`仅在chrome中有效果，兼容Firefox。
 |`--tr-is-tl-cover-br`|`1`|`0`, `1`|对于内侧阴影的右上角，右侧阴影是否覆盖上侧阴影|
 |`--bl-is-tl-cover-br`|`0`|`0`, `1`|对于内侧阴影的左下角，下侧阴影是否覆盖左侧阴影|
 
+TODO: 尝试用 `background image` 来画出 input 按钮的所有效果，这样就不需要占用 margin 的空间，文件体积上应该会小于当前基于`box-shadow`的解决方案，而且逻辑也应该会简单一点。
+
 ### 属性
 
 |属性名|缺省值|可选值|说明|
@@ -122,10 +124,9 @@ TODO: `border`仅在chrome中有效果，兼容Firefox。
 
 |属性名|类型|说明|
 |---|---|---|
-|`fill`||按钮占据文件名回显的空间<br>在Firefox中和`size=2`一起使用显示有问题|
-|`aria-label`|字符串|label的内容<br>仅在`fill`模式中运行<br>目前仅在chrome中有效果|
+|`fill`||按钮占据文件名回显的空间|
+|`aria-label`|字符串|label的内容<br>仅在`fill`模式中运行<br>目前仅在chrome中有效果，Firefox中显示有问题。|
 
-TODO: `fill`在Firefox中和`size=2`一起使用显示有问题
 TODO: `aria-label`目前仅在chrome中有效果，兼容Firefox
 
 ## Radios
