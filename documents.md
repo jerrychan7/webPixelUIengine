@@ -116,9 +116,7 @@ TODO: `border`仅在chrome中有效果，兼容Firefox。
 
 |属性名|缺省值|可选值|说明|
 |---|---|---|---|
-|`size`|`0`|`0`, `1`, `2`|边框的圆角<br>由于纯css实现的限制，`button[size=2]`和`input[size=1|2]`的边框在`margin`范围中。|
-
-TODO: `button[size=2]`的边框不占用`margin`。
+|`size`|`0`|`0`, `1`, `2`|边框的圆角<br>由于纯css实现的限制，`input[size=1|2]`的边框在`margin`范围中。|
 
 对于文件选择按钮：
 

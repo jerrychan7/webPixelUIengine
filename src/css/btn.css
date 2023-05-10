@@ -108,25 +108,27 @@ a.pui-btn, button.pui {
     &::after {
       content: '';
       position: absolute 0;
+      size: 100% 100%;
       box-shadow: var(--bw) 0 var(--bc), 0 var(--bw) var(--bc), var(--nbw) 0 var(--bc), 0 var(--nbw) var(--bc);
+      user-select: none;
+      pointer-events: none;
     }
   }
   &[size='2'] {
-    border: 0;
-    margin: var(--bw);
-    box-shadow: var(--ishadow),
-      0 var(--nbw2) 0 var(--nbw) var(--bc),
-      0 var(--bw2) 0 var(--nbw) var(--bc),
-      var(--bw2) 0 0 var(--nbw) var(--bc),
-      var(--nbw2) 0 0 var(--nbw) var(--bc);
-    &::before, &::after {
+    border-color: transparent;
+    &::after {
       content: '';
-      absolute: t var(--bw);
-      size: var(--bw) calc(100% - var(--bw2));
-      box-shadow: 0 var(--bw) var(--bc), 0 var(--nbw) var(--bc);
+      position: absolute 0;
+      size: 100% 100%;
+      box-shadow: 0 var(--nbw2) 0 var(--nbw) var(--bc), 0 var(--bw2) 0 var(--nbw) var(--bc), var(--bw2) 0 0 var(--nbw) var(--bc), var(--nbw2) 0 0 var(--nbw) var(--bc);
+      --bgi: linear-gradient(var(--bc), var(--bc));
+      background-repeat: no-repeat;
+      background-image: var(--bgi), var(--bgi), var(--bgi), var(--bgi);
+      background-size: var(--bw) var(--bw);
+      background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+      user-select: none;
+      pointer-events: none;
     }
-    &::before { left: 0; }
-    &::after { right: 0; }
   }
 }
 
