@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="../release/all.css" rel="stylesheet">
+  <style>
+    @font-face { font-family: dot_font; src: url(../fonts/DinkieBitmap-9pxDemo.woff2); }
+    @font-face { font-family: dot_font_code; src: url(../fonts/DinkieBitmap-9pxCodeDemo.woff2); }
+    @font-face { font-family: dot_font_italic; src: url(../fonts/DinkieBitmap-9pxItalicDemo.woff2); }
+    body {
+      font-family: dot_font_code, dot_font;
+      font-size: 1pc;
+      text-rendering: geometricPrecision;
+      background-color: pink;
+      -webkit-font-smoothing: none;
+    }
+    i, em { font-family: dot_font_italic; }
+  </style>
+  <style></style>
+</head>
+<body>
+  <i class="pui-icon triangle bg"></i><i class="pui-icon triangle bg down" style="color: #f00"></i><i class="pui-icon triangle bg left" style="color: #0f0"></i><i class="pui-icon triangle bg up" style="color: #00f"></i><i class="pui-icon triangle bg before" style="color: #ff0"></i><i class="pui-icon triangle bg before down" style="color: #0ff"></i><i class="pui-icon triangle bg before left" style="color: #f0f"></i><i class="pui-icon triangle bg before up" style="color: #fff"></i><i class="pui-icon triangle bg after" style="color: #888"></i><i class="pui-icon triangle bg after down" style="color: #808"></i><i class="pui-icon triangle bg after left" style="color: #088"></i><i class="pui-icon triangle bg after up" style="color: #880"></i>
+  <br />
+  <i class="pui-icon triangle sd"></i><i class="pui-icon triangle sd down" style="color: #f00"></i><i class="pui-icon triangle sd left" style="color: #0f0"></i><i class="pui-icon triangle sd up" style="color: #00f"></i><i class="pui-icon triangle sd before" style="color: #ff0"></i><i class="pui-icon triangle sd before down" style="color: #0ff"></i><i class="pui-icon triangle sd before left" style="color: #f0f"></i><i class="pui-icon triangle sd before up" style="color: #fff"></i><i class="pui-icon triangle sd after" style="color: #888"></i><i class="pui-icon triangle sd after down" style="color: #808"></i><i class="pui-icon triangle sd after left" style="color: #088"></i><i class="pui-icon triangle sd after up" style="color: #880"></i>
+  <br />
+  <i class="pui-icon triangle clip"></i><i class="pui-icon triangle clip down" style="color: #f00"></i><i class="pui-icon triangle clip left" style="color: #0f0"></i><i class="pui-icon triangle clip up" style="color: #00f"></i><i class="pui-icon triangle clip before" style="color: #ff0"></i><i class="pui-icon triangle clip before down" style="color: #0ff"></i><i class="pui-icon triangle clip before left" style="color: #f0f"></i><i class="pui-icon triangle clip before up" style="color: #fff"></i><i class="pui-icon triangle clip after" style="color: #888"></i><i class="pui-icon triangle clip after down" style="color: #808"></i><i class="pui-icon triangle clip after left" style="color: #088"></i><i class="pui-icon triangle clip after up" style="color: #880"></i>
+  <br />
+  <i class="pui-icon disc bg" style="color: #f00;"></i>
+  <i class="pui-icon disc sd" style="color: #0f0;"></i>
+  <i class="pui-icon disc clip" style="color: #00f;"></i>
+  <br />
+  <i class="pui-icon circle bg" style="color: #f00;"></i>
+  <i class="pui-icon circle sd" style="color: #0f0;"></i>
+  <i class="pui-icon circle clip" style="color: #00f;"></i>
+  <br />
+  <i class="pui-icon square" style="color: #f00;"></i>
+  <br />
+  <i class="pui-icon rect" style="color: #f00;"></i>
+  <br />
+  <i class="pui-icon triangle bg primary"></i>
+  <i class="pui-icon disc bg success"></i>
+  <i class="pui-icon circle bg warning"></i>
+  <i class="pui-icon square error"></i>
+  <i class="pui-icon rect disabled"></i>
+  <br />
+  <i class="pui-icon triangle bg sd clip primary"></i>
+  <i class="pui-icon disc bg sd clip success"></i>
+  <i class="pui-icon circle bg sd clip warning"></i>
+  <br/>
+  Color priority:
+  <br/>
+  <i class="pui-icon triangle bg primary"></i><i class="pui-icon triangle sd primary"></i><i class="pui-icon triangle clip primary"></i>
+  <i class="pui-icon triangle bg before primary"></i><i class="pui-icon triangle sd before primary"></i><i class="pui-icon triangle clip before primary"></i>
+  <i class="pui-icon triangle bg after primary"></i><i class="pui-icon triangle sd after primary"></i><i class="pui-icon triangle clip after primary"></i>
+  <i class="pui-icon disc bg success"></i><i class="pui-icon disc sd success"></i><i class="pui-icon disc clip success"></i>
+  <i class="pui-icon disc bg before success"></i><i class="pui-icon disc sd before success"></i><i class="pui-icon disc clip before success"></i>
+  <i class="pui-icon disc bg after success"></i><i class="pui-icon disc sd after success"></i><i class="pui-icon disc clip after success"></i>
+  <i class="pui-icon circle bg warning"></i><i class="pui-icon circle sd warning"></i><i class="pui-icon circle clip warning"></i>
+  <i class="pui-icon circle bg before warning"></i><i class="pui-icon circle sd before warning"></i><i class="pui-icon circle clip before warning"></i>
+  <i class="pui-icon circle bg after warning"></i><i class="pui-icon circle sd after warning"></i><i class="pui-icon circle clip after warning"></i>
+  <i class="pui-icon square error"></i>
+  <i class="pui-icon square before error"></i>
+  <i class="pui-icon square after error"></i>
+  <i class="pui-icon rect disabled"></i>
+  <i class="pui-icon rect before disabled"></i>
+  <i class="pui-icon rect after disabled"></i>
+  <br/>
+  <i class="pui-icon triangle bg primary" style="color: #f00; background-color: #088;"></i><i class="pui-icon triangle sd primary" style="color: #f00; background-color: #088;"></i><i class="pui-icon triangle clip primary" style="color: #f00; background-color: #088;"></i>
+  <i class="pui-icon triangle bg before primary" style="color: #f00; background-color: #088;"></i><i class="pui-icon triangle sd before primary" style="color: #f00; background-color: #088;"></i><i class="pui-icon triangle clip before primary" style="color: #f00; background-color: #088;"></i>
+  <i class="pui-icon triangle bg after primary" style="color: #f00; background-color: #088;"></i><i class="pui-icon triangle sd after primary" style="color: #f00; background-color: #088;"></i><i class="pui-icon triangle clip after primary" style="color: #f00; background-color: #088;"></i>
+  <i class="pui-icon disc bg success" style="color: #f00; background-color: #088;"></i><i class="pui-icon disc sd success" style="color: #f00; background-color: #088;"></i><i class="pui-icon disc clip success" style="color: #f00; background-color: #088;"></i>
+  <i class="pui-icon disc bg before success" style="color: #f00; background-color: #088;"></i><i class="pui-icon disc sd before success" style="color: #f00; background-color: #088;"></i><i class="pui-icon disc clip before success" style="color: #f00; background-color: #088;"></i>
+  <i class="pui-icon disc bg after success" style="color: #f00; background-color: #088;"></i><i class="pui-icon disc sd after success" style="color: #f00; background-color: #088;"></i><i class="pui-icon disc clip after success" style="color: #f00; background-color: #088;"></i>
+  <i class="pui-icon circle bg warning" style="color: #f00; background-color: #088;"></i><i class="pui-icon circle sd warning" style="color: #f00; background-color: #088;"></i><i class="pui-icon circle clip warning" style="color: #f00; background-color: #088;"></i>
+  <i class="pui-icon circle bg before warning" style="color: #f00; background-color: #088;"></i><i class="pui-icon circle sd before warning" style="color: #f00; background-color: #088;"></i><i class="pui-icon circle clip before warning" style="color: #f00; background-color: #088;"></i>
+  <i class="pui-icon circle bg after warning" style="color: #f00; background-color: #088;"></i><i class="pui-icon circle sd after warning" style="color: #f00; background-color: #088;"></i><i class="pui-icon circle clip after warning" style="color: #f00; background-color: #088;"></i>
+  <i class="pui-icon square error" style="color: #f00; background-color: #088;"></i>
+  <i class="pui-icon square before error" style="color: #f00; background-color: #088;"></i>
+  <i class="pui-icon square after error" style="color: #f00; background-color: #088;"></i>
+  <i class="pui-icon rect disabled" style="color: #f00; background-color: #088;"></i>
+  <i class="pui-icon rect before disabled" style="color: #f00; background-color: #088;"></i>
+  <i class="pui-icon rect after disabled" style="color: #f00; background-color: #088;"></i>
+  <br/>
+  <style>#asdf { color: #088; }</style>
+  <i class="pui-icon triangle bg primary" id="asdf"></i><i class="pui-icon triangle sd primary" id="asdf"></i><i class="pui-icon triangle clip primary" id="asdf"></i>
+  <i class="pui-icon triangle bg before primary" id="asdf"></i><i class="pui-icon triangle sd before primary" id="asdf"></i><i class="pui-icon triangle clip before primary" id="asdf"></i>
+  <i class="pui-icon triangle bg after primary" id="asdf"></i><i class="pui-icon triangle sd after primary" id="asdf"></i><i class="pui-icon triangle clip after primary" id="asdf"></i>
+  <i class="pui-icon disc bg success" id="asdf"></i><i class="pui-icon disc sd success" id="asdf"></i><i class="pui-icon disc clip success" id="asdf"></i>
+  <i class="pui-icon disc bg before success" id="asdf"></i><i class="pui-icon disc sd before success" id="asdf"></i><i class="pui-icon disc clip before success" id="asdf"></i>
+  <i class="pui-icon disc bg after success" id="asdf"></i><i class="pui-icon disc sd after success" id="asdf"></i><i class="pui-icon disc clip after success" id="asdf"></i>
+  <i class="pui-icon circle bg warning" id="asdf"></i><i class="pui-icon circle sd warning" id="asdf"></i><i class="pui-icon circle clip warning" id="asdf"></i>
+  <i class="pui-icon circle bg before warning" id="asdf"></i><i class="pui-icon circle sd before warning" id="asdf"></i><i class="pui-icon circle clip before warning" id="asdf"></i>
+  <i class="pui-icon circle bg after warning" id="asdf"></i><i class="pui-icon circle sd after warning" id="asdf"></i><i class="pui-icon circle clip after warning" id="asdf"></i>
+  <i class="pui-icon square error" id="asdf"></i>
+  <i class="pui-icon square before error" id="asdf"></i>
+  <i class="pui-icon square after error" id="asdf"></i>
+  <i class="pui-icon rect disabled" id="asdf"></i>
+  <i class="pui-icon rect before disabled" id="asdf"></i>
+  <i class="pui-icon rect after disabled" id="asdf"></i>
+  <script></script>
+</body>
+</html>

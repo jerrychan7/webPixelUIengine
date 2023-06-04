@@ -1,0 +1,170 @@
+
+.pui-icon {
+  &, &.before::before, &.after::after {
+    --bgi: linear-gradient(currentColor, currentColor);
+    --ps: var(--pixel-size, .125em);
+    --ps2: calc(var(--ps) * 2);
+    --ps3: calc(var(--ps) * 3);
+    --ps4: calc(var(--ps) * 4);
+    --ps5: calc(var(--ps) * 5);
+    --ps6: calc(var(--ps) * 6);
+    --ps7: calc(var(--ps) * 7);
+    --nps: calc(var(--ps) * -1);
+    border: none;
+    border-radius: 0;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-clip: content-box;
+    utils-inherit-font-and-color: x;
+  }
+  &.before::before, &.after::after { content: ''; }
+  /* 向右指向的三角形 */
+  &.triangle {
+    &.bg {
+      &, &.right, &.left, &.up, &.down {
+        &:not(.before):not(.after), &.before::before, &.after::after {
+          size: var(--ps7);
+          background-image: var(--bgi), var(--bgi), var(--bgi), var(--bgi);
+          background-size: var(--ps2) 100%, var(--ps2) var(--ps5), var(--ps) var(--ps3), var(--ps) var(--ps);
+          background-position: 0, var(--ps2), var(--ps4), var(--ps5);
+        }
+      }
+      &.left { &:not(.before):not(.after), &.before::before, &.after::after {
+        background-position: var(--ps4), var(--ps2), var(--ps), 0;
+      } }
+      &.up, &.down { &:not(.before):not(.after), &.before::before, &.after::after {
+        background-size: 100% var(--ps2), var(--ps5) var(--ps2), var(--ps3) var(--ps), var(--ps) var(--ps);
+        background-position-x: 50%;
+        background-position-y: var(--ps5), var(--ps3), var(--ps2), var(--ps);
+      } }
+      &.down { &:not(.before):not(.after), &.before::before, &.after::after {
+        background-position-y: var(--ps), var(--ps3), var(--ps5), var(--ps6);
+      } }
+    }
+    /* shadow */
+    &.sd {
+      &, &.right, &.left, &.up, &.down {
+        &:not(.before):not(.after), &.before::before, &.after::after {
+          size: var(--ps3);
+          margin: var(--ps2);
+          background-color: currentColor;
+          box-shadow:
+            var(--ps) 0,
+            var(--ps3) 0 0 var(--nps),
+            var(--nps) 0,
+            calc(var(--ps) * -1.5) calc(var(--ps) * -2.5) 0 calc(var(--ps) * -.5),
+            calc(var(--ps) * -1.5) calc(var(--ps) * 2.5) 0 calc(var(--ps) * -.5),
+            calc(var(--ps) * .5) calc(var(--ps) * 1.5) 0 calc(var(--ps) * -.5),
+            calc(var(--ps) * .5) calc(var(--ps) * -1.5) 0 calc(var(--ps) * -.5);
+        }
+      }
+      &:not(.left):not(.up):not(.down), &.right { &:not(.before):not(.after), &.before::before, &.after::after {
+        translate: var(--nps);
+      } }
+      &.left { &:not(.before):not(.after), &.before::before, &.after::after {
+        rotate: .5turn;
+      } }
+      &.up { &:not(.before):not(.after), &.before::before, &.after::after {
+        rotate: 270deg; translate: 0 var(--ps);
+      } }
+      &.down { &:not(.before):not(.after), &.before::before, &.after::after {
+        rotate: 90deg;
+      } }
+    }
+    &.clip {
+      &, &.right, &.left, &.up, &.down {
+        &:not(.before):not(.after), &.before::before, &.after::after {
+          size: calc(var(--ps) * 7);
+          background-color: currentColor;
+          clip-path: polygon(0 0, 0 100%, var(--ps2) 100%, var(--ps2) var(--ps6), var(--ps4) var(--ps6), var(--ps4) var(--ps5), var(--ps5) var(--ps5), var(--ps5) var(--ps4), var(--ps6) var(--ps4), var(--ps6) var(--ps3), var(--ps5) var(--ps3), var(--ps5) var(--ps2), var(--ps4) var(--ps2), var(--ps4) var(--ps), var(--ps2) var(--ps), var(--ps2) 0, 0 0);
+        }
+      }
+      &.left { &:not(.before):not(.after), &.before::before, &.after::after {
+        rotate: .5turn; translate: var(--nps);
+      } }
+      &.down { &:not(.before):not(.after), &.before::before, &.after::after {
+        rotate: 90deg; translate: 0 var(--ps);
+      } }
+      &.up { &:not(.before):not(.after), &.before::before, &.after::after {
+        rotate: 270deg;
+      } }
+    }
+  }
+  &.disc, &.circle {
+    &.bg {
+      &:not(.before):not(.after), &.before::before, &.after::after {
+        size: var(--ps6);
+        background-image: var(--bgi), var(--bgi), var(--bgi), var(--bgi), var(--bgi);
+        background-size: var(--ps2) var(--ps), var(--ps4) var(--ps), var(--ps6) var(--ps2), var(--ps4) var(--ps), var(--ps2) var(--ps);
+        background-position: var(--ps2) 0, var(--ps) var(--ps), 0 var(--ps2), var(--ps) var(--ps4), var(--ps2) var(--ps5);
+      }
+    }
+    &.sd {
+      &:not(.before):not(.after), &.before::before, &.after::after {
+        --nps2: calc(var(--ps) * -2);
+        --npsd2: calc(var(--ps) / -2);
+        --ps1p5: calc(var(--ps) * 1.5);
+        --nps1p5: calc(var(--ps) * -1.5);
+        size: var(--ps2);
+        margin: var(--ps2);
+        background-color: currentColor;
+        box-shadow:
+          var(--ps2) 0, 0 var(--ps2), var(--nps2) 0, 0 var(--nps2),
+          var(--nps1p5) var(--nps1p5) 0 var(--npsd2),
+          var(--ps1p5) var(--nps1p5) 0 var(--npsd2),
+          var(--ps1p5) var(--ps1p5) 0 var(--npsd2),
+          var(--nps1p5) var(--ps1p5) 0 var(--npsd2);
+      }
+    }
+    &.clip {
+      &:not(.before):not(.after), &.before::before, &.after::after {
+        size: var(--ps6);
+        background-color: currentColor;
+        utils-clip-path-with-bsize2: var(--ps) 0% 0% 100% 100%;
+      }
+    }
+  }
+  &.circle {
+    &.bg {
+      &:not(.before):not(.after), &.before::before, &.after::after {
+        background-image: var(--bgi), var(--bgi), var(--bgi), var(--bgi), var(--bgi), var(--bgi);
+        background-size: var(--ps2) var(--ps), var(--ps4) var(--ps), var(--ps2) var(--ps2), var(--ps2) var(--ps2), var(--ps4) var(--ps), var(--ps2) var(--ps);
+        background-position: var(--ps2) 0, var(--ps) var(--ps), 0 var(--ps2), var(--ps4) var(--ps2), var(--ps) var(--ps4), var(--ps2) var(--ps5);
+      }
+    }
+    &.sd {
+      &:not(.before):not(.after), &.before::before, &.after::after {
+        background-color: transparent;
+      }
+    }
+    &.clip {
+      &:not(.before):not(.after), &.before::before, &.after::after {
+        clip-path: polygon(
+          var(--bsize2-clip-polygon-path),
+          var(--ps2) var(--ps2),
+          var(--ps4) var(--ps2),
+          var(--ps4) var(--ps4),
+          var(--ps2) var(--ps4),
+          var(--ps2) var(--ps2)
+        );
+      }
+    }
+  }
+  &.square {
+    &:not(.before):not(.after), &.before::before, &.after::after {
+      background-color: currentColor;
+      size: var(--ps4);
+    }
+  }
+  &.rect {
+    &:not(.before):not(.after), &.before::before, &.after::after {
+      size: var(--ps2);
+      border: var(--ps) solid currentColor;
+    }
+  }
+  @each $color in primary, success, warning, error, disabled {
+    &.$(color) { color: var(--pui-$(color)); }
+  }
+}

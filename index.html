@@ -110,6 +110,7 @@
     }
     #usage-progress .items progress { margin-top: 1ex; }
     #usage-balloons .items .pui-balloon { display: inline-block; }
+    #usage-balloons .items .stripe-bg { display: inline-block; padding: 10px; }
     #usage-colored-border .pui-cb {
       margin-top: 1ex;
     }
@@ -121,9 +122,9 @@
       margin: 10px;
       background-color: rgba(0, 136, 136, .25);
     }
-    #usage-slider fieldset {
+    .stripe-bg {
       background-image:
-        repeating-linear-gradient(-45deg, transparent 1.5px, rgba(128, 128, 128, .25) 2px 4px, transparent 4.5px 6px);
+        repeating-linear-gradient(-45deg, transparent 1.75px, rgba(128, 128, 128, .25) 2.25px 3.75px, transparent 4.25px 6px);
     }
     [id^=usage-] > fieldset, pre[class*=language-] { margin: 0; }
     pre[class*=language-] { padding: 1ex 2ch; }
@@ -704,6 +705,7 @@
           <div class="pui-balloon on-top from-right">on-top from-right</div>
           <div class="pui-balloon on-right">on-right<br>foo<br>foo</div>
           <div class="pui-balloon on-right from-top">on-right<br>from-top<br>foo</div><br/>
+          <div class="stripe-bg"><div class="pui-balloon from-right">is transparent background</div></div>
           <div class="pui-balloon on-top" id="shark">! Shark !</div>
           <style>
             #shark {
@@ -813,7 +815,7 @@
       </fieldset>
     </section>
     <section id="usage-slider">
-      <fieldset class="pui">
+      <fieldset class="pui stripe-bg">
         <legend>Slider</legend>
         <div class="items">
           <input type="range" class="pui" />
@@ -823,6 +825,38 @@
           <input type="range" class="pui success thin short" bsize="2" />
           <input type="range" class="pui success short hollow" bsize="2" style="--track-h: 4px;" />
           <input type="range" class="pui primary hollow square" bsize="1" />
+        </div>
+      </fieldset>
+    </section>
+    <section id="usage-icons">
+      <fieldset class="pui">
+        <legend>Icons</legend>
+        <div class="items">
+          Triangle:
+          <i class="pui-icon triangle bg"></i>
+          <i class="pui-icon triangle sd before down primary"></i>
+          <i class="pui-icon triangle clip after left success"></i>
+          <i class="pui-icon triangle clip after up" style="color: #088"></i>
+          <br />
+          Disc:
+          <i class="pui-icon disc bg"></i>
+          <i class="pui-icon disc sd before primary"></i>
+          <i class="pui-icon disc clip after success" style="color: #088"></i>
+          <br />
+          Circle:
+          <i class="pui-icon circle bg"></i>
+          <i class="pui-icon circle sd after primary"></i>
+          <i class="pui-icon circle clip before success" style="color: #088"></i>
+          <br />
+          Square:
+          <i class="pui-icon square"></i>
+          <i class="pui-icon square before primary"></i>
+          <i class="pui-icon square after success" style="color: #088"></i>
+          <br />
+          Rect:
+          <i class="pui-icon rect"></i>
+          <i class="pui-icon rect after primary"></i>
+          <i class="pui-icon rect before success" style="color: #088"></i>
         </div>
       </fieldset>
     </section>
