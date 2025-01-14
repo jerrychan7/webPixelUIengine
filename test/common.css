@@ -1,0 +1,19 @@
+
+@font-face { font-family: dot_font; src: url(../fonts/DinkieBitmap-9pxDemo.woff2); }
+@font-face { font-family: dot_font_code; src: url(../fonts/DinkieBitmap-9pxCodeDemo.woff2); }
+@font-face { font-family: dot_font_italic; src: url(../fonts/DinkieBitmap-9pxItalicDemo.woff2); }
+
+body {
+  font-family: dot_font_code, dot_font;
+  /* font-family: dot_font; */
+  font-size: 1pc;
+  text-rendering: geometricPrecision;
+  background-color: pink;
+  /* -webkit-font-smoothing: none; */
+  -webkit-font-smoothing: antialiased;
+  /* filter: url(#crispify); */
+}
+
+i, em {
+  font-family: dot_font_italic;
+}

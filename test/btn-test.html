@@ -7,19 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link href="../release/all.css" rel="stylesheet">
+  <link href="./common.css" rel="stylesheet">
   <style>
-    @font-face { font-family: dot_font; src: url(../fonts/DinkieBitmap-9pxDemo.woff2); }
-    @font-face { font-family: dot_font_code; src: url(../fonts/DinkieBitmap-9pxCodeDemo.woff2); }
-    @font-face { font-family: dot_font_italic; src: url(../fonts/DinkieBitmap-9pxItalicDemo.woff2); }
-    body {
-      font-family: dot_font_code, dot_font;
-      /* font-family: dot_font; */
-      font-size: 1pc;
-      text-rendering: geometricPrecision;
-      background-color: pink;
-      -webkit-font-smoothing: none;
-      /* filter: url(#crispify); */
-    }
     .offscreen {
       position: absolute;
       left: -100000px;
@@ -29,18 +18,12 @@
       overflow: hidden;
     }
 
-    i,
-    em {
-      font-family: dot_font_italic;
-    }
-
-    a,
-    button,
-    input {
-      margin: 10px;
+    a, button, input {
+      margin: 12px;
     }
   </style>
 </head>
+
 <body>
   <svg class="offscreen" width="0" height="0" xmlns="http://www.w3.org/2000/svg">
     <defs>
@@ -51,150 +34,222 @@
       </filter>
     </defs>
   </svg>
-  <a class="pui-btn" href="#">link</a>
-  <a class="pui-btn primary" href="#">link</a>
-  <a class="pui-btn success" href="#">link</a>
-  <a class="pui-btn warning" href="#">link</a>
-  <a class="pui-btn error" href="#">link</a>
-  <a class="pui-btn disabled" href="#">link</a>
-  <br/>
-  <a class="pui-btn" href="#" size=1>link</a>
-  <a class="pui-btn primary" href="#" size=1>link</a>
-  <a class="pui-btn success" href="#" size=1>link</a>
-  <a class="pui-btn warning" href="#" size=1>link</a>
-  <a class="pui-btn error" href="#" size=1>link</a>
-  <a class="pui-btn disabled" href="#" size=1>link</a>
-  <br/>
-  <a class="pui-btn" href="#" size=2>link</a>
-  <a class="pui-btn primary" href="#" size=2>link</a>
-  <a class="pui-btn success" href="#" size=2>link</a>
-  <a class="pui-btn warning" href="#" size=2>link</a>
-  <a class="pui-btn error" href="#" size=2>link</a>
-  <a class="pui-btn disabled" href="#" size=2>link</a>
-  <br/>
-  <br/>
-  <button class="pui">button</button>
-  <button class="pui primary">button</button>
-  <button class="pui success">button</button>
-  <button class="pui warning">button</button>
-  <button class="pui error">button</button>
-  <button class="pui" disabled>button</button>
-  <br/>
-  <button class="pui" size=1>button</button>
-  <button class="pui primary" size=1>button</button>
-  <button class="pui success" size=1>button</button>
-  <button class="pui warning" size=1>button</button>
-  <button class="pui error" size=1>button</button>
-  <button class="pui" disabled size=1>button</button>
-  <br/>
-  <button class="pui" size=2>button</button>
-  <button class="pui primary" size=2>button</button>
-  <button class="pui success" size=2>button</button>
-  <button class="pui warning" size=2>button</button>
-  <button class="pui error" size=2>button</button>
-  <button class="pui" disabled size=2>button</button>
-  <br/>
-  color buttons:
-  <input class="pui" type="color" value="#FFFFFF" />
-  <input class="pui" type="color" value="#FFFFFF" size="1" />
-  <input class="pui" type="color" value="#FFFFFF" size="2" />
-  <input class="pui" type="color" value="#FFFFFF" size="2" disabled />
-  <br/>
-  <br/>
-  <input type="button" value="input" class="pui" />
-  <input type="button" value="input" class="pui primary" />
-  <input type="button" value="input" class="pui success" />
-  <input type="button" value="input" class="pui warning" />
-  <input type="button" value="input" class="pui error" />
-  <input type="button" value="input" class="pui" disabled />
-  <br/>
-  <input type="button" value="input" size=1 class="pui" />
-  <input type="button" value="input" size=1 class="pui primary" />
-  <input type="button" value="input" size=1 class="pui success" />
-  <input type="button" value="input" size=1 class="pui warning" />
-  <input type="button" value="input" size=1 class="pui error" />
-  <input type="button" value="input" size=1 class="pui" disabled />
-  <br/>
-  <input type="button" value="input" size=2 class="pui" />
-  <input type="button" value="input" size=2 class="pui primary" />
-  <input type="button" value="input" size=2 class="pui success" />
-  <input type="button" value="input" size=2 class="pui warning" />
-  <input type="button" value="input" size=2 class="pui error" />
-  <input type="button" value="input" size=2 class="pui" disabled />
-  <br/>
-  <br/>
-  <input type="file" class="pui" />
-  <input type="file" class="pui primary" />
-  <input type="file" class="pui success" />
-  <input type="file" class="pui warning" />
-  <input type="file" class="pui error" />
-  <input type="file" class="pui" disabled />
-  <br/>
-  border
-  <input type="file" class="pui border" />
-  <input type="file" class="pui warning border" />
-  <input type="file" class="pui error border" />
-  <input type="file" class="pui border" disabled />
-  <br/>
-  center-ellipsis
-  <input type="file" class="pui primary border center-ellipsis" />
-  <br/>
-  <input type="file" size=1 class="pui" />
-  <input type="file" size=1 class="pui primary" />
-  <input type="file" size=1 class="pui success" />
-  <input type="file" size=1 class="pui warning" />
-  <input type="file" size=1 class="pui error" />
-  <input type="file" size=1 class="pui" disabled />
-  <br/>
-  border
-  <input type="file" size=1 class="pui border" />
-  <input type="file" size=1 class="pui warning border" />
-  <input type="file" size=1 class="pui error border" />
-  <input type="file" size=1 class="pui border" disabled />
-  <br/>
-  center-ellipsis
-  <input type="file" size=1 class="pui primary border center-ellipsis" />
-  <br/>
-  <input type="file" size=2 class="pui" />
-  <input type="file" size=2 class="pui primary" />
-  <input type="file" size=2 class="pui warning" />
-  <input type="file" size=2 class="pui error" />
-  <input type="file" size=2 class="pui" disabled />
-  <br/>
-  border
-  <input type="file" size=2 class="pui border" />
-  <input type="file" size=2 class="pui warning border" />
-  <input type="file" size=2 class="pui error border" />
-  <input type="file" size=2 class="pui border" disabled />
-  <br/>
-  center-ellipsis
-  <input type="file" size=2 class="pui primary border center-ellipsis" />
-  <input type="file" size=2 class="pui primary center-ellipsis" />
-  <br/>
-  <input type="file" class="pui fill" />
-  <input type="file" class="pui primary fill" />
-  <input type="file" class="pui success fill" />
-  <input type="file" class="pui warning fill" />
-  <input type="file" class="pui error fill" />
-  <input type="file" class="pui fill" disabled />
-  <br/>
-  <input type="file" size=1 class="pui fill" />
-  <input type="file" size=1 class="pui primary fill" />
-  <input type="file" size=1 class="pui success fill" />
-  <input type="file" size=1 class="pui warning fill" />
-  <input type="file" size=1 class="pui error fill" />
-  <input type="file" size=1 class="pui fill" disabled />
-  <br/>
-  <input type="file" size=2 class="pui fill" />
-  <input type="file" size=2 class="pui primary fill" />
-  <input type="file" size=2 class="pui success fill" />
-  <input type="file" size=2 class="pui warning fill" />
-  <input type="file" size=2 class="pui error fill" />
-  <input type="file" size=2 class="pui fill" disabled />
-  <br/>
-  label
-  <input type="file" class="pui primary fill" aria-label="label text" />
-  <input type="file" size=1 class="pui primary fill" aria-label="label text" />
-  <input type="file" size=2 class="pui primary fill" aria-label="label text" />
+
+  <fieldset><legend>element a</legend>
+    <a class="pui-btn" href="#">Anchor</a>
+    <a class="pui-btn primary" href="#">Anchor</a>
+    <a class="pui-btn success" href="#">Anchor</a>
+    <a class="pui-btn warning" href="#">Anchor</a>
+    <a class="pui-btn error" href="#">Anchor</a>
+    <a class="pui-btn disabled" href="#">Anchor</a>
+    <br/>
+    <a class="pui-btn" href="#" size=1>Anchor</a>
+    <a class="pui-btn primary" href="#" size=1>Anchor</a>
+    <a class="pui-btn success" href="#" size=1>Anchor</a>
+    <a class="pui-btn warning" href="#" size=1>Anchor</a>
+    <a class="pui-btn error" href="#" size=1>Anchor</a>
+    <a class="pui-btn disabled" href="#" size=1>Anchor</a>
+    <br/>
+    <a class="pui-btn" href="#" size=2>Anchor</a>
+    <a class="pui-btn primary" href="#" size=2>Anchor</a>
+    <a class="pui-btn success" href="#" size=2>Anchor</a>
+    <a class="pui-btn warning" href="#" size=2>Anchor</a>
+    <a class="pui-btn error" href="#" size=2>Anchor</a>
+    <a class="pui-btn disabled" href="#" size=2>Anchor</a>
+  </fieldset>
+
+  <fieldset><legend>element button</legend>
+    <button class="pui">Button</button>
+    <button class="pui primary">Button</button>
+    <button class="pui success">Button</button>
+    <button class="pui warning">Button</button>
+    <button class="pui error">Button</button>
+    <button class="pui" disabled>Button</button>
+    <br/>
+    <button class="pui" size=1>Button</button>
+    <button class="pui primary" size=1>Button</button>
+    <button class="pui success" size=1>Button</button>
+    <button class="pui warning" size=1>Button</button>
+    <button class="pui error" size=1>Button</button>
+    <button class="pui" disabled size=1>Button</button>
+    <br/>
+    <button class="pui" size=2>Button</button>
+    <button class="pui primary" size=2>Button</button>
+    <button class="pui success" size=2>Button</button>
+    <button class="pui warning" size=2>Button</button>
+    <button class="pui error" size=2>Button</button>
+    <button class="pui" disabled size=2>Button</button>
+  </fieldset>
+
+  <fieldset><legend>element input</legend>
+    <input type="button" value="Inputs" class="pui" />
+    <input type="button" value="Inputs" class="pui primary" />
+    <input type="button" value="Inputs" class="pui success" />
+    <input type="button" value="Inputs" class="pui warning" />
+    <input type="button" value="Inputs" class="pui error" />
+    <input type="button" value="Inputs" class="pui" disabled />
+    <br/>
+    <input type="button" value="Inputs" size=1 class="pui" />
+    <input type="button" value="Inputs" size=1 class="pui primary" />
+    <input type="button" value="Inputs" size=1 class="pui success" />
+    <input type="button" value="Inputs" size=1 class="pui warning" />
+    <input type="button" value="Inputs" size=1 class="pui error" />
+    <input type="button" value="Inputs" size=1 class="pui" disabled />
+    <br/>
+    <input type="button" value="Inputs" size=2 class="pui" />
+    <input type="button" value="Inputs" size=2 class="pui primary" />
+    <input type="button" value="Inputs" size=2 class="pui success" />
+    <input type="button" value="Inputs" size=2 class="pui warning" />
+    <input type="button" value="Inputs" size=2 class="pui error" />
+    <input type="button" value="Inputs" size=2 class="pui" disabled />
+  </fieldset>
+
+  <fieldset><legend>color selecter buttons</legend>
+    <input class="pui" type="color" value="#FFFFFF" />
+    <input class="pui" type="color" value="#FFFFFF" size="1" />
+    <input class="pui" type="color" value="#FFFFFF" size="2" />
+    <input class="pui" type="color" value="#FFFFFF" size="2" disabled />
+  </fieldset>
+
+  <fieldset><legend>input[type=file]</legend>
+
+    <fieldset><legend>default</legend>
+      <input type="file" class="pui" />
+      <input type="file" class="pui primary" />
+      <input type="file" class="pui success" />
+      <input type="file" class="pui warning" />
+      <input type="file" class="pui error" />
+      <input type="file" class="pui" disabled />
+      <br/><br/>
+      <input type="file" size=1 class="pui" />
+      <input type="file" size=1 class="pui primary" />
+      <input type="file" size=1 class="pui success" />
+      <input type="file" size=1 class="pui warning" />
+      <input type="file" size=1 class="pui error" />
+      <input type="file" size=1 class="pui" disabled />
+      <br/><br/>
+      <input type="file" size=2 class="pui" />
+      <input type="file" size=2 class="pui primary" />
+      <input type="file" size=2 class="pui success" />
+      <input type="file" size=2 class="pui warning" />
+      <input type="file" size=2 class="pui error" />
+      <input type="file" size=2 class="pui" disabled />
+
+      <fieldset><legend>center-ellipsis</legend>
+        <input type="file" class="pui center-ellipsis" />
+        <input type="file" class="pui primary center-ellipsis" />
+        <input type="file" class="pui success center-ellipsis" />
+        <input type="file" class="pui warning center-ellipsis" />
+        <input type="file" class="pui error center-ellipsis" />
+        <input type="file" class="pui center-ellipsis" disabled />
+        <br/><br/>
+        <input type="file" size=1 class="pui center-ellipsis" />
+        <input type="file" size=1 class="pui primary center-ellipsis" />
+        <input type="file" size=1 class="pui success center-ellipsis" />
+        <input type="file" size=1 class="pui warning center-ellipsis" />
+        <input type="file" size=1 class="pui error center-ellipsis" />
+        <input type="file" size=1 class="pui center-ellipsis" disabled />
+        <br/><br/>
+        <input type="file" size=2 class="pui center-ellipsis" />
+        <input type="file" size=2 class="pui primary center-ellipsis" />
+        <input type="file" size=2 class="pui success center-ellipsis" />
+        <input type="file" size=2 class="pui warning center-ellipsis" />
+        <input type="file" size=2 class="pui error center-ellipsis" />
+        <input type="file" size=2 class="pui center-ellipsis" disabled />
+      </fieldset>
+    </fieldset>
+
+    <fieldset><legend>border</legend>
+      <input type="file" class="pui border" />
+      <input type="file" class="pui primary border" />
+      <input type="file" class="pui success border" />
+      <input type="file" class="pui warning border" />
+      <input type="file" class="pui error border" />
+      <input type="file" class="pui border" disabled />
+      <br/><br/>
+      <input type="file" size=1 class="pui border" />
+      <input type="file" size=1 class="pui primary border" />
+      <input type="file" size=1 class="pui success border" />
+      <input type="file" size=1 class="pui warning border" />
+      <input type="file" size=1 class="pui error border" />
+      <input type="file" size=1 class="pui border" disabled />
+      <br/><br/>
+      <input type="file" size=2 class="pui border" />
+      <input type="file" size=2 class="pui primary border" />
+      <input type="file" size=2 class="pui success border" />
+      <input type="file" size=2 class="pui warning border" />
+      <input type="file" size=2 class="pui error border" />
+      <input type="file" size=2 class="pui border" disabled />
+
+      <fieldset><legend>center-ellipsis</legend>
+        <input type="file" class="pui border center-ellipsis" />
+        <input type="file" class="pui primary border center-ellipsis" />
+        <input type="file" class="pui success border center-ellipsis" />
+        <input type="file" class="pui warning border center-ellipsis" />
+        <input type="file" class="pui error border center-ellipsis" />
+        <input type="file" class="pui border center-ellipsis" disabled />
+        <br/><br/>
+        <input type="file" size=1 class="pui border center-ellipsis" />
+        <input type="file" size=1 class="pui primary border center-ellipsis" />
+        <input type="file" size=1 class="pui success border center-ellipsis" />
+        <input type="file" size=1 class="pui warning border center-ellipsis" />
+        <input type="file" size=1 class="pui error border center-ellipsis" />
+        <input type="file" size=1 class="pui border center-ellipsis" disabled />
+        <br/><br/>
+        <input type="file" size=2 class="pui border center-ellipsis" />
+        <input type="file" size=2 class="pui primary border center-ellipsis" />
+        <input type="file" size=2 class="pui success border center-ellipsis" />
+        <input type="file" size=2 class="pui warning border center-ellipsis" />
+        <input type="file" size=2 class="pui error border center-ellipsis" />
+        <input type="file" size=2 class="pui border center-ellipsis" disabled />
+      </fieldset>
+    </fieldset>
+
+    <fieldset><legend>fill</legend>
+      <input type="file" class="pui fill" />
+      <input type="file" class="pui primary fill" />
+      <input type="file" class="pui success fill" />
+      <input type="file" class="pui warning fill" />
+      <input type="file" class="pui error fill" />
+      <input type="file" class="pui fill" disabled />
+      <br/><br/>
+      <input type="file" size=1 class="pui fill" />
+      <input type="file" size=1 class="pui primary fill" />
+      <input type="file" size=1 class="pui success fill" />
+      <input type="file" size=1 class="pui warning fill" />
+      <input type="file" size=1 class="pui error fill" />
+      <input type="file" size=1 class="pui fill" disabled />
+      <br/><br/>
+      <input type="file" size=2 class="pui fill" />
+      <input type="file" size=2 class="pui primary fill" />
+      <input type="file" size=2 class="pui success fill" />
+      <input type="file" size=2 class="pui warning fill" />
+      <input type="file" size=2 class="pui error fill" />
+      <input type="file" size=2 class="pui fill" disabled />
+
+      <fieldset><legend>label</legend>
+        <input type="file" class="pui fill" aria-label="Label text" />
+        <input type="file" class="pui primary fill" aria-label="Label text" />
+        <input type="file" class="pui success fill" aria-label="Label text" />
+        <input type="file" class="pui warning fill" aria-label="Label text" />
+        <input type="file" class="pui error fill" aria-label="Label text" />
+        <input type="file" class="pui fill" disabled aria-label="Label text" />
+        <br/><br/>
+        <input type="file" size=1 class="pui fill" aria-label="Label text" />
+        <input type="file" size=1 class="pui primary fill" aria-label="Label text" />
+        <input type="file" size=1 class="pui success fill" aria-label="Label text" />
+        <input type="file" size=1 class="pui warning fill" aria-label="Label text" />
+        <input type="file" size=1 class="pui error fill" aria-label="Label text" />
+        <input type="file" size=1 class="pui fill" disabled aria-label="Label text" />
+        <br/><br/>
+        <input type="file" size=2 class="pui fill" aria-label="Label text" />
+        <input type="file" size=2 class="pui primary fill" aria-label="Label text" />
+        <input type="file" size=2 class="pui success fill" aria-label="Label text" />
+        <input type="file" size=2 class="pui warning fill" aria-label="Label text" />
+        <input type="file" size=2 class="pui error fill" aria-label="Label text" />
+        <input type="file" size=2 class="pui fill" disabled aria-label="Label text" />
+      </fieldset>
+    </fieldset>
+  </fieldset>
 </body>
 </html>
