@@ -26,7 +26,7 @@
       font-family: dot_font_code, dot_font;
       font-size: 1pc;
       text-rendering: geometricPrecision;
-      -webkit-font-smoothing: none;
+      -webkit-font-smoothing: antialiased;
       background-color: #fff;
     }
     i, em { font-family: dot_font_italic; }
@@ -96,8 +96,12 @@
     #usage-textarea .items textarea { margin-top: 1ex; }
     #usage-selects .items select { margin-top: 1ex; }
     #usage-containers .items fieldset {
-      display: inline-block;
+      display: inline-grid;
     }
+    #usage-containers .items fieldset p {
+      margin: 0;
+    }
+    dialog { overscroll-behavior: contain; }
     #usage-dialogs .items > section { margin-top: 1ex; }
     #usage-details .items details.pui {
       margin: 1ex;
@@ -469,14 +473,17 @@
           <fieldset class="pui primary" size="1"><legend>legend</legend>text</fieldset>
           <fieldset class="pui success" centered size="2"><legend>centered</legend>centered centered centered</fieldset>
           <br/>
-          <fieldset class="pui error" size="2" style="overflow: auto; height: 100px; width: 150px;">
+          <fieldset class="pui centered" size="2" style="--bwidth: 6px; --bcolor: #088; --bg-color: rgba(0, 0, 136, .25);">
+            <legend>centered</legend>
+            <span style="white-space: pre-line; display: block; width: 200px">--bwidth: 6px;
+              --bcolor: #088;
+              --bg-color: #0084;
+            </span>
+          </fieldset>
+          <fieldset class="pui error" size="2" style="overflow: auto; height: 98px; width: 200px; box-sizing: border-box;">
             <legend>scroll</legend>
             <p>long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long</p>
             <p>longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong</p>
-          </fieldset>
-          <fieldset class="pui centered" size="2" style="--bwidth: 6px; --bcolor: #088; --bg-color: rgba(0, 0, 136, 0.25);">
-            <legend>centered</legend>
-            class="pui centered" size="2" style="--bwidth: 6px; --bcolor: #088; --bg-color: #0084;"
           </fieldset>
         </div>
       </fieldset>
