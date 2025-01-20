@@ -12,6 +12,7 @@ select.pui {
   --mw: var(--mark-width, 3px);
   --mc: var(--mark-color, var(--bc));
   border: var(--bw) var(--bc) solid;
+  border-radius: 0;
   padding: 1ex 1ch;
   padding-right: calc(1ch + 7 * var(--mw) + var(--bw));
   cursor: pointer;
